@@ -102,6 +102,35 @@ Dann führt das Programm dieses Skript aus.
 
 \subsection*{Levels von Scripting}
 
+In Microsoft Excel gibt es die Möglichkeit sich wiederholende Aufgaben mithilfe 
+von Office Scripts zu automatisieren.
+\\
+Man kann auf zwei Arten ein neues Office-Skript erstellen:
+\begin{itemize}
+    \item Man kann seine Handlungen mithilfe des Actionrecorders aufnehmen. 
+    Diese Methode eignet sich besonders gut, wenn man sich wiederholende 
+    Schritte in dem Dokument merken möchte. Dazu sind keine Programmierkenntnisse 
+    oder ähnliches erforderlich. Die Aufgezeichneten Skripte können 
+    abgespeichert und verändert werden.
+    \item Die zweite Möglichkeit ist, dass Office-Skript selbst mithilfe 
+    von TypeScript zu schreiben.
+\end{itemize}
 
+Folgendes Office-Skript Beispiel gibt den Wert von der Zelle A1 auf der Konsole aus:
+
+\begin{lstlisting}
+    function main(workbook: ExcelScript.Workbook) {
+  // Get the current worksheet.
+  let selectedSheet = workbook.getActiveWorksheet();
+
+  // Get the value of cell A1.
+  let range = selectedSheet.getRange("A1");
+  
+  // Print the value of A1.
+  console.log(range.getValue());
+}
+\end{lstlisting}
+
+\newpage
 
 \subsection*{Alternativen}
