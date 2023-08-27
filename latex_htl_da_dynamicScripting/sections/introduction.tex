@@ -118,7 +118,7 @@ Man kann auf zwei Arten ein neues Office-Skript erstellen:
 
 Folgendes Office-Skript Beispiel gibt den Wert von der Zelle A1 auf der Konsole aus:
 
-\begin{lstlisting}
+\begin{lstlisting} [language=Python,caption=Office-Skript,label=lst:impl:foo]
     function main(workbook: ExcelScript.Workbook) {
   // Get the current worksheet.
   let selectedSheet = workbook.getActiveWorksheet();
