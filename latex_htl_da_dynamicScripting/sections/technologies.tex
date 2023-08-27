@@ -36,7 +36,7 @@ wie Subversion, CVS, Perforce und ClearCase ab, indem es Funktionen wie kostenef
 lokale „Branches“, bequeme Staging-Bereiche und vielfältige Arbeitsabläufe bietet.
 Git erlaubt und begünstigt die Erstellung von mehreren unabhängigen lokalen Verzweigungen. 
 Die Prozesse des Erstellens, Zusammenführens und Entfernens dieser Entwicklungsstränge 
-nehmen lediglich Sekunden in Anspruch.
+nehmen lediglich Sekunden in Anspruch. \\
 
 Git ist kostenfrei und Open-Source. Es wurde dazu entwickelt, Projekte aller 
 Größenordnungen – von kleinen bis hin zu umfangreichen – schnell und effizient zu verwalten. 
@@ -50,6 +50,32 @@ das in der heutigen Zeit zur Verfügung steht.
 
 \subsection*{Docker}
 
+Docker ist eine Plattform, welche Anwendungen gemeinsam mit ihren spezifischen Abhängigkeiten 
+in Form von Containern bündelt. Dieser Ansatz gewährleistet, dass die Anwendung in 
+jeder beliebigen Entwicklungsumgebung reibungslos funktioniert.
+Jede einzelne Anwendung läuft in separaten Containern und verfügt über 
+ihre eigenen Satz an Abhängigkeiten und Bibliotheken. Dies gewährleistet, dass jede 
+Applikation in völliger Unabhängigkeit von anderen Anwendungen agiert und die Sicherheit gibt, 
+dass sie Anwendungen erstellen können, welche sich nicht gegenseitig beeinträchtigen.
+Wir haben in unserer Anwendung unser Frontend, Backend und die Datenbank über Docker laufen lassen.
+Das heißt wir haben 3 Docker-Container benutzt. \\
+ 
+Unter einem Container versteht man eine standardisierte Softwareeinheit, die sowohl den 
+Programmcode als auch sämtliche damit verbundenen Abhängigkeiten zusammenfasst. 
+Hierdurch wird sichergestellt, dass die Anwendung zuverlässig in unterschiedlichen 
+Computerumgebungen ausgeführt werden kann. Ein Docker-Container-Image verkörpert eine 
+autonome und ausführbare Softwareeinheit, welche sämtliche Komponenten für die Ausführung 
+einer Applikation in sich trägt: den Code selbst, die Laufzeitumgebung, Systemwerkzeuge, 
+Systembibliotheken und Konfigurationseinstellungen. \\
+
+Container-Images verwandeln sich zur Laufzeit in eigenständige Container. 
+Im Fall von Docker geschieht dies durch das Ausführen der Images auf der Docker Engine. 
+Containerisierte Software steht sowohl für Linux- als auch für Windows-basierte Anwendungen 
+zur Verfügung und gewährleistet eine gleichbleibende Ausführung, unabhängig von der genutzten 
+Infrastruktur. Container schaffen eine Isolierung der Software von ihrer Umgebung und 
+gewährleisten somit, dass die Anwendung konsistent arbeitet, selbst bei Unterschieden 
+zwischen Entwicklungs- und Staging-Umgebungen.
+\newpage
 
 
 \subsection*{Benchmark}
