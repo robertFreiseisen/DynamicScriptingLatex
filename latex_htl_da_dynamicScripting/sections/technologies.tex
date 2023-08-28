@@ -86,11 +86,11 @@ Messexperimenten. Diese Transformation gestaltet sich genauso unkompliziert wie 
 Erstellung von Unit-Tests. BenchmarkDotNet hilft dabei, übliche Fehler im Benchmarking-Prozess 
 zu vermeiden und Nutzer zu informieren, sobald Unstimmigkeiten im Benchmark-Design oder den 
 erfassten Messdaten auftreten. Die präsentierten Resultate erscheinen in einer 
-nutzerfreundlichen Tabelle, die sämtliche relevanten Aspekte des Experiments herausstellt.
+nutzerfreundlichen Tabelle, die sämtliche relevanten Aspekte des Experiments herausstellt.\\
 Anbei ein Beispiel von einem unserer BenchmarkDotNet-Tests:\\
 
-\begin{lstlisting} [language=csh,caption=BenchmarkDotNet,label=lst:impl:foo]
-    namespace C_SharpExample
+\begin{lstlisting} [language={[Sharp]C},caption=BenchmarkDotNet,label=lst:impl:foo]
+namespace C_SharpExample
 {
     [MarkdownExporter,
         HtmlExporter,
@@ -121,3 +121,30 @@ Anbei ein Beispiel von einem unserer BenchmarkDotNet-Tests:\\
 
 \newpage
 \subsection*{Bogus}
+
+Bogus haben wir in unserem Projekt für die Generierung von Fake Daten benutzt. 
+Wir haben damit Schüler- und Lehrernamen erstellen lassen die wir in unserer Anwendung als 
+Testdaten benutzt haben. Bogus funktioniert ausschließlich für 
+.NET-Sprachen wie C\#, F\# oder VB.NET. \\
+
+Es ist ganz unkompliziert zu verwenden. Wir haben in unserer Arbeit nur Namen generieren lassen, 
+jedoch könnte man zu jedem Namen noch eine ganze Menge hinzufügen wie zum Beispiel 
+Telefonnummern, E-Mail-Adressen, Wohnadressen oder auch die Herkunft.\\
+
+Folgendes Codebeispiel zeigt die Generierung unserer Fake Daten für eine Schulklasse:\\
+
+\begin{lstlisting} [language={[Sharp]C},caption=Bogus,label=lst:impl:foo]
+            List<Student> firstStudents = new List<Student>();
+                      
+            #region Create Fake Students for each Schoolclass
+            for (int i = 0; i < 10; i++)
+            {
+                var studentFaker = new Faker<Student>()
+                    .RuleFor(x => x.Name, x => x.Person.FullName)
+                    .Generate();
+                firstStudents.Add(studentFaker);
+            }
+\end{lstlisting}
+
+In der RuleFor() Methode kann man genau die Sachen angeben die man benötigt. 
+In unserem Fall haben wir nur Vornamen und Nachnamen benötigt.
