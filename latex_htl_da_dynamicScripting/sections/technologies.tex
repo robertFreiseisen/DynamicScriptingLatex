@@ -78,8 +78,46 @@ zwischen Entwicklungs- und Staging-Umgebungen.
 \newpage
 
 
-\subsection*{Benchmark}
+\subsection*{BenchmarkDotNet (0.13.2)}
 
+BenchmarkDotNet unterstützt Anwender/innen dabei, die Performance ihrer Methoden in 
+Benchmark-Tests zu überprüfen. Ebenso ermöglicht es den Austausch von reproduzierbaren 
+Messexperimenten. Diese Transformation gestaltet sich genauso unkompliziert wie die 
+Erstellung von Unit-Tests. BenchmarkDotNet hilft dabei, übliche Fehler im Benchmarking-Prozess 
+zu vermeiden und Nutzer zu informieren, sobald Unstimmigkeiten im Benchmark-Design oder den 
+erfassten Messdaten auftreten. Die präsentierten Resultate erscheinen in einer 
+nutzerfreundlichen Tabelle, die sämtliche relevanten Aspekte des Experiments herausstellt.
+Anbei ein Beispiel von einem unserer BenchmarkDotNet-Tests:\\
 
+\begin{lstlisting} [language=csh,caption=BenchmarkDotNet,label=lst:impl:foo]
+    namespace C_SharpExample
+{
+    [MarkdownExporter,
+        HtmlExporter,
+        SimpleJob(RunStrategy.ColdStart, launchCount: 1, warmupCount: 5, targetCount: 5, id: "FastAndDirtyJob")]
+    public class C_SharpTesting
+    {
+        [Benchmark]
+        public void TestC_Sharp_Simple() => ReturnNumber();
 
+        [Benchmark]
+        public void TestC_Sharp_Sum() => MySum();
+
+        #region C_SharpFunctions
+        public static async void ReturnNumber()
+        {
+            var state = await CSharpScript.RunAsync("return 42;");
+            Console.WriteLine(state.ReturnValue);
+        }
+        public static async void MySum()
+        {
+            var state = await CSharpScript.RunAsync("return 3 + 3;");
+            Console.WriteLine(state.ReturnValue);
+        }
+        #endregion
+    }
+}
+\end{lstlisting}
+
+\newpage
 \subsection*{Bogus}
