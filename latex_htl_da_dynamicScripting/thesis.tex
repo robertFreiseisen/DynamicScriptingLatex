@@ -1,5 +1,6 @@
 % !TEX root = thesis.tex
 \documentclass[12pt,a4paper,titlepage,listof=totoc,bibliography=totoc,chapteratlists=0pt]{scrreprt}
+\usepackage{amsfonts, amssymb, amsmath, verbatim, float}
 \input{header}
 
 \makeatletter
@@ -16,8 +17,8 @@
 \displaywidowpenalty=10000
 \interfootnotelinepenalty=10000
 
-\title{Unser tolles Thema -- wir sind suppa}
-\author{Stefan Schwammal, Susi Schwammal}
+\title{Dynamische Anpassung von .Net Anwendungen zur Laufzeit}
+\author{Robert Freiseisen, Phillip Füreder}
 
 \makeindex
 \makeglossaries
@@ -54,9 +55,9 @@
 \input{./sections/introduction}
 
 \begin{spacing}{1}
-\chapter{Umfeldanalyse}
+\chapter{Evaluierung von Skriptsprachen}
 \end{spacing}
-\input{./sections/related_work}
+\input{./sections/evaluationOfTheScriptingLanguages.tex}
 
 \begin{spacing}{1}
 \chapter{Technologien}\label{chapter:tech}
