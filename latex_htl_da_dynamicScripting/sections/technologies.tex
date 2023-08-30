@@ -77,7 +77,34 @@ gewährleisten somit, dass die Anwendung konsistent arbeitet, selbst bei Untersc
 zwischen Entwicklungs- und Staging-Umgebungen.
 \newpage
 
+\subsection*{PostgreSQL}
 
+Als Datenbanksystem haben wir uns für PostgreSQL entschieden, da wir bereits in anderen 
+Projekten mit diesem gearbeitet haben. PostgreSQL ist Open-Source und verwendet die SQL-Sprache. 
+Außerdem ist PostgreSQL auf allen gängigen Betriebssystemen kompatibel.
+PostgreSQL läuft bei uns über Docker, somit haben wir nichts Zusätzliches dafür installieren müssen.
+PostgreSQL ist sehr anpassbar, man kann beispielsweise eigene Datentypen 
+definieren und individuelle Funktionen gestalten.\\
+
+Datentypen in PostgreSQL:
+\begin{itemize}
+    \item Zahlen und Zeichen: Integer, Numeric, String, Boolean
+    \item Strukturierte: Date/Time, Array, Range/Multirange
+    \item Geometrisch: Point, Line, Circle, Polygon
+    \item Anpassbare: Composite, Custom Types
+\end{itemize}
+
+Integrität der Daten:
+\begin{itemize}
+    \item UNIQUE, NOT NULL
+    \item Primary Keys
+    \item Foreign Keys
+    \item Exclusion Constraints
+    \item Explicit Locks, Advisory Locks
+\end{itemize}
+
+
+\newpage
 \subsection*{BenchmarkDotNet (0.13.2)}
 
 BenchmarkDotNet unterstützt Anwender/innen dabei, die Performance ihrer Methoden in 
