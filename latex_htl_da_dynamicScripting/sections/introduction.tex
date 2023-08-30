@@ -236,6 +236,41 @@ solchen Dienst hinzufügen, und dadurch der Service zu komplex wird, besteht die
 diesen in kleinere Services aufzuteilen.
 
 \newpage
+\subsection*{Dynamisches Laden von Assemblies}
+
+Das .NET-Framework biete die Möglichkeit, Assembly-Dateien zur Laufzeit zu laden. 
+Dies ermöglicht es, neue Funktionen in Form von Klassen und Methoden hinzuzufügen. 
+Assemblies stellen die Grundbausteine von .NET-Anwendungen dar und treten in Form 
+von ausführbaren Dateien (.exe) oder Dynamic Link Library-Dateien (.dll) auf.\\
+
+Folgender Beispielcode dient dazu, eine Assembly mit der Bezeichnung "example.exe" innerhalb 
+der aktuellen Anwendungsdomäne zu laden. Anschließend wird ein Typ mit dem Namen "Example" 
+aus dieser Assembly abgerufen. Auf diesen abgerufenen Typ wird die Methode "MethodA" ausgeführt.\\
+
+\begin{lstlisting} [language={[Sharp]C},caption=Assembly,label=lst:impl:foo]
+    using System;
+    using System.Reflection;
+    
+    public class Asmload0
+    {
+        public static void Main()
+        {
+            // Use the file name to load the assembly into the current
+            // application domain.
+            Assembly a = Assembly.Load("example");
+            // Get the type to use.
+            Type myType = a.GetType("Example");
+            // Get the method to call.
+            MethodInfo myMethod = myType.GetMethod("MethodA");
+            // Create an instance.
+            object obj = Activator.CreateInstance(myType);
+            // Execute the method.
+            myMethod.Invoke(obj, null);
+        }
+    }
+\end{lstlisting}
+
+\newpage
 \section{Beschreibung über die Durchführung der Diplomarbeit}
 \setauthor{Philipp Füreder}
 
