@@ -1,6 +1,17 @@
 % !TEX root = thesis.tex
 \documentclass[12pt,a4paper,titlepage,listof=totoc,bibliography=totoc,chapteratlists=0pt]{scrreprt}
 \usepackage{amsfonts, amssymb, amsmath, verbatim, float}
+\usepackage{listings}
+
+\lstdefinestyle{yaml}{
+     basicstyle=\color{blue}\footnotesize,
+     rulecolor=\color{black},
+     string=[s]{'}{'},
+     stringstyle=\color{blue},
+     comment=[l]{:},
+     commentstyle=\color{black},
+     morecomment=[l]{-}
+ }
 \input{header}
 
 \makeatletter
@@ -58,6 +69,11 @@
 \chapter{Evaluierung von Skriptsprachen}
 \end{spacing}
 \input{./sections/evaluationOfTheScriptingLanguages.tex}
+
+\begin{spacing}{1}
+\chapter{Anwendung (Praxisteil)}
+\end{spacing}
+\input{./sections/application.tex}
 
 \begin{spacing}{1}
 \chapter{Technologien}\label{chapter:tech}

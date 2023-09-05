@@ -121,11 +121,11 @@ PC B unter folgenden Voraussetzungen  gemessen:
         \center
         \begin{tabular}{|p{3cm}|p{3cm}|}
             \hline
-            Hersteller & Acer \\ \hline
-            Gerätname & Beptop \\ \hline
-            Prozessor & Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz \\ \hline
-            Installierter RAM & 16.00 GB (15.9 GB verwendbar) \\ \hline
-            Produkt-ID & C125C288-8DFB-4042-A3BA-EE3236D35AB7 \\ \hline
+            Hersteller & Selber Gebaut \\ \hline
+            Gerätname & PC-Philipp \\ \hline
+            Prozessor & AMD Ryzen 5 1600 Six-Core Processor 3.20 GHz \\ \hline
+            Installierter RAM & 16.00 GB \\ \hline
+            Produkt-ID & 00330-80000-00000-AA542 \\ \hline
             Systemtyp & 64-Bit-Betriebssystem, x64-basierter Prozessor \\ \hline
         \end{tabular}
     \end{table}
@@ -134,11 +134,11 @@ PC B unter folgenden Voraussetzungen  gemessen:
         \center
         \begin{tabular}{|p{4cm}|p{4cm}|}
             \hline
-            Edition & Windows 11 Home \\ \hline
-            Version & 21H2 \\ \hline
-            Installiert am & 06.10.2021 \\ \hline
-            Betriebssystembuild & 220.001.098 \\ \hline
-            Leistung & Windows Feature Experience Pack 1000.22000.1098.0 \\ \hline
+            Edition & Windows 10 Pro \\ \hline
+            Version & 22H2 \\ \hline
+            Installiert am & 17.08.2020 \\ \hline
+            Betriebssystembuild & 19045.3393 \\ \hline
+            Leistung & Windows Feature Experience Pack 1000.19044.1000.0 \\ \hline
         \end{tabular}        
     \end{table}
 \end{itemize}
@@ -188,16 +188,66 @@ und dies anschließen auf die Konsole ausgibt.
         \hline
         Performance & IronPython & Lua & CsharpScripting & Javascript\\ \hline
         Speicher einer einfachen Anwendung & 13 MB & 7.3 MB & 168 KB & 416 KB  \\ \hline
-        Durchnittliche Laufzeit einer einfachen Anwendung & 137.118 $\mu$s & 8.088 $\mu$s & 90.24 $\mu$s & 31.65 $\mu$s \\ \hline
-        Durchnittliche Laufzeit einer Additionsfunktion & 2340.688 $\mu$s & 10.053 $\mu$s & 83.82 $\mu$s & 16.03 $\mu$s \\ \hline
-        Durchnittliche Laufzeit von Übergabe eines .NET-Objekts & 9054.007 $\mu$s & 7548.497 $\mu$s &  & \\ \hline
+        Durchnittliche Laufzeit einer einfachen Anwendung & 137.118 $\mu$s & 8.088 $\mu$s & 39.59 ms & 128.14 ms\\ \hline
+        Durchnittliche Laufzeit einer Additionsfunktion & 2340.688 $\mu$s & 10.053 $\mu$s &39.59 ms &  29.77 ms \\ \hline
+        Durchnittliche Laufzeit von Übergabe eines .NET-Objekts & 9054.007 $\mu$s & 7548.497 $\mu$s &  66.72 ms & 46.27  \\ \hline
     \end{tabular}
 \end{table}
 
 \newpage
-Es folgen nun die Resultate von Dotnet-Benchmark:
-\linebreak
-\includegraphics[scale=0.5]{pics/benchmark_results_NluaVsIronPython.png}
+Es folgen nun die Resultate von Dotnet-Benchmark. \\
+
+Für:
+\begin{itemize}
+    \item Lua und IronPython
+    \begin{itemize}
+        \item \begin{table}[H]
+            \begin{tabular}{|p{3.5cm}|p{3cm}|p{3cm}|p{3cm}|}
+            \hline
+                Method &   Mean &   Error & StdDev \\ \hline
+                TestIronPython & 137.118 $\mu$s & 7.5278 $\mu$s & 21.959 $\mu$s \\ \hline
+                TestIronPythonSum & 2,340.688 $\mu$s & 71.9924 $\mu$s & 208.863 $\mu$s \\ \hline
+                TestLua & 8.088 $\mu$s & 0.3702 $\mu$s & 1.020 $\mu$s \\ \hline
+                TestLuaSum & 10.053 $\mu$s & 0.4560 $\mu$s & 1.330 $\mu$s \\ \hline
+                TestLua-
+                PassDotNetObject- 
+                AndCallFunction & 7,548.497 $\mu$s & 1,258.6385 $\mu$s & 3,711.124 $\mu$s \\ \hline
+                TestIronPython-
+                PassDotNetObject- 
+                AndCallFunction & 9,054.007 $\mu$s & 471.9551 $\mu$s & 1,346.514 $\mu$s \\ \hline
+            \end{tabular}
+        \end{table}
+    \end{itemize}
+
+    \item Csharpscript
+    \begin{itemize}
+        \item \begin{table}[H]
+            \begin{tabular}{|p{3.5cm}|p{3cm}|p{3cm}|p{3cm}|}
+            \hline
+                Method & Mean & Error & StdDev \\ \hline
+                TestCSharpSimple & 39.59 ms & 0.354 ms & 0.331 ms \\ \hline
+                TestCSharpSum & 39.56 ms & 0.321 ms & 0.301 ms \\ \hline
+                TestCSharp-
+                Objects & 66.72 ms & 0.875 ms & 0.819 ms \\ \hline
+            \end{tabular}
+        \end{table}
+    \end{itemize}
+    \item Javascript
+    \begin{itemize}
+        \item \begin{table}[H]
+            \begin{tabular}{|p{3.5cm}|p{3cm}|p{3cm}|p{3cm}|}
+            \hline
+                Method & Mean & Error & StdDev \\ \hline
+                TestJavascriptSimple & 128.14 ms & 1,102.64 ms & 286.35 ms  \\ \hline
+                TestJavaScriptSum & 29.77 ms & 255.31 ms & 66.30 ms \\ \hline
+                TestJavascript-
+                DotNetObjects & 46.27 ms & 397.72 ms & 103.29 ms  \\ \hline
+            \end{tabular}
+        \end{table}
+    \end{itemize}
+\end{itemize}
+
+
 \newpage
 \subsection{Funktionalität}
 In der nachfolgenden Tabelle sind die Recherche-Ergebnisse hinsichtlich der Funktionalität der Scriptsprachen in .NET dargestellt.
@@ -225,3 +275,60 @@ In der nachfolgenden Tabelle ist dargestellt, welche Art des Debugging bei welch
         Debugging mit Break Points in Visual Studio Code & Ja & Nein & Nein & Nein \\ \hline
     \end{tabular}
 \end{table}
+
+Es folgen nun Screenshots, um zu beweisen, dass die Angaben stimmen.
+
+\begin{itemize}
+    \item Der Beweis für das Debugging mit NLua:
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.5]{pics/Lua-Konsolenausgabe.png}
+        \caption{Lua-Konsolenausgabe}
+        \label{fig:impl:KonsolenausgabeLua}
+    \end{figure}
+
+\newpage
+    \item Die Beweise für das Debugging mit IronPython:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.5]{pics/IronPythonVSCodeBreakpoint1.png}
+        \caption{IronPython-VSCode-Breakpoint1}
+        \label{fig:impl:IronPythonVSCodeBreakpoint1}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics{pics/IronPythonVSCodeBreakpoint2.png}
+        \caption{IronPython-VSCode-Breakpoint2}
+        \label{fig:impl:IronPythonVSCodeBreakpoint2}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.5]{pics/IronPythonVSCodeBreakpoint1.png}
+        \caption{IronPython-VSCode-Breakpoint1}
+        \label{fig:impl:IronPythonVSCodeBreakpoint1}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.5]{pics/IronPythonVSBreakpoint1.png}
+        \caption{IronPython-VS-Breakpoint1}
+        \label{fig:impl:IronPythonVSBreakpoint1}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics{pics/IronPythonVSBreakpoint2.png}
+        \caption{IronPython-VSBreakpoint2}
+        \label{fig:impl:IronPythonVSBreakpoint2}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.5]{pics/IronPythonKonsolenausgabe.png}
+        \caption{IronPython-Konsolenausgabe}
+        \label{fig:impl:IronPythonKonsolenausgabe}
+    \end{figure}
+\end{itemize}
