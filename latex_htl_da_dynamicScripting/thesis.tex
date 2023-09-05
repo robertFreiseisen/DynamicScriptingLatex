@@ -1,6 +1,17 @@
 % !TEX root = thesis.tex
 \documentclass[12pt,a4paper,titlepage,listof=totoc,bibliography=totoc,chapteratlists=0pt]{scrreprt}
 \usepackage{amsfonts, amssymb, amsmath, verbatim, float}
+\usepackage{listings}
+
+\lstdefinestyle{yaml}{
+     basicstyle=\color{blue}\footnotesize,
+     rulecolor=\color{black},
+     string=[s]{'}{'},
+     stringstyle=\color{blue},
+     comment=[l]{:},
+     commentstyle=\color{black},
+     morecomment=[l]{-}
+ }
 \input{header}
 
 \makeatletter
@@ -61,8 +72,13 @@
 
 \begin{spacing}{1}
 \chapter{Anwendung (Praxisteil)}\label{chapter:tech}
+
 \end{spacing}
-\input{./sections/technologies}
+\input{./sections/application.tex}
+
+\begin{spacing}{1}
+\chapter{Technologien}\label{chapter:tech}
+
 
 \begin{spacing}{1}
 \chapter{Umsetzung}\label{chapter:implementation}
