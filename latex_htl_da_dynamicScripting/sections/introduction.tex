@@ -13,8 +13,8 @@ Vergleich gegenüberstellen, um ihre jeweiligen Vor- und Nachteile zu zeigen.
 \subsection*{Standardsoftware}
 
 Standardsoftware bietet Vorteile, die sie für viele Unternehmen und Einzelpersonen 
-zu einer attraktiven Wahl machen. Einer der Hauptvorteile ist die Kosteneffizienz: 
-Da die Entwicklungskosten auf eine Vielzahl von Kunden verteilt werden, sind die 
+zu einer attraktiven Wahl macht. Einer der Hauptvorteile ist die Kosteneffizienz: 
+Da die Entwicklungskosten auf eine Vielzahl von Kunden verteilt werden, sind die initialen 
 Anschaffungskosten in der Regel geringer als bei einer individuell entwickelten Lösung. 
 Ein weiterer Pluspunkt ist die schnelle Implementierung. Da die Software bereits entwickelt ist, 
 kann sie in der Regel schnell installiert und in Betrieb genommen werden, 
@@ -33,7 +33,7 @@ nicht optimal auf die Arbeitsprozesse des Unternehmens zugeschnitten ist.
 \newpage
 \subsection*{Individualsoftware}
 
-Individualsoftware bietet Unternehmen die einzigartige Möglichkeit, eine Softwarelösung 
+Individualsoftware bietet Unternehmen die Möglichkeit, eine Softwarelösung 
 zu erhalten, die vollständig an ihre speziellen Bedürfnisse und Anforderungen angepasst ist. 
 Diese Anpassungsfähigkeit erlaubt nicht nur effizientere Arbeitsprozesse, 
 sondern schafft auch Raum für Flexibilität und Skalierbarkeit. 
@@ -61,7 +61,7 @@ die für einzelne Unternehmen oder Organisationen von Bedeutung sein könnten.
 Eine individuelle Anpassung dieser Standardsoftware an die Bedürfnisse jedes einzelnen 
 Kunden wäre zwar theoretisch möglich, brächte jedoch erhebliche Nachteile mit sich. 
 Insbesondere würde die Software dadurch zunehmend komplizierter und 
-schwieriger zu pflegen werden. Jede spezielle Anpassung könnte zu Konflikten mit 
+schwieriger zu pflegen. Jede spezielle Anpassung könnte zu Konflikten mit 
 anderen Funktionen führen oder zukünftige Updates erschweren. Die Software würde an 
 Übersichtlichkeit verlieren und die Fehleranfälligkeit könnte steigen. 
 Darüber hinaus wäre es für die Softwareanbieter schwierig, allen individuellen 
@@ -88,7 +88,8 @@ die das Produkt als Ganzes verbessern und den meisten Kunden zugutekommen.
 \setauthor{Philipp Füreder}
 
 Eine effektive Lösung für das Problem von fehlenden Funktionen in Standardsoftware 
-kann Skripting sein. Durch das Bereitstellen von Skripting-Schnittstellen wird den 
+können Anpassungs- und Erweiterungsmöglichkeiten mit Hilfe von Skripting sein. 
+Durch das Bereitstellen von Skripting-Schnittstellen wird den 
 Nutzer/innen ermöglicht, die Funktionalität der Software nach ihren individuellen Bedürfnissen 
 zu erweitern, ohne dass die Kernsoftware selbst modifiziert werden muss. 
 Dies schafft einen Mittelweg zwischen der Flexibilität von individueller Software 
@@ -104,13 +105,15 @@ Kunden gerecht werden kann.
 
 \subsection*{Allgemeines zu Scripting}
 
-Skripting bezeichnet in der Softwareentwicklung den Einsatz von Skriptsprachen, 
+In dieser Diplomarbeit meint der Begriff Scripting den Einsatz von Skriptsprachen, 
 um Automatisierungsprozesse zu steuern, spezielle Funktionen auszuführen oder die 
 Funktionalität einer bestehenden Softwareanwendung zu erweitern. 
 Im Gegensatz zu vollwertigen Programmiersprachen, die in der Regel kompiliert werden 
 müssen und oft für die Entwicklung komplexer Anwendungen verwendet werden, 
 sind Skriptsprachen in der Regel interpretiert, das bedeutet sie werden von einem 
-Interpreter ausgeführt, der den Code Zeile für Zeile umsetzt. Sie sind oft einfacher zu 
+Interpreter ausgeführt, der den Code Zeile für Zeile umsetzt. Moderne Scriptsprachen wie 
+Javascript werden jedoch auch bei jeder Ausführung kompiliert.
+Sie sind oft einfacher zu 
 erlernen und schneller zu implementieren als vollwertige Programmiersprachen, was sie ideal 
 für kleinere Aufgaben und schnelle Anpassungen macht. Skripting wird in einer Vielzahl von 
 Kontexten verwendet, darunter Webentwicklung, Systemadministration und Datenanalyse.
@@ -120,8 +123,6 @@ bei der dynamischen Anpassung von .NET-Anwendungen. Der Einsatz von Skriptsprach
 fehlende oder zusätzliche Funktionen zur Laufzeit in eine Anwendung zu integrieren. 
 Im Rahmen unserer Arbeit wurde mit verschiedenen Skriptsprachen experimentiert, um deren 
 Eignung für die Integration in .NET-Anwendungen zu bewerten.
-
-\newpage
 
 \subsection*{Vorteile}
 
@@ -138,7 +139,6 @@ Eignung für die Integration in .NET-Anwendungen zu bewerten.
     \item \textbf{Kostenersparnis:} Da Skripting meist schneller und mit weniger 
     Aufwand umsetzbar ist, kann es kosteneffizienter sein als die Entwicklung von 
     kundenspezifischen Softwarelösungen.
-
 \end{itemize}
 
 \subsection*{Nachteile}
@@ -149,6 +149,8 @@ Eignung für die Integration in .NET-Anwendungen zu bewerten.
     \item \textbf{Kompatibilitätsprobleme:} Nicht alle Skripting-Sprachen oder -Tools sind 
     mit allen Plattformen oder Anwendungen kompatibel. Manchmal sind spezielle 
     Anpassungen erforderlich.
+    \item \textbf{Fehlermeldungen:} Durch Scripts enstehen oft komplex zu diagnostizierende Fehler,
+    die den Support auf der Herstellerseite erschweren.
 \end{itemize}
 
 \newpage
@@ -189,17 +191,26 @@ Folgendes Office-Skript Beispiel gibt den Wert von der Zelle A1 auf der Konsole 
 \section{Alternativen}
 \setauthor{Philipp Füreder}
 
+Scripting ist eine weitverbreitete Möglichkeit zur Automatisierung und Steuerung von Aufgaben. 
+Obwohl Scripting in vielen Kontexten als effizient und flexibel gilt, ist es nicht die 
+einzige verfügbare Methode zur Problemlösung. Tatsächlich gibt es eine Reihe von 
+Alternativen zu Scripting, die in verschiedenen Anwendungsfällen Vorteile bieten können. 
+Diese Alternativen können von grafischen Benutzeroberflächen für die Automatisierung bis 
+hin zu deklarativen Programmieransätzen und Frameworks reichen. Dieses Kapitel beschreibt 
+einige dieser Alternativen, ohne eine tiefgreifende Evaluation ihrer Eignung oder Effizienz 
+vorzunehmen, um einen Überblick über die Möglichkeiten in diesem Bereich zu bieten.
+
 \subsection*{Microsoft Power Automate}
 
 Power Automate ist eine cloudbasierte Plattform, die es Anwender/innen unkompliziert ermöglicht, 
 Workflows zu erstellen. Diese Arbeitsabläufe automatisieren zeitaufwändige 
-geschäftliche Aufgaben und Prozesse, indem sie Anwendungen und Dienste verbinden.\\
+geschäftliche Aufgaben und Prozesse, indem sie Anwendungen und Dienste verbinden.
 
 Logik-Apps (ein Service von Azure), 
 präsentiert vergleichbare Eigenschaften wie Power Automate. Zusätzlich dazu 
 bietet es weitere Leistungsmerkmale, darunter die nahtlose Einbindung in den 
 Azure Resource Manager, das Azure-Portal, PowerShell, die xPlat-CLI, Visual Studio und 
-diverse weitere Verbindungselemente.\\
+diverse weitere Verbindungselemente.
 
 Mit folgenden Dienstleistungen können Power Automate verbunden werden:
 
@@ -225,7 +236,7 @@ Diese Herangehensweise erleichtert die Entwicklung komplexer Systeme, ohne dass 
 Mal von Grund auf ein völlig neues System erstellt werden muss. Ein weiterer Nutzen besteht darin, 
 dass verschiedene Anwendungen oder Systeme auf diese Weise miteinander verknüpft werden können.
 Modulsysteme werden oft in der Softwareentwicklung, Webentwicklung, 
-Datenbanken und Systemadministration verwendet.\\
+Datenbanken und Systemadministration verwendet.
 
 Beispiele für Modulsysteme:
 
@@ -262,15 +273,15 @@ neuer Funktionen auf dem Markt.
 
 \subsubsection*{Eigenschaften von Microservices}
 
-\textbf{Eigenständigkeit:}\\
+\textbf{Eigenständigkeit:}
 In einer Architektur von Mikroservices besteht die Möglichkeit, jeden einzelnen Komponentenservice 
 unabhängig zu entwickeln, bereitzustellen, zu betreiben und zu skalieren. 
 Hierbei hat die Veränderung eines Services keine Auswirkungen auf die Funktionalität anderer Services. 
 Es ist nicht erforderlich, dass Services Code oder Implementierungen miteinander teilen. 
 Die Interaktion zwischen den verschiedenen Komponenten erfolgt ausschließlich 
-über eindeutig definierte APIs.\\
+über eindeutig definierte APIs.
 
-\textbf{Spezialisierung:}\\
+\textbf{Spezialisierung:}
 Jeder einzelne Service ist darauf ausgerichtet, eine spezifische Gruppe von 
 Problemstellungen zu lösen. Sollte man im Laufe der Zeit zusätzlichen Code zu einem 
 solchen Dienst hinzufügen, und dadurch der Service zu komplex wird, besteht die Option, 
@@ -279,14 +290,14 @@ diesen in kleinere Services aufzuteilen.
 \newpage
 \subsection*{Dynamisches Laden von Assemblies}
 
-Das .NET-Framework biete die Möglichkeit, Assembly-Dateien zur Laufzeit zu laden. 
+.NET bietet die Möglichkeit, Assembly-Dateien zur Laufzeit zu laden. 
 Dies ermöglicht es, neue Funktionen in Form von Klassen und Methoden hinzuzufügen. 
 Assemblies stellen die Grundbausteine von .NET-Anwendungen dar und treten in Form 
-von ausführbaren Dateien (.exe) oder Dynamic Link Library-Dateien (.dll) auf.\\
+von ausführbaren Dateien (.exe) oder Dynamic Link Library-Dateien (.dll) auf.
 
-Folgender Beispielcode dient dazu, eine Assembly mit der Bezeichnung "example.exe" innerhalb 
+Folgender Beispielcode dient dazu, eine Assembly mit der Bezeichnung "example.dll" innerhalb 
 der aktuellen Anwendungsdomäne zu laden. Anschließend wird ein Typ mit dem Namen "Example" 
-aus dieser Assembly abgerufen. Auf diesen abgerufenen Typ wird die Methode "MethodA" ausgeführt.\\
+aus dieser Assembly abgerufen. Auf diesen abgerufenen Typ wird die Methode "MethodA" ausgeführt.
 
 \begin{lstlisting} [language={[Sharp]C},caption=Assembly,label=lst:impl:foo]
     using System;
@@ -343,8 +354,8 @@ zu bedienen und die Erweiterungsfunktionalität auf mehreren Ebenen zu steigern.
 \section{Beschreibung über die Durchführung der Diplomarbeit}
 \setauthor{Philipp Füreder}
 
-Die Durchführung unserer Diplomarbeit kann in mehrere Phasen unterteilt werden, 
-die im Folgenden detailliert beschrieben werden.
+Die Durchführung unserer Diplomarbeit wurde in mehrere Phasen unterteilt, 
+die im Folgenden beschrieben werden.
 
 \textbf{Phase 1: Vorbereitung und Recherche}\\
 Zu Beginn des Projekts haben wir regelmäßige Meetings abgehalten, um die notwendige 
@@ -352,7 +363,7 @@ Recherche für den praktischen Teil unserer Arbeit durchzuführen. Diese Treffen
 ermöglichten es uns, eine gemeinsame Grundlage für die zu bewertenden Kriterien und 
 den damit verbundenen Forschungsaufwand zu schaffen.
 
-\textbf{Phase 2: Erstellung des Kriterienkatalogs}\\
+\textbf{Phase 2: Erstellung des Kriterienkatalogs zum Vergleich von Scripting-Möglichkeiten für .NET}\\
 Nachdem wir genügend Informationen gesammelt hatten, fokussierten wir uns auf 
 die Entwicklung eines Kriterienkatalogs. In dieser Phase teilten wir die Arbeit auf, 
 wobei jeder von uns sich zwei Skriptsprachen aussuchte, um diese anhand des 
@@ -361,8 +372,9 @@ um den Fortschritt zu überwachen und eventuelle Anpassungen am Kriterienkatalog
 
 \textbf{Phase 3: Programmierarbeit}\\
 Mit einem vollständigen Kriterienkatalog in der Hand begannen wir mit der 
-Programmierung der Anwendung. Da wir bereits ein solides Verständnis der ausgewählten 
-Skriptsprachen hatten, konnten wir effizient an der Umsetzung der praktischen 
+Programmierung der einer Musteranwendung, in der der Praxiseinsatz von verschiedenen 
+Scripting-Möglichkeiten untersucht werden sollte. Da wir bereits ein solides Verständnis 
+der ausgewählten Skriptsprachen hatten, konnten wir effizient an der Umsetzung der praktischen 
 Komponente unserer Diplomarbeit arbeiten.
 
 \textbf{Phase 4: Zwischenstand und Anpassungen}\\
@@ -385,11 +397,12 @@ Unsere Beispielanwendung bietet Lehrer/innen eine Lösung zur automatisierten No
 Anstatt sich auf vorgegebene Algorithmen oder Excel-Tabellen zu verlassen, 
 können Lehrkräfte ihre eigenen individuellen Skripte direkt in die Anwendung hochladen. 
 Diese Skripte können in vier verschiedenen Programmiersprachen verfasst sein 
-(Javascript, Lua, Ironpython und C\#-Skript) und ermöglichen eine anpassbare Berechnung, 
+(Javascript, Lua, Ironpython und C\#-Skript) und ermöglichen eine anpassbare Berechnungslogik, 
 die speziell auf die Anforderungen des jeweiligen Kurses zugeschnitten ist. Einmal hochgeladen, 
 werden die Skripte zur Laufzeit ausgeführt, was eine flexible und zeitnahe Anpassung der 
-Bewertungskriterien ermöglicht. Dies schafft eine hohe Genauigkeit in der Notenberechnung, 
-die zu einer transparenten Bewertung der Schülerleistungen beiträgt.
+Bewertungskriterien ermöglicht. Dies schafft eine hohe Flexibilität in der Notenberechnung, 
+die es ermöglicht, unterschiedliche Berechnungsmethoden für Noten auf Basis der Leistungen von
+Schüler/innen umzusetzen.
 
 Unsere Anwendung dient als Demonstrationswerkzeug und zeigt, wie individuelle Skripte zur 
 Laufzeit in ein System integriert werden können. Im Kontext unserer Anwendung ermöglichen wir 
@@ -433,7 +446,7 @@ Dynamische Ausführung:
 
 Ergebnisvisualisierung: 
 \begin{itemize}
-    \item Die berechneten Noten werden übersichtlich dargestellt und können 
+    \item Die berechneten Noten werden dargestellt und können 
     für weitere Analysen gespeichert werden.
 \end{itemize}
 
