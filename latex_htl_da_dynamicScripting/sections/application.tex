@@ -1,31 +1,180 @@
 \section{Verwendete Technologien}
-\setauthor{Robert Freiseisen}
+\setauthor{Philipp Füreder}
 
-Zur Realisierung der Beispielanwendung wurden folgende Technologien verwendet:
-Docker
+\subsection*{ASP .NET Core}
+
+Unsere Webanwendung wurde unter Verwendung der ASP.NET Core-Plattform entwickelt. 
+ASP.NET Core ist ein vielseitiges, plattformübergreifendes und leistungsfähiges 
+Open-Source-Framework, das zur Entwicklung moderner, internetfähigen Anwendungen geeignet ist. 
+Die Ausführung findet in der .NET Core-Laufzeitumgebung statt.
+ASP.NET Core bietet außerdem eine moderne und flexible Umgebung für die Entwicklung von Webanwendungen, 
+die sowohl plattformübergreifend als auch hochgradig skalierbar sind.
+
+Mit ASP.NET Core kann man:
 
 \begin{itemize}
-    \item Docker
-    \begin{itemize}
-        \item Docker ist eine Open-Source-Plattform, die es Entwicklern ermöglicht, Anwendungen in Containern zu erstellen und zu betreiben. Ein Container ist eine eigenständige, isolierte Einheit, die alles enthält, was eine Anwendung zur Ausführung benötigt, einschließlich Code, Laufzeitumgebung, Systembibliotheken und -tools. Docker vereinfacht die Bereitstellung und den Betrieb von Anwendungen, da es eine konsistente Umgebung bietet, die über verschiedene Systeme und Cloud-Dienste hinweg gleich bleibt.
-    \end{itemize}
 
-    \item Docker-Compose
-    \begin{itemize}
-        \item Docker Compose ist ein Tool für die Definition und Verwaltung von Multi-Container-Docker-Anwendungen. Es ermöglicht Entwicklern, eine docker-compose.yml Datei zu verwenden, in der sie die Dienste, Netzwerke und Volumes der Anwendung definieren können. Durch Ausführen eines einzigen docker-compose up Befehls können alle Dienste und Abhängigkeiten in der Reihenfolge gestartet werden, wie sie in der YAML-Datei definiert sind. Das Tool ist besonders nützlich für die Orchestrierung von Microservices und komplexen Anwendungen.
-    \end{itemize}
+\item Webanwendungen und Webdienste, Internet-der-Dinge (IoT)-Anwendungen und 
+mobile Backends entwickeln.
+\item Auf verschiedene Betriebssysteme wie Windows, macOS und Linux arbeiten.
+\item Anwendungen sowohl in der Cloud als auch auf lokalen Systemen bereitstellen.
+\end{itemize}
+
+Dieses Framework eröffnet somit eine breite Palette an Möglichkeiten für Entwickler, 
+um moderne Anwendungen zu erstellen, die sich nahtlos mit dem Internet verbinden und 
+sowohl in Cloud- als auch lokalen Umgebungen effizient betrieben werden können.
 \newpage
-    \item ASP.NET
-    \begin{itemize}
-        \item ASP.NET ist ein Web-Framework von Microsoft, das für die Entwicklung von Webseiten, Webanwendungen und Webdiensten verwendet wird. Es ist in der .NET-Plattform eingebettet und bietet eine Reihe von Bibliotheken und Tools für die schnelle und effiziente Entwicklung. ASP.NET kann mit verschiedenen Programmiersprachen wie Csharp, Fsharp und VB.NET verwendet werden. 
-        Es unterstützt sowohl MVC (Model-View-Controller) als auch Web API, was es zu einer vielseitigen Wahl für viele Arten von Webprojekten macht.
-    \end{itemize}
 
-    \item AutoMapper
-    \begin{itemize}
-        \item AutoMapper ist eine Open-Source-Bibliothek für die objekt-orientierte Programmierung, die automatische Zuordnungen zwischen zwei Objekten unterschiedlichen Typs ermöglicht. Es wird oft in Csharp-Projekten und im Kontext von .NET-Anwendungen verwendet. Durch die Verwendung von Konventionen statt der expliziten Konfiguration kann AutoMapper den Boilerplate-Code reduzieren, der normalerweise erforderlich ist, um Daten von einem Datenmodell in ein anderes zu übertragen. Es ist besonders nützlich in Szenarien wie dem Mapping zwischen Datenzugriffsobjekten (DAOs) und Data Transfer Objects (DTOs).
-    \end{itemize}
-\end{itemize} 
+\subsection*{Git}
+
+Unsere Versionskontrolle haben wir mit Git gemacht. Git ist ein Versionskontrollsystem 
+mit verteiltem Ansatz, das entworfen wurde, um sowohl kleine als auch äußerst 
+umfangreiche Projekte auf schnelle und effiziente Weise zu verwalten.
+Die Erlernbarkeit von Git gestaltet sich einfach, und seine geringe Systembelastung 
+geht einher mit herausragender Performance. Es setzt sich von anderen Versionskontrollsystemen 
+wie Subversion, CVS, Perforce und ClearCase ab, indem es Funktionen wie kosteneffiziente 
+lokale „Branches“, bequeme Staging-Bereiche und vielfältige Arbeitsabläufe bietet.
+Git erlaubt und begünstigt die Erstellung von mehreren unabhängigen lokalen Verzweigungen. 
+Die Prozesse des Erstellens, Zusammenführens und Entfernens dieser Entwicklungsstränge 
+nehmen lediglich Sekunden in Anspruch. \\
+
+Git ist kostenfrei und Open-Source. Es wurde dazu entwickelt, Projekte aller 
+Größenordnungen – von kleinen bis hin zu umfangreichen – schnell und effizient zu verwalten. 
+Es zeichnet sich als Open-Source aus, da es die Anpassungsfähigkeit bietet, den Quellcode 
+nach den individuellen Bedürfnissen der Nutzer/innen anzupassen. 
+Mit seiner Open-Source-Natur ermöglicht Git mehreren Personen gleichzeitig an einem 
+Projekt zu arbeiten und ermöglicht eine äußerst einfache und effiziente Zusammenarbeit. 
+Aus diesem Grund wird Git als das herausragende Versionskontrollsystem betrachtet, 
+das in der heutigen Zeit zur Verfügung steht.
+\newpage
+
+\subsection*{Docker}
+
+Docker ist eine Plattform, welche Anwendungen gemeinsam mit ihren spezifischen Abhängigkeiten 
+in Form von Containern bündelt. Dieser Ansatz gewährleistet, dass die Anwendung in 
+jeder beliebigen Entwicklungsumgebung reibungslos funktioniert.
+Jede einzelne Anwendung läuft in separaten Containern und verfügt über 
+ihre eigenen Satz an Abhängigkeiten und Bibliotheken. Dies gewährleistet, dass jede 
+Applikation in völliger Unabhängigkeit von anderen Anwendungen agiert und die Sicherheit gibt, 
+dass sie Anwendungen erstellen können, welche sich nicht gegenseitig beeinträchtigen.
+Wir haben in unserer Anwendung unser Frontend, Backend und die Datenbank über Docker laufen lassen.
+Das heißt wir haben 3 Docker-Container benutzt. \\
+ 
+Unter einem Container versteht man eine standardisierte Softwareeinheit, die sowohl den 
+Programmcode als auch sämtliche damit verbundenen Abhängigkeiten zusammenfasst. 
+Hierdurch wird sichergestellt, dass die Anwendung zuverlässig in unterschiedlichen 
+Computerumgebungen ausgeführt werden kann. Ein Docker-Container-Image verkörpert eine 
+autonome und ausführbare Softwareeinheit, welche sämtliche Komponenten für die Ausführung 
+einer Applikation in sich trägt: den Code selbst, die Laufzeitumgebung, Systemwerkzeuge, 
+Systembibliotheken und Konfigurationseinstellungen. \\
+
+Container-Images verwandeln sich zur Laufzeit in eigenständige Container. 
+Im Fall von Docker geschieht dies durch das Ausführen der Images auf der Docker Engine. 
+Containerisierte Software steht sowohl für Linux- als auch für Windows-basierte Anwendungen 
+zur Verfügung und gewährleistet eine gleichbleibende Ausführung, unabhängig von der genutzten 
+Infrastruktur. Container schaffen eine Isolierung der Software von ihrer Umgebung und 
+gewährleisten somit, dass die Anwendung konsistent arbeitet, selbst bei Unterschieden 
+zwischen Entwicklungs- und Staging-Umgebungen.
+\newpage
+\subsection*{PostgreSQL}
+
+Als Datenbanksystem haben wir uns für PostgreSQL entschieden, da wir bereits in anderen 
+Projekten mit diesem gearbeitet haben. PostgreSQL ist Open-Source und verwendet die SQL-Sprache. 
+Außerdem ist PostgreSQL auf allen gängigen Betriebssystemen kompatibel.
+PostgreSQL läuft bei uns über Docker, somit haben wir nichts Zusätzliches dafür installieren müssen.
+PostgreSQL ist sehr anpassbar, man kann beispielsweise eigene Datentypen 
+definieren und individuelle Funktionen gestalten.\\
+
+Datentypen in PostgreSQL:
+\begin{itemize}
+    \item Zahlen und Zeichen: Integer, Numeric, String, Boolean
+    \item Strukturierte: Date/Time, Array, Range/Multirange
+    \item Geometrisch: Point, Line, Circle, Polygon
+    \item Anpassbare: Composite, Custom Types
+\end{itemize}
+
+Integrität der Daten:
+\begin{itemize}
+    \item UNIQUE, NOT NULL
+    \item Primary Keys
+    \item Foreign Keys
+    \item Exclusion Constraints
+    \item Explicit Locks, Advisory Locks
+\end{itemize}
+
+
+\newpage
+\subsection*{BenchmarkDotNet (0.13.2)}
+
+BenchmarkDotNet unterstützt Anwender/innen dabei, die Performance ihrer Methoden in 
+Benchmark-Tests zu überprüfen. Ebenso ermöglicht es den Austausch von reproduzierbaren 
+Messexperimenten. Diese Transformation gestaltet sich genauso unkompliziert wie die 
+Erstellung von Unit-Tests. BenchmarkDotNet hilft dabei, übliche Fehler im Benchmarking-Prozess 
+zu vermeiden und Nutzer zu informieren, sobald Unstimmigkeiten im Benchmark-Design oder den 
+erfassten Messdaten auftreten. Die präsentierten Resultate erscheinen in einer 
+nutzerfreundlichen Tabelle, die sämtliche relevanten Aspekte des Experiments herausstellt.\\
+Anbei ein Beispiel von einem unserer BenchmarkDotNet-Tests:\\
+
+\begin{lstlisting} [language={[Sharp]C},caption=BenchmarkDotNet,label=lst:impl:foo]
+namespace C_SharpExample
+{
+    [MarkdownExporter,
+        HtmlExporter,
+        SimpleJob(RunStrategy.ColdStart, launchCount: 1, warmupCount: 5, targetCount: 5, id: "FastAndDirtyJob")]
+    public class C_SharpTesting
+    {
+        [Benchmark]
+        public void TestC_Sharp_Simple() => ReturnNumber();
+
+        [Benchmark]
+        public void TestC_Sharp_Sum() => MySum();
+
+        #region C_SharpFunctions
+        public static async void ReturnNumber()
+        {
+            var state = await CSharpScript.RunAsync("return 42;");
+            Console.WriteLine(state.ReturnValue);
+        }
+        public static async void MySum()
+        {
+            var state = await CSharpScript.RunAsync("return 3 + 3;");
+            Console.WriteLine(state.ReturnValue);
+        }
+        #endregion
+    }
+}
+\end{lstlisting}
+
+\newpage
+\subsection*{Bogus}
+
+Bogus haben wir in unserem Projekt für die Generierung von Fake Daten benutzt. 
+Wir haben damit Schüler- und Lehrernamen erstellen lassen die wir in unserer Anwendung als 
+Testdaten benutzt haben. Bogus funktioniert ausschließlich für 
+.NET-Sprachen wie C\#, F\# oder VB.NET. \\
+
+Es ist ganz unkompliziert zu verwenden. Wir haben in unserer Arbeit nur Namen generieren lassen, 
+jedoch könnte man zu jedem Namen noch eine ganze Menge hinzufügen wie zum Beispiel 
+Telefonnummern, E-Mail-Adressen, Wohnadressen oder auch die Herkunft.\\
+
+Folgendes Codebeispiel zeigt die Generierung unserer Fake Daten für eine Schulklasse:\\
+
+\begin{lstlisting} [language={[Sharp]C},caption=Bogus,label=lst:impl:foo]
+            List<Student> firstStudents = new List<Student>();
+                      
+            #region Create Fake Students for each Schoolclass
+            for (int i = 0; i < 10; i++)
+            {
+                var studentFaker = new Faker<Student>()
+                    .RuleFor(x => x.Name, x => x.Person.FullName)
+                    .Generate();
+                firstStudents.Add(studentFaker);
+            }
+\end{lstlisting}
+
+In der RuleFor() Methode kann man genau die Sachen angeben die man benötigt. 
+In unserem Fall haben wir nur Vornamen und Nachnamen benötigt.
+
 
 \newpage
 \section{Aufbau}
