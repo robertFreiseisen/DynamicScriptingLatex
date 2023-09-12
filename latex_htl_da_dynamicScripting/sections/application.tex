@@ -58,7 +58,7 @@ ihre eigenen Satz an Abhängigkeiten und Bibliotheken. Dies gewährleistet, dass
 Applikation in völliger Unabhängigkeit von anderen Anwendungen agiert und die Sicherheit gibt, 
 dass sie Anwendungen erstellen können, welche sich nicht gegenseitig beeinträchtigen.
 Wir haben in unserer Anwendung unser Frontend, Backend und die Datenbank über Docker laufen lassen.
-Das heißt wir haben 3 Docker-Container benutzt. \\
+Das heißt wir haben 3 Docker-Container benutzt. \cite{docker_explained} \\
  
 Unter einem Container versteht man eine standardisierte Softwareeinheit, die sowohl den 
 Programmcode als auch sämtliche damit verbundenen Abhängigkeiten zusammenfasst. 
@@ -66,7 +66,7 @@ Hierdurch wird sichergestellt, dass die Anwendung zuverlässig in unterschiedlic
 Computerumgebungen ausgeführt werden kann. Ein Docker-Container-Image verkörpert eine 
 autonome und ausführbare Softwareeinheit, welche sämtliche Komponenten für die Ausführung 
 einer Applikation in sich trägt: den Code selbst, die Laufzeitumgebung, Systemwerkzeuge, 
-Systembibliotheken und Konfigurationseinstellungen. \\
+Systembibliotheken und Konfigurationseinstellungen. \cite{docker_container} \\
 
 Container-Images verwandeln sich zur Laufzeit in eigenständige Container. 
 Im Fall von Docker geschieht dies durch das Ausführen der Images auf der Docker Engine. 
@@ -74,7 +74,7 @@ Containerisierte Software steht sowohl für Linux- als auch für Windows-basiert
 zur Verfügung und gewährleistet eine gleichbleibende Ausführung, unabhängig von der genutzten 
 Infrastruktur. Container schaffen eine Isolierung der Software von ihrer Umgebung und 
 gewährleisten somit, dass die Anwendung konsistent arbeitet, selbst bei Unterschieden 
-zwischen Entwicklungs- und Staging-Umgebungen.
+zwischen Entwicklungs- und Staging-Umgebungen. \cite{docker_container}
 \newpage
 \subsection*{PostgreSQL}
 
@@ -83,7 +83,7 @@ Projekten mit diesem gearbeitet haben. PostgreSQL ist Open-Source und verwendet 
 Außerdem ist PostgreSQL auf allen gängigen Betriebssystemen kompatibel.
 PostgreSQL läuft bei uns über Docker, somit haben wir nichts Zusätzliches dafür installieren müssen.
 PostgreSQL ist sehr anpassbar, man kann beispielsweise eigene Datentypen 
-definieren und individuelle Funktionen gestalten.\\
+definieren und individuelle Funktionen gestalten.\\ \cite{postgres}
 
 Datentypen in PostgreSQL:
 \begin{itemize}
@@ -101,7 +101,7 @@ Integrität der Daten:
     \item Exclusion Constraints
     \item Explicit Locks, Advisory Locks
 \end{itemize}
-
+\cite{postgres}
 
 \newpage
 \subsection*{BenchmarkDotNet (0.13.2)}
@@ -113,7 +113,7 @@ Erstellung von Unit-Tests. BenchmarkDotNet hilft dabei, übliche Fehler im Bench
 zu vermeiden und Nutzer zu informieren, sobald Unstimmigkeiten im Benchmark-Design oder den 
 erfassten Messdaten auftreten. Die präsentierten Resultate erscheinen in einer 
 nutzerfreundlichen Tabelle, die sämtliche relevanten Aspekte des Experiments herausstellt.\\
-Anbei ein Beispiel von einem unserer BenchmarkDotNet-Tests:\\
+Anbei ein Beispiel von einem unserer BenchmarkDotNet-Tests: \cite{benchmark}\\
 
 \begin{lstlisting} [language={[Sharp]C},caption=BenchmarkDotNet,label=lst:impl:foo]
 namespace C_SharpExample
@@ -151,7 +151,7 @@ namespace C_SharpExample
 Bogus haben wir in unserem Projekt für die Generierung von Fake Daten benutzt. 
 Wir haben damit Schüler- und Lehrernamen erstellen lassen die wir in unserer Anwendung als 
 Testdaten benutzt haben. Bogus funktioniert ausschließlich für 
-.NET-Sprachen wie C\#, F\# oder VB.NET. \\
+.NET-Sprachen wie C\#, F\# oder VB.NET. \cite{bogus} \\
 
 Es ist ganz unkompliziert zu verwenden. Wir haben in unserer Arbeit nur Namen generieren lassen, 
 jedoch könnte man zu jedem Namen noch eine ganze Menge hinzufügen wie zum Beispiel 

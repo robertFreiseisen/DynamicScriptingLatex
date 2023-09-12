@@ -170,6 +170,7 @@ Man kann auf zwei Arten ein neues Office-Skript erstellen:
     \item Die zweite Möglichkeit ist, dass Office-Skript selbst mithilfe 
     von TypeScript zu schreiben.
 \end{itemize}
+\cite{office_script}
 
 Folgendes Office-Skript Beispiel gibt den Wert von der Zelle A1 auf der Konsole aus:
 
@@ -185,6 +186,7 @@ Folgendes Office-Skript Beispiel gibt den Wert von der Zelle A1 auf der Konsole 
   console.log(range.getValue());
 }
 \end{lstlisting}
+\cite{office_script_example}
 
 \newpage
 
@@ -204,13 +206,13 @@ vorzunehmen, um einen Überblick über die Möglichkeiten in diesem Bereich zu b
 
 Power Automate ist eine cloudbasierte Plattform, die es Anwender/innen unkompliziert ermöglicht, 
 Workflows zu erstellen. Diese Arbeitsabläufe automatisieren zeitaufwändige 
-geschäftliche Aufgaben und Prozesse, indem sie Anwendungen und Dienste verbinden.
+geschäftliche Aufgaben und Prozesse, indem sie Anwendungen und Dienste verbinden. \cite{power_automate}
 
 Logik-Apps (ein Service von Azure), 
 präsentiert vergleichbare Eigenschaften wie Power Automate. Zusätzlich dazu 
 bietet es weitere Leistungsmerkmale, darunter die nahtlose Einbindung in den 
 Azure Resource Manager, das Azure-Portal, PowerShell, die xPlat-CLI, Visual Studio und 
-diverse weitere Verbindungselemente.
+diverse weitere Verbindungselemente. \cite{power_automate}
 
 Mit folgenden Dienstleistungen können Power Automate verbunden werden:
 
@@ -225,6 +227,7 @@ Mit folgenden Dienstleistungen können Power Automate verbunden werden:
 
 Power Automate ist außerdem plattformübergreifend und kann auf allen modernen Geräten und Browsern
 ausgeführt werden. Zur Verwendung ist nur ein Webbrowser und eine E-Mail-Adresse erforderlich.
+\cite{power_automate}
 
 \newpage
 \subsection*{Dynamische Modulsysteme}
@@ -236,7 +239,7 @@ Diese Herangehensweise erleichtert die Entwicklung komplexer Systeme, ohne dass 
 Mal von Grund auf ein völlig neues System erstellt werden muss. Ein weiterer Nutzen besteht darin, 
 dass verschiedene Anwendungen oder Systeme auf diese Weise miteinander verknüpft werden können.
 Modulsysteme werden oft in der Softwareentwicklung, Webentwicklung, 
-Datenbanken und Systemadministration verwendet.
+Datenbanken und Systemadministration verwendet. \cite{modulsystem}
 
 Beispiele für Modulsysteme:
 
@@ -259,6 +262,7 @@ Verwaltung von Netzwerken und Systemen
 \begin{itemize}
     \item Puppet und Chef
 \end{itemize}
+\cite{modulsystem}
 
 \newpage
 \subsection*{Microservices}
@@ -269,7 +273,7 @@ Diese Dienste interagieren miteinander über klar definierte Schnittstellen.
 Die Architektur von Microservices trägt dazu bei, Skalierbarkeit zu erleichtern und die 
 Zeitspanne für die Entwicklung von Anwendungen zu verkürzen. 
 Dies ermöglicht eine schnellere Umsetzung von Innovationen und beschleunigt die Einführung 
-neuer Funktionen auf dem Markt.
+neuer Funktionen auf dem Markt. \cite{microservices}
 
 \subsubsection*{Eigenschaften von Microservices}
 
@@ -280,6 +284,7 @@ Hierbei hat die Veränderung eines Services keine Auswirkungen auf die Funktiona
 Es ist nicht erforderlich, dass Services Code oder Implementierungen miteinander teilen. 
 Die Interaktion zwischen den verschiedenen Komponenten erfolgt ausschließlich 
 über eindeutig definierte APIs.
+\cite{microservices}
 
 \textbf{Spezialisierung:}
 Jeder einzelne Service ist darauf ausgerichtet, eine spezifische Gruppe von 
@@ -287,17 +292,20 @@ Problemstellungen zu lösen. Sollte man im Laufe der Zeit zusätzlichen Code zu 
 solchen Dienst hinzufügen, und dadurch der Service zu komplex wird, besteht die Option, 
 diesen in kleinere Services aufzuteilen.
 
+\cite{microservices}
+
 \newpage
 \subsection*{Dynamisches Laden von Assemblies}
 
 .NET bietet die Möglichkeit, Assembly-Dateien zur Laufzeit zu laden. 
 Dies ermöglicht es, neue Funktionen in Form von Klassen und Methoden hinzuzufügen. 
 Assemblies stellen die Grundbausteine von .NET-Anwendungen dar und treten in Form 
-von ausführbaren Dateien (.exe) oder Dynamic Link Library-Dateien (.dll) auf.
+von ausführbaren Dateien (.exe) oder Dynamic Link Library-Dateien (.dll) auf. \cite{assemblies}
 
 Folgender Beispielcode dient dazu, eine Assembly mit der Bezeichnung "example.dll" innerhalb 
 der aktuellen Anwendungsdomäne zu laden. Anschließend wird ein Typ mit dem Namen "Example" 
 aus dieser Assembly abgerufen. Auf diesen abgerufenen Typ wird die Methode "MethodA" ausgeführt.
+\cite{assemblies}
 
 \begin{lstlisting} [language={[Sharp]C},caption=Assembly,label=lst:impl:foo]
     using System;
@@ -321,6 +329,7 @@ aus dieser Assembly abgerufen. Auf diesen abgerufenen Typ wird die Methode "Meth
         }
     }
 \end{lstlisting}
+\cite{assemblies}
 
 \newpage
 \subsection*{Plugins}
@@ -330,7 +339,7 @@ zu entwickeln und anschließend in die Anwendung einzubauen.
 Dies eröffnet ein Fenster für eine dynamische Erweiterbarkeit, ohne auf die Implementierung 
 von Skriptcode zurückgreifen zu müssen. Diese Methode gewährt eine flexible 
 Herangehensweise an die Erweiterung und Anpassung von Funktionalitäten, während 
-gleichzeitig die Sauberkeit der Gesamtlösung erhalten bleibt.
+gleichzeitig die Sauberkeit der Gesamtlösung erhalten bleibt. \cite{pluginframework}
 
 \subsubsection*{Plugin Framework for .NET Core}
 
@@ -341,7 +350,7 @@ Diese Plattform zeichnet sich durch eine geringe Systembelastung aus und bietet 
 Einbindungsmöglichkeit. Es kann verschiedene Plugin-Kataloge unterstützen, 
 darunter .NET-Assemblies, NuGet-Pakete sowie Roslyn-Skripte. 
 Die Flexibilität dieses Frameworks ermöglicht es, eine breite Palette an Anwendungsfällen 
-zu bedienen und die Erweiterungsfunktionalität auf mehreren Ebenen zu steigern.
+zu bedienen und die Erweiterungsfunktionalität auf mehreren Ebenen zu steigern. \cite{pluginframework}
 
 \textbf{Features:}
 \begin{itemize}
@@ -349,6 +358,7 @@ zu bedienen und die Erweiterungsfunktionalität auf mehreren Ebenen zu steigern.
     \item Automatische Verwaltung von Abhängigkeiten
     \item Behandlung von plattformspezifischen Laufzeit-DLLs bei Verwendung von Nuget-packages
 \end{itemize}
+\cite{pluginframework}
 
 \newpage
 \section{Beschreibung über die Durchführung der Diplomarbeit}
