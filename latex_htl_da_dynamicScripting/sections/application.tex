@@ -386,4 +386,109 @@ Im folgenden Abschnitt  werden einige Code-Ausschnitte betrachtet, die zeigen, w
     }
 \end{lstlisting}
 
+\newpage
+\section{Unit-Tests zur Überprüfung der Notenberechnung}
+\setauthor{Philipp Füreder}
 
+Eine der zentralen Komponenten unserer Beispielanwendung war die Implementierung von 
+Skripten zur Notenberechnung in .NET-Anwendungen zur Laufzeit. Um die Zuverlässigkeit und 
+Genauigkeit dieser Skripte sicherzustellen, haben wir einen Satz von Unit-Tests entwickelt 
+und durchgeführt. Dieser Ansatz gewährleistet nicht nur die Integrität des Codes, 
+sondern bietet auch eine robuste Basis für zukünftige Erweiterungen und Anpassungen.
+
+\subsection*{Auswahl der Testfälle}
+Die Testfälle wurden so ausgewählt, um ein breites Spektrum an Szenarien abzudecken, 
+die in realen Anwendungen vorkommen könnten. Dazu gehören Standardfälle, Grenzfälle und 
+auch potenzielle Fehlerzustände. Das hat uns ermöglicht, die Robustheit für unsere Test-Scripts 
+umfassend zu überprüfen.
+
+\subsection*{Ergebnisse der Unit-Tests}
+Alle entwickelten Skripte zur Notenberechnung haben die Tests letztenendes erfolgreich bestanden. 
+Dies gab uns ein hohes Maß an Vertrauen in die Funktionsfähigkeit und Zuverlässigkeit der 
+implementierten Lösungen. Darüber hinaus haben die Tests dazu beigetragen, einige nicht 
+offensichtliche Fehler und Unklarheiten im ursprünglichen Design zu identifizieren, 
+die wir entsprechend beheben konnten.
+
+\newpage
+\subsection*{Testbeispiel}
+
+In folgendem Testbeispiel haben wir ein C\#-Skript getestet:
+
+\begin{lstlisting}[language={[Sharp]C},caption=Test for CsharpScripting,label=lst:impl:csc]
+    [TestMethod]
+        public void CsScript_T02()
+        {
+            List<Grade> grades = new List<Grade>
+            {
+                new Grade { GradeKind = gradeKinds.Single(g => g.Name =="MAK") , Graduate = 1 },
+                new Grade { GradeKind = gradeKinds.Single(g => g.Name =="MAK") , Graduate = 1 },
+                new Grade { GradeKind = gradeKinds.Single(g => g.Name =="MAK") , Graduate = 1 },
+                new Grade { GradeKind = gradeKinds.Single(g => g.Name =="MAK") , Graduate = 2 },
+                new Grade { GradeKind = gradeKinds.Single(g => g.Name =="MAK") , Graduate = 1 },
+                new Grade { GradeKind = gradeKinds.Single(g => g.Name == "TEST"), Graduate = 1},
+                new Grade { GradeKind = gradeKinds.Single(g => g.Name == "TEST"), Graduate = 2},
+                new Grade { GradeKind = gradeKinds.Single(g => g.Name == "TEST"), Graduate = 3},
+                new Grade { GradeKind = gradeKinds.Single(g => g.Name == "TEST"), Graduate = 4},
+                new Grade { GradeKind = gradeKinds.Single(g => g.Name == "TEST"), Graduate = 2},
+                new Grade { GradeKind = gradeKinds.Single(g => g.Name == "HOMEWORK"), Graduate = 1},
+                new Grade { GradeKind = gradeKinds.Single(g => g.Name == "HOMEWORK"), Graduate = 2},
+                new Grade { GradeKind = gradeKinds.Single(g => g.Name == "HOMEWORK"), Graduate = 3},
+                new Grade { GradeKind = gradeKinds.Single(g => g.Name == "HOMEWORK"), Graduate = 4},
+                new Grade { GradeKind = gradeKinds.Single(g => g.Name == "HOMEWORK"), Graduate = 5},
+
+            };
+
+            var code = File.ReadAllText("test.cs");
+            var key = new GradeKey { Name = "CsScriptTest", UsedKinds = gradeKinds, Calculation = code };
+
+            var result = CsScriptRunner.RunScript(key, grades);
+
+            Assert.AreEqual(2, result.Graduate, "Calculation is right");
+\end{lstlisting}
+
+Dabei beinhaltet die Liste "grades" Schulnoten von drei verschiedenen Typen:
+\begin{itemize}
+    \item MAK (Mitarbeitskontrolle)
+    \item Test
+    \item Homework
+\end{itemize}
+
+
+\newpage
+\subsection*{Test-Skript}
+Dieses Test-Skript haben wir geschrieben um die Funktionalitäten und Notenberechnungen zu testen.
+Einfachheitshalber wird in diesem Skript jeder Notentyp äquivalent gerechnet.
+
+\begin{lstlisting}[language={[Sharp]C},caption=Test for CsharpScripting,label=lst:impl:csc]
+    int makCounter = 0;
+int testCounter = 0;
+int homeworkCounter = 0;
+
+int mak = 0;
+int test = 0;
+int homework = 0;
+
+foreach (var item in Grades)
+{
+    if (item.GradeKind.Name == "MAK")
+    {
+        mak += item.Graduate;
+        makCounter++;
+    }
+    if (item.GradeKind.Name == "TEST")
+    {
+        test += item.Graduate;
+        testCounter++;
+    }
+    if (item.GradeKind.Name == "HOMEWORK")
+    {
+        homework += item.Graduate;
+        homeworkCounter++;
+    }
+}
+
+return ((mak / makCounter) + (test / testCounter) + (homework / homeworkCounter)) / 3.0;
+\end{lstlisting}
+
+Das Skript unterscheidet zwar zwischen allen Notentypen, wertet jedoch alle gleich 
+und berechnet den Durchschnitt.
