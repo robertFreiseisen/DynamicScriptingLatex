@@ -415,35 +415,35 @@ die wir entsprechend beheben konnten.
 In folgendem Testbeispiel haben wir ein C\#-Skript getestet:
 
 \begin{lstlisting}[language={[Sharp]C},caption=Test for CsharpScripting,label=lst:impl:csc]
-    [TestMethod]
-        public void CsScript_T02()
+[TestMethod]
+    public void CsScript_T02()
+    {
+        List<Grade> grades = new List<Grade>
         {
-            List<Grade> grades = new List<Grade>
-            {
-                new Grade { GradeKind = gradeKinds.Single(g => g.Name =="MAK") , Graduate = 1 },
-                new Grade { GradeKind = gradeKinds.Single(g => g.Name =="MAK") , Graduate = 1 },
-                new Grade { GradeKind = gradeKinds.Single(g => g.Name =="MAK") , Graduate = 1 },
-                new Grade { GradeKind = gradeKinds.Single(g => g.Name =="MAK") , Graduate = 2 },
-                new Grade { GradeKind = gradeKinds.Single(g => g.Name =="MAK") , Graduate = 1 },
-                new Grade { GradeKind = gradeKinds.Single(g => g.Name == "TEST"), Graduate = 1},
-                new Grade { GradeKind = gradeKinds.Single(g => g.Name == "TEST"), Graduate = 2},
-                new Grade { GradeKind = gradeKinds.Single(g => g.Name == "TEST"), Graduate = 3},
-                new Grade { GradeKind = gradeKinds.Single(g => g.Name == "TEST"), Graduate = 4},
-                new Grade { GradeKind = gradeKinds.Single(g => g.Name == "TEST"), Graduate = 2},
-                new Grade { GradeKind = gradeKinds.Single(g => g.Name == "HOMEWORK"), Graduate = 1},
-                new Grade { GradeKind = gradeKinds.Single(g => g.Name == "HOMEWORK"), Graduate = 2},
-                new Grade { GradeKind = gradeKinds.Single(g => g.Name == "HOMEWORK"), Graduate = 3},
-                new Grade { GradeKind = gradeKinds.Single(g => g.Name == "HOMEWORK"), Graduate = 4},
-                new Grade { GradeKind = gradeKinds.Single(g => g.Name == "HOMEWORK"), Graduate = 5},
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name =="MAK") , Graduate = 1 },
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name =="MAK") , Graduate = 1 },
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name =="MAK") , Graduate = 1 },
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name =="MAK") , Graduate = 2 },
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name =="MAK") , Graduate = 1 },
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name == "TEST"), Graduate = 1},
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name == "TEST"), Graduate = 2},
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name == "TEST"), Graduate = 3},
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name == "TEST"), Graduate = 4},
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name == "TEST"), Graduate = 2},
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name == "HOMEWORK"), Graduate = 1},
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name == "HOMEWORK"), Graduate = 2},
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name == "HOMEWORK"), Graduate = 3},
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name == "HOMEWORK"), Graduate = 4},
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name == "HOMEWORK"), Graduate = 5},
 
-            };
+        };
 
-            var code = File.ReadAllText("test.cs");
-            var key = new GradeKey { Name = "CsScriptTest", UsedKinds = gradeKinds, Calculation = code };
+        var code = File.ReadAllText("test.cs");
+        var key = new GradeKey { Name = "CsScriptTest", UsedKinds = gradeKinds, Calculation = code };
 
-            var result = CsScriptRunner.RunScript(key, grades);
+        var result = CsScriptRunner.RunScript(key, grades);
 
-            Assert.AreEqual(2, result.Graduate, "Calculation is right");
+        Assert.AreEqual(2, result.Graduate, "Calculation is right");
 \end{lstlisting}
 
 Dabei beinhaltet die Liste "grades" Schulnoten von drei verschiedenen Typen:
@@ -459,8 +459,8 @@ Dabei beinhaltet die Liste "grades" Schulnoten von drei verschiedenen Typen:
 Dieses Test-Skript haben wir geschrieben um die Funktionalitäten und Notenberechnungen zu testen.
 Einfachheitshalber wird in diesem Skript jeder Notentyp äquivalent gerechnet.
 
-\begin{lstlisting}[language={[Sharp]C},caption=Test for CsharpScripting,label=lst:impl:csc]
-    int makCounter = 0;
+\begin{lstlisting}[language={[Sharp]C},caption=CsharpScript-Testscript,label=lst:impl:csc]
+int makCounter = 0;
 int testCounter = 0;
 int homeworkCounter = 0;
 
