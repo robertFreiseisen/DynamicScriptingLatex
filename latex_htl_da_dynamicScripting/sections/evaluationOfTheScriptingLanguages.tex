@@ -198,10 +198,10 @@ und dies anschließen auf die Konsole ausgibt.
 Es folgen nun die Resultate von Dotnet-Benchmark. \\
 
 Für:
-\begin{itemize}
-    \item Lua und IronPython
-    \begin{itemize}
-        \item \begin{table}[H]
+
+
+Lua und IronPython
+     \begin{table}[H]
             \begin{tabular}{|p{3.5cm}|p{3cm}|p{3cm}|p{3cm}|}
             \hline
                 Method &   Mean &   Error & StdDev \\ \hline
@@ -216,12 +216,107 @@ Für:
                 PassDotNetObject- 
                 AndCallFunction & 9,054.007 $\mu$s & 471.9551 $\mu$s & 1,346.514 $\mu$s \\ \hline
             \end{tabular}
-        \end{table}
-    \end{itemize}
+    \end{table}
+\newpage
+    Der Code für die Methoden von IronPython:
+        \begin{lstlisting}[language={[Sharp]C}, caption=IronPythonTestMethods, label= label=lst:imp:pym]
+            private readonly ScriptEngine engine = Python.CreateEngine();
+            [Benchmark]
+            public void TestIronPython() => IronPythonSimple();
+            [Benchmark]
+            public void TestIronPythonSum() => IronPythonSum();
+            [Benchmark]
+            public void TestIronPythonPassDotNetObjectsAndCallFunction() => IronPythonPassDotNetObjectsAndCallFunction();
+           
+            #endregion
+        
+            private readonly Lua state = new Lua();
+            #region Lua
+            [Benchmark]
+            public void TestLua() => LuaSimple();
+            [Benchmark]
+            public void TestLuaSum() => LuaSum();
+            [Benchmark]
+            public void TestLuaPassDotNetObjectsAndCallFunction() => LuaPassDotNetObjectAndCallFunction();
+            #endregion
+        
+            #region IronPythonMethods
+            public void IronPythonSimple()
+            {
+                var scope = engine.CreateScope();
+                var source = engine.CreateScriptSourceFromString("def fun():\r\n\treturn 42\r\n\r\n\r\ntest = fun()");
+                source.Execute(scope);
+                var test = scope.GetVariable("test");
+                Console.WriteLine(test);
+            }
+        
+            public void IronPythonSum()
+            {
+                var scope = engine.CreateScope();
+                var source = engine.CreateScriptSourceFromString("def sum(x,y):\r\n\treturn x+y\n\r\n\r\rresult = sum(3,3)");
+                source.Execute(scope);
+                var result = scope.GetVariable("result");
+                Console.WriteLine(result);
+            }
+        
+            public void IronPythonPassDotNetObjectsAndCallFunction() 
+            {
+                var scope = engine.CreateScope();
+                var obj = new SomeClass();
+                scope.SetVariable("obj", obj);
+                var source = engine.CreateScriptSourceFromString(SetPythonScript());
+                source.Execute(scope);
+                var result = scope.GetVariable("result");
+                Console.WriteLine(result);
+            }
+        
+            private static string SetPythonScript()
+            {
+                string s = "";
+                s += "import clr" + "\r\n";
+                s += "result=obj.Func1() " + "\r\n";
+                return s;
+            }
+        
+        \end{lstlisting}
 
-    \item Csharpscript
-    \begin{itemize}
-        \item \begin{table}[H]
+
+\newpage
+ Der Code für die Methoden von NLua:
+\begin{lstlisting}[language={[Sharp]C}, caption=NluaTestMethods, label=lst:imp:nluam]
+    private readonly Lua state = new Lua();
+
+    
+    public void LuaPassDotNetObjectAndCallFunction()
+    {
+        var obj = new SomeClass();
+        state["obj"] = obj;
+        state.DoString (@"result=obj:Func1()");
+        var result = state["result"];
+        Console.WriteLine(result);
+    }
+
+    public void LuaSimple()
+    {
+        state.DoString("function fun() \r\n\t  return 42 \r\n end \r\n test=fun()");
+        var test = state["test"];
+        Console.WriteLine(test);
+    }
+
+    public void LuaSum()
+    {
+
+
+        state.DoString("function sum(x,y) \r\n\t return x+y \r\n end \r\n result=sum(3,3)");
+        var result = state["result"];
+        Console.WriteLine(result);
+    }
+    
+\end{lstlisting}
+
+\newpage
+Csharpscript
+        \begin{table}[H]
             \begin{tabular}{|p{3.5cm}|p{3cm}|p{3cm}|p{3cm}|}
             \hline
                 Method & Mean & Error & StdDev \\ \hline
@@ -231,10 +326,28 @@ Für:
                 Objects & 66.72 ms & 0.875 ms & 0.819 ms \\ \hline
             \end{tabular}
         \end{table}
-    \end{itemize}
-    \item Javascript
-    \begin{itemize}
-        \item \begin{table}[H]
+
+        \begin{lstlisting}[language={[Sharp]C}, caption=CsharpScriptingTestMethods, label=lst:imp:cscm]
+            public static async void ReturnNumber()
+        {
+            var state = await CSharpScript.RunAsync("return 42;");
+            Console.WriteLine(state.ReturnValue);
+        }
+        public static async void MySum()
+        {
+            var state = await CSharpScript.RunAsync("return 3 + 3;");
+            Console.WriteLine(state.ReturnValue);
+        }
+        public static async void DotNetObject()
+        {
+            var obj = new Student("Hans", 18);
+
+            var globals = new Globals { student = obj };
+            var state = await CSharpScript.RunAsync("", globals: globals);
+        }
+        \end{lstlisting}
+Javascript
+     \begin{table}[H]
             \begin{tabular}{|p{3.5cm}|p{3cm}|p{3cm}|p{3cm}|}
             \hline
                 Method & Mean & Error & StdDev \\ \hline
@@ -244,8 +357,35 @@ Für:
                 DotNetObjects & 46.27 ms & 397.72 ms & 103.29 ms  \\ \hline
             \end{tabular}
         \end{table}
-    \end{itemize}
-\end{itemize}
+
+        \begin{lstlisting}[language={[Sharp]C}, caption=JavascriptTestMethods, label=lst:imp:jsm]
+            public void JavascriptSimple()
+            {
+                var engine = new JintJsEngine();           
+                engine.Execute(@"
+                                function myFunction() {
+                                    return 42;
+                                }");           
+            }
+            public void JavascriptSum()
+            {
+                var engine = new JintJsEngine();
+    
+                engine.Execute(@"
+                                function mySum(x,y) {
+                                    return x+y;
+                                }
+                                var x = mySum(3,3);");
+            }
+            public void DotNetObjects()
+            {
+                var engine = new JintJsEngine();
+                var obj = new Student("Hans", 18);
+                var student = JsonConvert.SerializeObject(obj);
+                engine.SetVariableValue("student", student);           
+            }
+        \end{lstlisting}
+    
 
 
 \newpage
