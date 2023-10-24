@@ -1,14 +1,14 @@
 \section{Verwendete Technologien}
 \setauthor{Philipp Füreder}
 
-\subsection*{ASP .NET Core}
+\subsection*{ASP.NET Core}
 
 Unsere Webanwendung wurde unter Verwendung der ASP.NET Core-Plattform entwickelt. 
 ASP.NET Core ist ein vielseitiges, plattformübergreifendes und leistungsfähiges 
 Open-Source-Framework, das zur Entwicklung moderner, internetfähigen Anwendungen geeignet ist. 
 Die Ausführung findet in der .NET Core-Laufzeitumgebung statt.
 ASP.NET Core bietet außerdem eine moderne und flexible Umgebung für die Entwicklung von Webanwendungen, 
-die sowohl plattformübergreifend als auch hochgradig skalierbar sind.
+die sowohl plattformübergreifend als auch hochgradig skalierbar sind. \cite{asp_dotnetcore}
 
 Mit ASP.NET Core kann man:
 
@@ -22,7 +22,7 @@ mobile Backends entwickeln.
 
 Dieses Framework eröffnet somit eine breite Palette an Möglichkeiten für Entwickler, 
 um moderne Anwendungen zu erstellen, die sich nahtlos mit dem Internet verbinden und 
-sowohl in Cloud- als auch lokalen Umgebungen effizient betrieben werden können.
+sowohl in Cloud- als auch lokalen Umgebungen effizient betrieben werden können. \cite{asp_dotnetcore}
 \newpage
 
 \subsection*{Git}
@@ -36,16 +36,16 @@ wie Subversion, CVS, Perforce und ClearCase ab, indem es Funktionen wie kostenef
 lokale „Branches“, bequeme Staging-Bereiche und vielfältige Arbeitsabläufe bietet.
 Git erlaubt und begünstigt die Erstellung von mehreren unabhängigen lokalen Verzweigungen. 
 Die Prozesse des Erstellens, Zusammenführens und Entfernens dieser Entwicklungsstränge 
-nehmen lediglich Sekunden in Anspruch. \\
+nehmen lediglich Sekunden in Anspruch. \cite{git_introduction} \\
 
 Git ist kostenfrei und Open-Source. Es wurde dazu entwickelt, Projekte aller 
-Größenordnungen – von kleinen bis hin zu umfangreichen – schnell und effizient zu verwalten. 
+Größenordnungen, schnell und effizient zu verwalten. 
 Es zeichnet sich als Open-Source aus, da es die Anpassungsfähigkeit bietet, den Quellcode 
 nach den individuellen Bedürfnissen der Nutzer/innen anzupassen. 
 Mit seiner Open-Source-Natur ermöglicht Git mehreren Personen gleichzeitig an einem 
 Projekt zu arbeiten und ermöglicht eine äußerst einfache und effiziente Zusammenarbeit. 
 Aus diesem Grund wird Git als das herausragende Versionskontrollsystem betrachtet, 
-das in der heutigen Zeit zur Verfügung steht.
+das in der heutigen Zeit zur Verfügung steht. \cite{git_features}
 \newpage
 
 \subsection*{Docker}
@@ -58,7 +58,7 @@ ihre eigenen Satz an Abhängigkeiten und Bibliotheken. Dies gewährleistet, dass
 Applikation in völliger Unabhängigkeit von anderen Anwendungen agiert und die Sicherheit gibt, 
 dass sie Anwendungen erstellen können, welche sich nicht gegenseitig beeinträchtigen.
 Wir haben in unserer Anwendung unser Frontend, Backend und die Datenbank über Docker laufen lassen.
-Das heißt wir haben 3 Docker-Container benutzt. \\
+Das heißt wir haben 3 Docker-Container benutzt. \cite{docker_explained} \\
  
 Unter einem Container versteht man eine standardisierte Softwareeinheit, die sowohl den 
 Programmcode als auch sämtliche damit verbundenen Abhängigkeiten zusammenfasst. 
@@ -66,7 +66,7 @@ Hierdurch wird sichergestellt, dass die Anwendung zuverlässig in unterschiedlic
 Computerumgebungen ausgeführt werden kann. Ein Docker-Container-Image verkörpert eine 
 autonome und ausführbare Softwareeinheit, welche sämtliche Komponenten für die Ausführung 
 einer Applikation in sich trägt: den Code selbst, die Laufzeitumgebung, Systemwerkzeuge, 
-Systembibliotheken und Konfigurationseinstellungen. \\
+Systembibliotheken und Konfigurationseinstellungen. \cite{docker_container} \\
 
 Container-Images verwandeln sich zur Laufzeit in eigenständige Container. 
 Im Fall von Docker geschieht dies durch das Ausführen der Images auf der Docker Engine. 
@@ -74,7 +74,7 @@ Containerisierte Software steht sowohl für Linux- als auch für Windows-basiert
 zur Verfügung und gewährleistet eine gleichbleibende Ausführung, unabhängig von der genutzten 
 Infrastruktur. Container schaffen eine Isolierung der Software von ihrer Umgebung und 
 gewährleisten somit, dass die Anwendung konsistent arbeitet, selbst bei Unterschieden 
-zwischen Entwicklungs- und Staging-Umgebungen.
+zwischen Entwicklungs- und Staging-Umgebungen. \cite{docker_container}
 \newpage
 \subsection*{PostgreSQL}
 
@@ -83,7 +83,7 @@ Projekten mit diesem gearbeitet haben. PostgreSQL ist Open-Source und verwendet 
 Außerdem ist PostgreSQL auf allen gängigen Betriebssystemen kompatibel.
 PostgreSQL läuft bei uns über Docker, somit haben wir nichts Zusätzliches dafür installieren müssen.
 PostgreSQL ist sehr anpassbar, man kann beispielsweise eigene Datentypen 
-definieren und individuelle Funktionen gestalten.\\
+definieren und individuelle Funktionen gestalten.\\ \cite{postgres}
 
 Datentypen in PostgreSQL:
 \begin{itemize}
@@ -101,7 +101,7 @@ Integrität der Daten:
     \item Exclusion Constraints
     \item Explicit Locks, Advisory Locks
 \end{itemize}
-
+\cite{postgres}
 
 \newpage
 \subsection*{BenchmarkDotNet (0.13.2)}
@@ -113,7 +113,7 @@ Erstellung von Unit-Tests. BenchmarkDotNet hilft dabei, übliche Fehler im Bench
 zu vermeiden und Nutzer zu informieren, sobald Unstimmigkeiten im Benchmark-Design oder den 
 erfassten Messdaten auftreten. Die präsentierten Resultate erscheinen in einer 
 nutzerfreundlichen Tabelle, die sämtliche relevanten Aspekte des Experiments herausstellt.\\
-Anbei ein Beispiel von einem unserer BenchmarkDotNet-Tests:\\
+Anbei ein Beispiel von einem unserer BenchmarkDotNet-Tests: \cite{benchmark}\\
 
 \begin{lstlisting} [language={[Sharp]C},caption=BenchmarkDotNet,label=lst:impl:foo]
 namespace C_SharpExample
@@ -151,7 +151,7 @@ namespace C_SharpExample
 Bogus haben wir in unserem Projekt für die Generierung von Fake Daten benutzt. 
 Wir haben damit Schüler- und Lehrernamen erstellen lassen die wir in unserer Anwendung als 
 Testdaten benutzt haben. Bogus funktioniert ausschließlich für 
-.NET-Sprachen wie C\#, F\# oder VB.NET. \\
+.NET-Sprachen wie C\#, F\# oder VB.NET. \cite{bogus} \\
 
 Es ist ganz unkompliziert zu verwenden. Wir haben in unserer Arbeit nur Namen generieren lassen, 
 jedoch könnte man zu jedem Namen noch eine ganze Menge hinzufügen wie zum Beispiel 
@@ -1101,4 +1101,109 @@ Nach der Berrechnung werden die Jahresnoten in einer Tabelle dargestellt:
 
 
 
+\newpage
+\section{Unit-Tests zur Überprüfung der Notenberechnung}
+\setauthor{Philipp Füreder}
 
+Eine der zentralen Komponenten unserer Beispielanwendung war die Implementierung von 
+Skripten zur Notenberechnung in .NET-Anwendungen zur Laufzeit. Um die Zuverlässigkeit und 
+Genauigkeit dieser Skripte sicherzustellen, haben wir einen Satz von Unit-Tests entwickelt 
+und durchgeführt. Dieser Ansatz gewährleistet nicht nur die Integrität des Codes, 
+sondern bietet auch eine robuste Basis für zukünftige Erweiterungen und Anpassungen.
+
+\subsection*{Auswahl der Testfälle}
+Die Testfälle wurden so ausgewählt, um ein breites Spektrum an Szenarien abzudecken, 
+die in realen Anwendungen vorkommen könnten. Dazu gehören Standardfälle, Grenzfälle und 
+auch potenzielle Fehlerzustände. Das hat uns ermöglicht, die Robustheit für unsere Test-Scripts 
+umfassend zu überprüfen.
+
+\subsection*{Ergebnisse der Unit-Tests}
+Alle entwickelten Skripte zur Notenberechnung haben die Tests letztenendes erfolgreich bestanden. 
+Dies gab uns ein hohes Maß an Vertrauen in die Funktionsfähigkeit und Zuverlässigkeit der 
+implementierten Lösungen. Darüber hinaus haben die Tests dazu beigetragen, einige nicht 
+offensichtliche Fehler und Unklarheiten im ursprünglichen Design zu identifizieren, 
+die wir entsprechend beheben konnten.
+
+\newpage
+\subsection*{Testbeispiel}
+
+In folgendem Testbeispiel haben wir ein C\#-Skript getestet:
+
+\begin{lstlisting}[language={[Sharp]C},caption=Test for CsharpScripting,label=lst:impl:csc]
+[TestMethod]
+    public void CsScript_T02()
+    {
+        List<Grade> grades = new List<Grade>
+        {
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name =="MAK") , Graduate = 1 },
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name =="MAK") , Graduate = 1 },
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name =="MAK") , Graduate = 1 },
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name =="MAK") , Graduate = 2 },
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name =="MAK") , Graduate = 1 },
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name == "TEST"), Graduate = 1},
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name == "TEST"), Graduate = 2},
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name == "TEST"), Graduate = 3},
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name == "TEST"), Graduate = 4},
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name == "TEST"), Graduate = 2},
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name == "HOMEWORK"), Graduate = 1},
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name == "HOMEWORK"), Graduate = 2},
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name == "HOMEWORK"), Graduate = 3},
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name == "HOMEWORK"), Graduate = 4},
+            new Grade { GradeKind = gradeKinds.Single(g => g.Name == "HOMEWORK"), Graduate = 5},
+
+        };
+
+        var code = File.ReadAllText("test.cs");
+        var key = new GradeKey { Name = "CsScriptTest", UsedKinds = gradeKinds, Calculation = code };
+
+        var result = CsScriptRunner.RunScript(key, grades);
+
+        Assert.AreEqual(2, result.Graduate, "Calculation is right");
+\end{lstlisting}
+
+Dabei beinhaltet die Liste "grades" Schulnoten von drei verschiedenen Typen:
+\begin{itemize}
+    \item MAK (Mitarbeitskontrolle)
+    \item Test
+    \item Homework
+\end{itemize}
+
+
+\newpage
+\subsection*{Test-Skript}
+Dieses Test-Skript haben wir geschrieben um die Funktionalitäten und Notenberechnungen zu testen.
+Einfachheitshalber wird in diesem Skript jeder Notentyp äquivalent gerechnet.
+
+\begin{lstlisting}[language={[Sharp]C},caption=CsharpScript-Testscript,label=lst:impl:csc]
+int makCounter = 0;
+int testCounter = 0;
+int homeworkCounter = 0;
+
+int mak = 0;
+int test = 0;
+int homework = 0;
+
+foreach (var item in Grades)
+{
+    if (item.GradeKind.Name == "MAK")
+    {
+        mak += item.Graduate;
+        makCounter++;
+    }
+    if (item.GradeKind.Name == "TEST")
+    {
+        test += item.Graduate;
+        testCounter++;
+    }
+    if (item.GradeKind.Name == "HOMEWORK")
+    {
+        homework += item.Graduate;
+        homeworkCounter++;
+    }
+}
+
+return ((mak / makCounter) + (test / testCounter) + (homework / homeworkCounter)) / 3.0;
+\end{lstlisting}
+
+Das Skript unterscheidet zwar zwischen allen Notentypen, wertet jedoch alle gleich 
+und berechnet den Durchschnitt.
