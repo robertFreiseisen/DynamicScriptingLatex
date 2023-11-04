@@ -139,6 +139,8 @@ um deren Eignung für die Integration in .NET-Anwendungen zu bewerten.
     kundenspezifischen Softwarelösungen.
 \end{itemize}
 
+\newpage
+
 \subsection*{Nachteile}
 
 \begin{itemize}
@@ -149,44 +151,18 @@ um deren Eignung für die Integration in .NET-Anwendungen zu bewerten.
     \item \textbf{Kompatibilitätsprobleme:} Nicht alle Skripting-Sprachen oder -Tools sind 
     mit allen Plattformen oder Anwendungen kompatibel. Manchmal sind spezielle 
     Anpassungen erforderlich.
-    \item \textbf{Fehlermeldungen:} Durch Scripts enstehen oft komplex zu diagnostizierende Fehler,
-    die den Support auf der Herstellerseite erschweren.
+    \item \textbf{Fehlermeldungen:} Fehlermeldungen durch Skripting können eine Herausforderung 
+    darstellen. Ein wesentlicher Nachteil besteht darin, dass sie oft technische Informationen 
+    enthalten, die für nicht erfahrene Anwender/innen schwer verständlich sind. 
+    Dies kann dazu führen, dass Benutzer/innen Schwierigkeiten haben, den genauen Grund 
+    für den Fehler zu erkennen und entsprechende Maßnahmen zur Behebung zu ergreifen. 
+    Darüber hinaus können Fehlermeldungen in Skripten manchmal unzureichend oder ungenau sein, 
+    was die Fehlersuche erschwert. Dies kann zu Frustration führen und die Effizienz 
+    bei der Fehlerbehebung beeinträchtigen. Es ist daher wichtig, bei der Entwicklung 
+    von Skripten darauf zu achten, aussagekräftige und benutzerfreundliche 
+    Fehlermeldungen zu implementieren, um die Fehlerbehebung und die allgemeine 
+    Benutzerfreundlichkeit zu verbessern.
 \end{itemize}
-
-\newpage
-
-\subsection*{Levels von Scripting}
-
-In Microsoft Excel gibt es die Möglichkeit sich wiederholende Aufgaben mithilfe 
-von Office Scripts zu automatisieren.
-\\
-Man kann auf zwei Arten ein neues Office-Skript erstellen:
-\begin{itemize}
-    \item Man kann seine Handlungen mithilfe des Actionrecorders aufnehmen. 
-    Diese Methode eignet sich besonders gut, wenn man sich wiederholende 
-    Schritte in dem Dokument merken möchte. Dazu sind keine Programmierkenntnisse 
-    oder ähnliches erforderlich. Die Aufgezeichneten Skripte können 
-    abgespeichert und verändert werden.
-    \item Die zweite Möglichkeit ist, dass Office-Skript selbst mithilfe 
-    von TypeScript zu schreiben.
-\end{itemize}
-\cite{office_script}
-
-Folgendes Office-Skript Beispiel gibt den Wert von der Zelle A1 auf der Konsole aus:
-
-\begin{lstlisting} [language=Python,caption=Office-Skript,label=lst:impl:foo]
-    function main(workbook: ExcelScript.Workbook) {
-  // Get the current worksheet.
-  let selectedSheet = workbook.getActiveWorksheet();
-
-  // Get the value of cell A1.
-  let range = selectedSheet.getRange("A1");
-  
-  // Print the value of A1.
-  console.log(range.getValue());
-}
-\end{lstlisting}
-\cite{office_script_example}
 
 \newpage
 
@@ -234,7 +210,7 @@ ausgeführt werden. Zur Verwendung ist nur ein Webbrowser und eine E-Mail-Adress
 
 Ein Ansatz, der oft angewandt wird, um Anwendungen oder Systeme zu konstruieren, 
 ist die Nutzung eines dynamischen Modulsystems. Diese Methode ermöglicht die Erstellung 
-von Applikationen durch den Zusammenbau wiederverwendbarer Einzelmodule. 
+von Applikationen durch den Zusammenbau wiederverwendbarer Einzelmodule (z.B. DLLs). 
 Diese Herangehensweise erleichtert die Entwicklung komplexer Systeme, ohne dass jedes 
 Mal von Grund auf ein völlig neues System erstellt werden muss. Ein weiterer Nutzen besteht darin, 
 dass verschiedene Anwendungen oder Systeme auf diese Weise miteinander verknüpft werden können.
@@ -273,7 +249,12 @@ Diese Dienste interagieren miteinander über klar definierte Schnittstellen.
 Die Architektur von Microservices trägt dazu bei, Skalierbarkeit zu erleichtern und die 
 Zeitspanne für die Entwicklung von Anwendungen zu verkürzen. 
 Dies ermöglicht eine schnellere Umsetzung von Innovationen und beschleunigt die Einführung 
-neuer Funktionen auf dem Markt. \cite{microservices}
+neuer Funktionen auf dem Markt.
+\\
+Microservices können spezialisierte Dienste erstellen, die spezifische Aufgaben oder 
+Funktionen ergänzen. Diese Dienste können unabhängig entwickelt und bereitgestellt werden, 
+um die Gesamtfunktionalität der Standardsoftware zu erweitern. 
+\cite{microservices}
 
 \subsubsection*{Eigenschaften von Microservices}
 
@@ -336,7 +317,7 @@ aus dieser Assembly abgerufen. Auf diesen abgerufenen Typ wird die Methode "Meth
 
 Durch die Nutzung von Plugins eröffnet sich die Option, individuelle Funktionen 
 zu entwickeln und anschließend in die Anwendung einzubauen. 
-Dies eröffnet ein Fenster für eine dynamische Erweiterbarkeit, ohne auf die Implementierung 
+Dies eröffnet eine Möglichkeit für eine dynamische Erweiterbarkeit, ohne auf die Implementierung 
 von Skriptcode zurückgreifen zu müssen. Diese Methode gewährt eine flexible 
 Herangehensweise an die Erweiterung und Anpassung von Funktionalitäten, während 
 gleichzeitig die Sauberkeit der Gesamtlösung erhalten bleibt. \cite{pluginframework}
@@ -344,7 +325,7 @@ gleichzeitig die Sauberkeit der Gesamtlösung erhalten bleibt. \cite{pluginframe
 \subsubsection*{Plugin Framework for .NET Core}
 
 Mit Plugin Frameworks für .NET Core wird jegliches Element zu einem Plugin. Das Plugin 
-Framework stellt eine erstklassige Plattform für Plugins in .NET Core-Anwendungen dar, was 
+Framework stellt eine Plattform für Plugins in .NET Core-Anwendungen dar, was 
 sowohl ASP.NET Core, Blazor, WPF, Windows Forms als auch Konsolenanwendungen miteinschließt. 
 Diese Plattform zeichnet sich durch eine geringe Systembelastung aus und bietet eine nahtlose 
 Einbindungsmöglichkeit. Es kann verschiedene Plugin-Kataloge unterstützen, 
