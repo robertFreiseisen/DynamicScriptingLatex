@@ -1103,7 +1103,7 @@ Nach der Berrechnung werden die Jahresnoten in einer Tabelle dargestellt:
 
 
 \newpage
-\section{Unit-Tests zur Überprüfung der Notenberechnung}
+\section{Unit-Tests zur Überprüfung der Anwendung}
 \setauthor{Philipp Füreder}
 
 Eine der zentralen Komponenten unserer Beispielanwendung war die Implementierung von 
@@ -1114,16 +1114,33 @@ sondern bietet auch eine robuste Basis für zukünftige Erweiterungen und Anpass
 
 \subsection*{Auswahl der Testfälle}
 Die Testfälle wurden so ausgewählt, um ein breites Spektrum an Szenarien abzudecken, 
-die in realen Anwendungen vorkommen könnten. Dazu gehören Standardfälle, Grenzfälle und 
-auch potenzielle Fehlerzustände. Das hat uns ermöglicht, die Robustheit für unsere Test-Scripts 
-umfassend zu überprüfen.
+die in realen Anwendungen vorkommen könnten. Dazu gehören Fälle wie Standardfälle, Exception-Handling
+oder andere potenzielle Fehlerzustände. \\
+
+\begin{itemize}
+    \item \textbf{Standardfälle:} Diese Tests decken die Funktion unserer Anwendung ab, wenn kein 
+    Compilefehler des Skripts oder eine fehlerhafte Berechnung der Noten erwartet wird.
+    \item  \textbf{Exception-Handling:} Durch das Testen mit Skripts die nicht ausgeführt werden 
+    können, da sie durch Syntaxfehler beispielsweise nicht kompilierbar sind, decken wir 
+    mögliche Abstürze unserer Anwendung ab.
+\end{itemize}
+
+Das hat uns ermöglicht, die Robustheit für unsere Test-Scripts  
+und der Beispielanwendung umfassend zu überprüfen.
+
+\newpage
 
 \subsection*{Ergebnisse der Unit-Tests}
 Alle entwickelten Skripte zur Notenberechnung haben die Tests letztenendes erfolgreich bestanden. 
 Dies gab uns ein hohes Maß an Vertrauen in die Funktionsfähigkeit und Zuverlässigkeit der 
 implementierten Lösungen. Darüber hinaus haben die Tests dazu beigetragen, einige nicht 
 offensichtliche Fehler und Unklarheiten im ursprünglichen Design zu identifizieren, 
-die wir entsprechend beheben konnten.
+die wir entsprechend beheben konnten.\\
+
+Da die Richtigkeit der Notenberechnungen nur mit unseren eigenen Testskripts getestet werden konnte,
+liegt es an den Benutzer/innen unserer Anwendung die Richtigkeit ihrer Skripts zu überprüfen. Deshalb 
+haben wir unter anderem die Konsolenausgabe von den Skripts in unsere Anwendung implementiert um den
+Benutzer/innen eine Möglichkeit zu geben einfach ihre Ergebnisse einzusehen.
 
 \newpage
 \subsection*{Testbeispiel}
@@ -1173,7 +1190,7 @@ Dabei beinhaltet die Liste "grades" Schulnoten von drei verschiedenen Typen:
 \newpage
 \subsection*{Test-Skript}
 Dieses Test-Skript haben wir geschrieben um die Funktionalitäten und Notenberechnungen zu testen.
-Einfachheitshalber wird in diesem Skript jeder Notentyp äquivalent gerechnet.
+Einfachheitshalber wird in diesem Skript jeder Notentyp äquivalent gewertet.
 
 \begin{lstlisting}[language={[Sharp]C},caption=CsharpScript-Testscript,label=lst:impl:csc]
 int makCounter = 0;

@@ -1,19 +1,17 @@
 \section {Standardsoftware vs Individualsoftware}
 \setauthor{Philipp Füreder}
 
-In der heutigen digitalisierten Welt ist Software nicht mehr wegzudenken,
-für den Erfolg von Unternehmen oder auch für den privaten Gebrauch.
+In der heutigen digitalisierten Welt ist Software 
+für den Erfolg von Unternehmen oder auch für den privaten Gebrauch nicht mehr wegzudenken.
 Für diese Diplomarbeit unterscheiden wir zwischen zwei Hauptarten von Software, 
 die von Unternehmen genutzt werden: 
 \textbf{Standardsoftware} und 
 \textbf{Individualsoftware}.
-Nun wollen wir diese beiden Softwaretypen in einem direkten 
-Vergleich gegenüberstellen, um ihre jeweiligen Vor- und Nachteile zu zeigen.
 
 \subsection*{Standardsoftware}
 
 Standardsoftware bietet Vorteile, die sie für viele Unternehmen und Einzelpersonen 
-zu einer attraktiven Wahl macht. Einer der Hauptvorteile ist die Kosteneffizienz: 
+zu einer attraktiven Wahl macht. Einer der Hauptvorteile sind die geringeren Initialkosten: 
 Da die Entwicklungskosten auf eine Vielzahl von Kunden verteilt werden, sind die initialen 
 Anschaffungskosten in der Regel geringer als bei einer individuell entwickelten Lösung. 
 Ein weiterer Pluspunkt ist die schnelle Implementierung. Da die Software bereits entwickelt ist, 
@@ -46,7 +44,7 @@ Flexibilität, Skalierbarkeit und wirtschaftlicher Effizienz.
 
 Trotz der vielen Vorteile kommt Individualsoftware oft mit einem wesentlichen Nachteil: 
 den hohen Anschaffungskosten. Die Entwicklung einer maßgeschneiderten Softwarelösung 
-erfordert in der Regel eine erhebliche Investition in Zeit und Ressourcen. 
+erfordert in der Regel eine erhebliche Investition von Zeit und Ressourcen. 
 Diese initialen Kosten können beträchtlich sein und stellen daher besonders für 
 kleinere Unternehmen oder Organisationen mit begrenztem Budget eine große Hürde dar. 
 Daher ist es wichtig, diese Investition sorgfältig abzuwägen und sie in den Kontext der 
@@ -73,7 +71,7 @@ einfach und wartbar wie möglich zu halten.\\
 Der Fokus auf vorhandene Ressourcen ist ein entscheidendes Argument gegen die Implementierung 
 kundenspezifischer Funktionen in einer Softwarelösung für jedes einzelne Unternehmen. 
 Softwareentwicklung umfasst nicht nur die Programmierung selbst, sondern auch die Planung, 
-das Design, die Qualitätssicherung und die Wartung. Unternehmen haben in der Regel begrenzte 
+das Design, die Qualitätssicherung und die Wartung. Unternehmen haben begrenzte 
 Entwicklungsressourcen, sowohl in Bezug auf die Anzahl der Entwickler als auch die Zeit und 
 das Budget. Diese Ressourcen müssen sorgfältig auf die Entwicklung von Funktionen konzentriert 
 werden, die den größten Mehrwert für die Mehrheit der Kunden bieten. Das Hinzufügen von 
@@ -120,9 +118,9 @@ Kontexten verwendet, darunter Webentwicklung, Systemadministration und Datenanal
 
 Ein zentraler Aspekt dieser Diplomarbeit war die Untersuchung der Rolle des Skripting 
 bei der dynamischen Anpassung von .NET-Anwendungen. Der Einsatz von Skriptsprachen ermöglicht es, 
-fehlende oder zusätzliche Funktionen zur Laufzeit in eine Anwendung zu integrieren. 
-Im Rahmen unserer Arbeit wurde mit verschiedenen Skriptsprachen experimentiert, um deren 
-Eignung für die Integration in .NET-Anwendungen zu bewerten.
+fehlende oder zusätzliche Funktionen, durch Einbringen von Text, zur Laufzeit in eine Anwendung 
+zu integrieren. Im Rahmen unserer Arbeit wurde mit verschiedenen Skriptsprachen experimentiert, 
+um deren Eignung für die Integration in .NET-Anwendungen zu bewerten.
 
 \subsection*{Vorteile}
 
@@ -141,52 +139,30 @@ Eignung für die Integration in .NET-Anwendungen zu bewerten.
     kundenspezifischen Softwarelösungen.
 \end{itemize}
 
+\newpage
+
 \subsection*{Nachteile}
 
 \begin{itemize}
     \item \textbf{Leistungsprobleme:} Skriptsprachen sind oft langsamer als kompilierte Sprachen, 
     da sie interpretiert werden. Dies kann bei rechenintensiven Aufgaben ein Problem darstellen.
+    Da in unserer Beispielanwendung das Textskript erst zur Laufzeit eingelesen wird, muss es interpretiert
+    oder zur Laufzeit kompiliert werden was zu Leistungsproblemen führen kann.
     \item \textbf{Kompatibilitätsprobleme:} Nicht alle Skripting-Sprachen oder -Tools sind 
     mit allen Plattformen oder Anwendungen kompatibel. Manchmal sind spezielle 
     Anpassungen erforderlich.
-    \item \textbf{Fehlermeldungen:} Durch Scripts enstehen oft komplex zu diagnostizierende Fehler,
-    die den Support auf der Herstellerseite erschweren.
+    \item \textbf{Fehlermeldungen:} Fehlermeldungen durch Skripting können eine Herausforderung 
+    darstellen. Ein wesentlicher Nachteil besteht darin, dass sie oft technische Informationen 
+    enthalten, die für nicht erfahrene Anwender/innen schwer verständlich sind. 
+    Dies kann dazu führen, dass Benutzer/innen Schwierigkeiten haben, den genauen Grund 
+    für den Fehler zu erkennen und entsprechende Maßnahmen zur Behebung zu ergreifen. 
+    Darüber hinaus können Fehlermeldungen in Skripten manchmal unzureichend oder ungenau sein, 
+    was die Fehlersuche erschwert. Dies kann zu Frustration führen und die Effizienz 
+    bei der Fehlerbehebung beeinträchtigen. Es ist daher wichtig, bei der Entwicklung 
+    von Skripten darauf zu achten, aussagekräftige und benutzerfreundliche 
+    Fehlermeldungen zu implementieren, um die Fehlerbehebung und die allgemeine 
+    Benutzerfreundlichkeit zu verbessern.
 \end{itemize}
-
-\newpage
-
-\subsection*{Levels von Scripting}
-
-In Microsoft Excel gibt es die Möglichkeit sich wiederholende Aufgaben mithilfe 
-von Office Scripts zu automatisieren.
-\\
-Man kann auf zwei Arten ein neues Office-Skript erstellen:
-\begin{itemize}
-    \item Man kann seine Handlungen mithilfe des Actionrecorders aufnehmen. 
-    Diese Methode eignet sich besonders gut, wenn man sich wiederholende 
-    Schritte in dem Dokument merken möchte. Dazu sind keine Programmierkenntnisse 
-    oder ähnliches erforderlich. Die Aufgezeichneten Skripte können 
-    abgespeichert und verändert werden.
-    \item Die zweite Möglichkeit ist, dass Office-Skript selbst mithilfe 
-    von TypeScript zu schreiben.
-\end{itemize}
-\cite{office_script}
-
-Folgendes Office-Skript Beispiel gibt den Wert von der Zelle A1 auf der Konsole aus:
-
-\begin{lstlisting} [language=Python,caption=Office-Skript,label=lst:impl:foo]
-    function main(workbook: ExcelScript.Workbook) {
-  // Get the current worksheet.
-  let selectedSheet = workbook.getActiveWorksheet();
-
-  // Get the value of cell A1.
-  let range = selectedSheet.getRange("A1");
-  
-  // Print the value of A1.
-  console.log(range.getValue());
-}
-\end{lstlisting}
-\cite{office_script_example}
 
 \newpage
 
@@ -234,7 +210,7 @@ ausgeführt werden. Zur Verwendung ist nur ein Webbrowser und eine E-Mail-Adress
 
 Ein Ansatz, der oft angewandt wird, um Anwendungen oder Systeme zu konstruieren, 
 ist die Nutzung eines dynamischen Modulsystems. Diese Methode ermöglicht die Erstellung 
-von Applikationen durch den Zusammenbau wiederverwendbarer Einzelmodule. 
+von Applikationen durch den Zusammenbau wiederverwendbarer Einzelmodule (z.B. DLLs). 
 Diese Herangehensweise erleichtert die Entwicklung komplexer Systeme, ohne dass jedes 
 Mal von Grund auf ein völlig neues System erstellt werden muss. Ein weiterer Nutzen besteht darin, 
 dass verschiedene Anwendungen oder Systeme auf diese Weise miteinander verknüpft werden können.
@@ -273,7 +249,12 @@ Diese Dienste interagieren miteinander über klar definierte Schnittstellen.
 Die Architektur von Microservices trägt dazu bei, Skalierbarkeit zu erleichtern und die 
 Zeitspanne für die Entwicklung von Anwendungen zu verkürzen. 
 Dies ermöglicht eine schnellere Umsetzung von Innovationen und beschleunigt die Einführung 
-neuer Funktionen auf dem Markt. \cite{microservices}
+neuer Funktionen auf dem Markt.
+\\
+Microservices können spezialisierte Dienste erstellen, die spezifische Aufgaben oder 
+Funktionen ergänzen. Diese Dienste können unabhängig entwickelt und bereitgestellt werden, 
+um die Gesamtfunktionalität der Standardsoftware zu erweitern. 
+\cite{microservices}
 
 \subsubsection*{Eigenschaften von Microservices}
 
@@ -336,21 +317,21 @@ aus dieser Assembly abgerufen. Auf diesen abgerufenen Typ wird die Methode "Meth
 
 Durch die Nutzung von Plugins eröffnet sich die Option, individuelle Funktionen 
 zu entwickeln und anschließend in die Anwendung einzubauen. 
-Dies eröffnet ein Fenster für eine dynamische Erweiterbarkeit, ohne auf die Implementierung 
+Dies eröffnet eine Möglichkeit für eine dynamische Erweiterbarkeit, ohne auf die Implementierung 
 von Skriptcode zurückgreifen zu müssen. Diese Methode gewährt eine flexible 
 Herangehensweise an die Erweiterung und Anpassung von Funktionalitäten, während 
 gleichzeitig die Sauberkeit der Gesamtlösung erhalten bleibt. \cite{pluginframework}
 
 \subsubsection*{Plugin Framework for .NET Core}
 
-Mit Plugin Frameworks für .NET Core wird jegliches Element zu einem Plugin. Das Plugin 
-Framework stellt eine erstklassige Plattform für Plugins in .NET Core-Anwendungen dar, was 
+Das Plugin Framework stellt eine Plattform für Plugins in .NET Core-Anwendungen dar, was 
 sowohl ASP.NET Core, Blazor, WPF, Windows Forms als auch Konsolenanwendungen miteinschließt. 
 Diese Plattform zeichnet sich durch eine geringe Systembelastung aus und bietet eine nahtlose 
 Einbindungsmöglichkeit. Es kann verschiedene Plugin-Kataloge unterstützen, 
 darunter .NET-Assemblies, NuGet-Pakete sowie Roslyn-Skripte. 
 Die Flexibilität dieses Frameworks ermöglicht es, eine breite Palette an Anwendungsfällen 
-zu bedienen und die Erweiterungsfunktionalität auf mehreren Ebenen zu steigern. \cite{pluginframework}
+zu bedienen und die Erweiterungsfunktionalität auf mehreren Ebenen zu steigern. 
+\cite{pluginframework}
 
 \textbf{Features:}
 \begin{itemize}
@@ -381,8 +362,8 @@ Kriterienkatalogs zu bewerten. Die regelmäßigen Meetings dienten als Checkpoin
 um den Fortschritt zu überwachen und eventuelle Anpassungen am Kriterienkatalog vorzunehmen.\\
 
 \textbf{Phase 3: Programmierarbeit}\\
-Mit einem vollständigen Kriterienkatalog in der Hand begannen wir mit der 
-Programmierung der einer Musteranwendung, in der der Praxiseinsatz von verschiedenen 
+Mit einem Kriterienkatalog in der Hand begannen wir mit der 
+Programmierung einer Musteranwendung, in der der Praxiseinsatz von verschiedenen 
 Scripting-Möglichkeiten untersucht werden sollte. Da wir bereits ein solides Verständnis 
 der ausgewählten Skriptsprachen hatten, konnten wir effizient an der Umsetzung der praktischen 
 Komponente unserer Diplomarbeit arbeiten.
@@ -396,7 +377,7 @@ eventuelle Herausforderungen oder Probleme frühzeitig zu identifizieren und
 entsprechend anzugehen.\\
 
 \textbf{Phase 5: Fertigstellung der Anwendung}\\
-Schließlich, nach mehreren Iterationen und Anpassungen, konnten wir unsere Beispielanwendung 
+Nach mehreren Anpassungen, konnten wir unsere Beispielanwendung 
 erfolgreich abschließen. Die finale Version erfüllte alle Kriterien, die in 
 unserem Kriterienkatalog festgelegt waren, und diente als praktische Umsetzung 
 der in der Diplomarbeit erworbenen Erkenntnisse.
@@ -454,7 +435,7 @@ Speicherung in der Datenbank:
 
 Dynamische Ausführung: 
 \begin{itemize}
-    \item Das hochgeladene Skript wird zur Laufzeit interpretiert und angewandt, 
+    \item Das hochgeladene Skript wird zur Laufzeit ausgeführt und angewandt, 
     um die Noten der Schüler/innen gemäß den im Skript festgelegten Kriterien zu berechnen.
 \end{itemize}
 
