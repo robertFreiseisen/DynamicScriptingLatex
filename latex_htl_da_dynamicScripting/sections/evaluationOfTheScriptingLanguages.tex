@@ -5,46 +5,58 @@ Die Wahl der Scriptsprachen wurde auf Grund von Internet-Recherchen
 und Fachgesprächen mit Mitschüler*innen und Professor*innen gefällt.\\
 Folgende Scriptsprachen wurden gewählt:
 
+\begin{itemize}
+    \item Lua
+    \item IronPython
+    \item C\#script
+    \item Javascript
+\end{itemize}
+
 \subsection{Lua}
-Lua ist eine extrem schnelle Programmiersprache, die für ihre hohe Ausführungsgeschwindigkeit geschätzt wird. 
+Lua ist eine Programmiersprache, die für ihre hohe Ausführungsgeschwindigkeit geschätzt wird. 
 Diese Schnelligkeit, kombiniert mit dem geringen Speicherbedarf der Sprache, macht sie ideal für ressourcenbeschränkte Umgebungen und eingebettete Systeme. 
-Lua bietet eine "Out-of-the-Box"-Nutzbarkeit, die es Entwicklern ermöglicht, sofort nach der Installation loszulegen, ohne sich um eine Vielzahl von Abhängigkeiten kümmern zu müssen. 
+Lua bietet eine "von Haus aus"-Nutzbarkeit, die es Entwicklern ermöglicht, sofort nach der Installation loszulegen, ohne sich um eine Vielzahl von Abhängigkeiten kümmern zu müssen. 
 Ihre Einbettbarkeit ist ein weiteres Kernelement, das sie besonders attraktiv für Softwareprojekte macht, die eine integrierte Skriptsprache benötigen. Besonders in der Spieleindustrie hat Lua sich als beliebte Wahl für das Scripting etabliert. Hier ermöglicht es Entwicklern, schnell interaktive und flexible Spielmechanismen zu implementieren, ohne die Hauptspiellogik zu beeinträchtigen. 
 Als Open-Source-Software steht Lua zudem einer breiten Entwicklergemeinschaft zur Verfügung, die zur kontinuierlichen Verbesserung und Erweiterung der Sprache beiträgt.
-All diese Aspekte machen Lua zu einer vielseitigen und kraftvollen Option für eine Reihe von Anwendungen, insbesondere für das Scripting in Videospielen, wie in "World of Warcraft" oder "Roblox".
+All diese Aspekte machen Lua zu einer vielseitigen Option für eine Reihe von Anwendungen, insbesondere für das Scripting in Videospielen, wie in "World of Warcraft" oder "Roblox".
+\cite{gameScriptingMastery} \cite{luaDocs} \cite{programingInLua} \cite{nluaWebside} 
 
 \newpage
 \subsection{IronPython}
-IronPython ist eine Implementierung der Python-Programmiersprache, die auf dem .NET-Framework aufbaut, nicht auf der Java Virtual Machine (JVM). 
-In Bezug auf Schnelligkeit kann IronPython, je nach Anwendungsfall, sowohl Vorteile als auch Nachteile gegenüber der standardmäßigen CPython-Implementierung haben. 
-Da es auf dem .NET Framework basiert, kann es schneller sein, wenn es darum geht, mit anderen .NET-Anwendungen oder Bibliotheken zu interagieren. 
-Beim Speicherverbrauch ist IronPython in der Regel nicht so effizient wie CPython, da das .NET-Framework mehr Overhead haben kann. 
-Einer der größten Vorteile von IronPython ist seine Dynamik. 
-Durch die Nutzung der Dynamic Language Runtime (DLR) von .NET kann IronPython dynamische Typen und späte Bindungen effizienter verwalten als einige andere Implementierungen. 
+IronPython ist eine Open-Source-Implementierung der Programmiersprache Python, die auf der .NET-Plattform läuft. Es wurde ursprünglich von Jim Hugunin entwickelt und ist eng mit Microsoft assoziiert. IronPython ist in C\# geschrieben und ermöglicht die nahtlose Integration von Python-Code mit .NET-Anwendungen. Mit IronPython können Entwickler sowohl auf .NET-Bibliotheken als auch auf Python-Bibliotheken zugreifen, wodurch eine erweiterte Interoperabilität und Flexibilität erreicht wird.
+IronPython unterstützt sowohl dynamische als auch statische Sprachfunktionen, und es ist durch die Common Language Runtime (CLR) von Microsoft vollständig integriert. Dies ermöglicht eine effiziente Ausführung von Python-Code auf der .NET-Plattform und erleichtert die Erstellung gemischter Anwendungen, die sowohl Python- als auch .NET-Code nutzen.
+Beim Speicherverbrauch ist IronPython in der Regel nicht so effizient wie CPython, da das .NET mehr Overhead haben kann. 
+Durch die Nutzung der Dynamic Language Runtime (DLR) von .NET kann IronPython dynamische Typen und späte Bindungen effizienter verwalten als einige andere Implementierungen, wie CPython. 
 Dies ermöglicht eine enge Integration mit .NET-Bibliotheken und erleichtert die schnelle Entwicklung und Iteration von Code.
-
+\cite{ironPython} \cite{ironPythonGithub} \cite{ironPythonInAction}
+ 
 \newpage
-\subsection{Csharpscript}
-CSharpScript ist eine Bibliothek, die die Ausführung von Csharp-Skripten ermöglicht, und stellt eine flexible Möglichkeit dar, Csharp-Code dynamisch auszuführen. 
-Einer der großen Vorteile von CSharpScript ist, dass es sowohl in gehosteten als auch in eigenständigen Ausführungsmodellen eingesetzt werden kann. 
+\subsection{C\#script}
+C\#Script ist ein Bestandteil der .NET-Plattform. Es ermöglicht die dynamische Ausführung von C\#-Code und ist in den .NET-Bibliotheken und -Laufzeitumgebungen enthalten. 
+Einer der großen Vorteile von C\#Script ist, dass es sowohl in gehosteten als auch in eigenständigen Ausführungsmodellen eingesetzt werden kann. 
 In einem gehosteten Modell kann das Skript innerhalb einer bestehenden Anwendung laufen und Objekte und Funktionen der Anwendung nutzen oder modifizieren. 
 In einem eigenständigen Modell kann das Skript als unabhängige Anwendung ausgeführt werden. 
 Ein weiteres wichtiges Merkmal ist die Kompatibilität mit .NET 5/Core und höheren Versionen. 
 Dies ermöglicht eine bessere Leistung, erweiterte APIs und die Möglichkeit, plattformübergreifende Anwendungen zu entwickeln. 
-Die Bibliothek stellt eine robuste Schnittstelle bereit, die die Integration von Csharp-Skripten in eine Vielzahl von Anwendungsdomänen vereinfacht.
+Die Bibliothek stellt eine  Schnittstelle bereit, die die Integration von C\#-Skripten in eine Vielzahl von Anwendungsdomänen vereinfacht.
 
+\cite{csharpScriptingArcticel}
 
 \newpage 
 \subsection{Javascript}
-JavaScript ist eine äußerst populäre und vielseitige Programmiersprache, die vor allem in der Webentwicklung eingesetzt wird. 
+JavaScript ist eine populäre und vielseitige Programmiersprache, die vor allem in der Webentwicklung eingesetzt wird. 
 Sie zeichnet sich durch ihre Einfachheit und Benutzerfreundlichkeit aus, was sie besonders für Einsteiger attraktiv macht. 
 Die Sprache ist intuitiv aufgebaut, sodass die grundlegenden Konzepte schnell verstanden und angewendet werden können. 
 Ein weiterer Vorteil ist, dass alle modernen Webbrowser eine JavaScript-Engine integriert haben. 
 Dies ermöglicht es Entwicklern, Code unmittelbar im Browser auszuführen und zu testen, ohne zusätzliche Software installieren zu müssen. 
-In Bezug auf die Sicherheit bietet JavaScript zwar einige Mechanismen, wie die Ausführung in einer Sandbox-Umgebung, um den Zugriff auf das Betriebssystem des Nutzers zu beschränken. 
-Allerdings ist es wichtig, die Risiken von Cross-Site-Scripting (XSS) zu berücksichtigen, einer Art von Angriff, der durch schlecht geschützte JavaScript-Code ermöglicht wird. 
-Daher ist es essentiell, bewährte Sicherheitspraktiken anzuwenden, um solche Schwachstellen zu minimieren. 
-Insgesamt bietet JavaScript eine ausgewogene Mischung aus Benutzerfreundlichkeit, Intuitivität und Funktionalität, allerdings müssen Entwickler stets wachsam in Bezug auf Sicherheitsrisiken wie XSS sein.
+In Bezug auf die Sicherheit bietet JavaScript zwar einige Mechanismen, wie die Ausführung in einer Sandbox-Umgebung, um den Zugriff auf das Betriebssystem des Nutzers zu beschränken.  
+Insgesamt bietet JavaScript eine ausgewogene Mischung aus Benutzerfreundlichkeit, Intuitivität und Funktionalität, allerdings müssen Entwickler stets wachsam in Bezug auf Sicherheitsrisiken sein.
+
+Als .NET-Bibliothek wurde sich für "JavaScriptEngineSwitcher" mit "Jint" entschieden.
+"JavaScriptEngineSwitcher" ist eine .NET-Bibliothek, die es ermöglicht, verschiedene JavaScript-Engines zu verwenden, und "Jint" ist eine JavaScript-Engine für .NET.
+
+
+\cite{mDNWebDocs} \cite{owasp}
 
 \newpage
 \section{Kriterienkatalog}
@@ -81,14 +93,40 @@ In diesem Abschnitt betrachten wir diese vier Sprachen im Kontext von .NET unter
 \end{itemize}
 
 \newpage
-Alle Daten wurden auf zwei unterschiedlichen Geräten gemessen. \\
-Die Daten für IronPython und Lua wurden auf \\
-PC A unter folgenden Voraussetzungen  gemessen:
+Alle Daten wurden auf zwei unterschiedlichen Geräten gemessen, da somit die Messungen gleichzeitig durchgeführt werden konnten.
+Weil zwei verschiedene PCs für einen Vergleich genutzt wurden, kann dies die Vergleichbarkeit der Ergebnisse beeinflussen.
+
+Folgende Gründe können dabei ein Faktor sein:
+
+\begin{itemize}
+    \item Hardware-Unterschiede: 
+    \begin{itemize}
+        \item Verschiedene PCs können erhebliche Hardware-Unterschiede aufweisen, darunter Prozessorgeschwindigkeit, Arbeitsspeicher, Grafikkarte, Festplattenkapazität und andere technische Spezifikationen. Diese Unterschiede können die Leistungsfähigkeit und Geschwindigkeit der beiden PCs stark beeinflussen.
+    \end{itemize}
+    \item  Betriebssystem und Software:
+    \begin{itemize}
+        \item Verschiedene PCs können unterschiedliche Betriebssysteme (z.B. Windows, macOS, Linux) und Softwarekonfigurationen aufweisen. Dies kann die Vergleichbarkeit der Ergebnisse beeinflussen, da bestimmte Anwendungen oder Aufgaben auf unterschiedlichen Betriebssystemen möglicherweise unterschiedlich ausgeführt werden.
+    \end{itemize}
+    \item Treiber und Updates:
+    \begin{itemize}
+        \item Die Installation und Aktualisierung von Treibern und Software kann zwischen verschiedenen PCs variieren. Dies kann zu unterschiedlichem Verhalten von Hardwarekomponenten und zur Auswirkung auf die Leistung führen.
+    \end{itemize}
+    \item Alter und Verschleiß:
+    \begin{itemize}
+        \item Ältere PCs könnten aufgrund von Abnutzung und Alterungsprozessen möglicherweise nicht mehr die gleiche Leistung erbringen wie neuere Modelle. Dies kann zu Unterschieden in der Vergleichbarkeit der Ergebnisse führen.
+    \end{itemize}
+    \item Systemkonfiguration: 
+    \begin{itemize}
+        \item Die Konfiguration von Betriebssystemeinstellungen, Energieeinstellungen und Hintergrundanwendungen kann zwischen den beiden PCs variieren, was sich auf die Ressourcennutzung und somit auf die Vergleichbarkeit auswirken kann.
+    \end{itemize}
+\end{itemize}
+
+Die Daten für IronPython und Lua wurden auf den PC von Robert Freiseisen unter folgenden Voraussetzungen  gemessen:
 \begin{itemize}
     \item Gerätspezifikationen:
     \begin{table}[H]
         \center
-        \begin{tabular}{|p{3cm}|p{3cm}|}
+        \begin{tabular}{|p{3cm}|p{4cm}|}
             \hline
             Hersteller & HP \\ \hline
             Gerätname & LAPTOP-5U1879KR \\ \hline
@@ -113,7 +151,7 @@ PC A unter folgenden Voraussetzungen  gemessen:
 \end{itemize}
 
 \newpage
-Die Daten für Csharpscript und Javascript wurden auf \\
+Die Daten für C\#script und Javascript wurden auf den PC von Philipp
 PC B unter folgenden Voraussetzungen  gemessen:
 \begin{itemize}
     \item Gerätspezifikationen:
@@ -148,10 +186,11 @@ PC B unter folgenden Voraussetzungen  gemessen:
 \subsection{Aktivität der Entwicklung}
 
 In der nachfolgenden Tabelle wird dargestellt, wie intensiv die Entwicklerteams an den unterschiedlichen Scriptsprachen arbeiten und ob diese auch die Nuget-Pakete entwickeln.
+Es ist zu beachten, dass die Daten am 30.11.2022 erfasst wurden.
 \begin{table}[H]
     \begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
         \hline
-        Aktivität & IronPython & Lua & CsharpScripting & Javascript\\ \hline
+        Aktivität & IronPython & Lua & C\#Scripting & Javascript\\ \hline
         Commits in den letzten 10 Monaten & 179 & 27 & 702 & 1153 \\ \hline
         Nuget-Packages vom Sprach-entwicklerteam selber &Nein &Nein &Ja & Nein\\ \hline
         Releases in den letzten 10 Monaten & 2 (2.7.1 und 3.4.0-beta1) & 1 (v5.4.4) & v4.0.0 und höher & v4.6.2 (und höher)\\ \hline
@@ -159,46 +198,34 @@ In der nachfolgenden Tabelle wird dargestellt, wie intensiv die Entwicklerteams 
         Unterstützt aktuelle Versionen von .NET & Ja & Ja & Ja & Ja \\ \hline
     \end{tabular}
 \end{table}
-\newpage
-\subsection{Einsetzbarkeit}
-Die folgende Tabelle stellt dar, auf welchen Betriebssystemen die veschiedenen Scriptsprachen mit .NET lauffähig sind.
 
-\begin{table}[H]
-    \center
-    \begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
-        \hline
-        Einsetzbarkeit & IronPython & Lua & CsharpScripting & Javascript\\ \hline
-        Auf Windows lauffähig & Ja & Ja & Ja & Ja \\ \hline
-        Auf MAC lauffähig & Ja & Ja & Ja & Ja \\ \hline
-        Auf Linux lauffähig & Ja & Ja & Ja & Ja \\ \hline
- 
-    \end{tabular}
-\end{table}
+\subsection{Einsetzbarkeit}
+Alle untersuchten Bibliotheken sind auf Windows, MAC und Linux lauffähig.
+
 \newpage
 \subsection{Performance}
-Der Speicherplatzt wurde aus dem Windows-File-Explorer entnommen. 
-Die Geschwindigkeitsmessungen erfolgten mit Dotnet-Benchmark.
+Der Speicherplatz auf dem Laufwerk wurde aus dem Windows-File-Explorer entnommen. 
+Die Geschwindigkeitsmessungen erfolgten mit BenchmarkDotNet. 
+BenchmarkDotNet wird im Abschnitt \hyperref[sec:tech]{Verwendete Technologien} näher erleutert.
 
-DotNetBenchmark ist nicht eine standardisierte Bibliothek oder ein offizielles Werkzeug, aber der Begriff könnte in der Kontext von .NET-Entwicklung für Benchmarking-Tests verwendet werden. In der Regel wird BenchmarkDotNet als die vorherrschende Bibliothek für das Benchmarking in der .NET-Umgebung angesehen. Es ermöglicht Entwicklern, die Leistung von .NET-Code einfach und genau zu messen. 
-Mit BenchmarkDotNet können Microbenchmarks durchgeführt werden, die sehr spezifische Aspekte des Codes testen, wie zum Beispiel die Ausführungszeit einer Methode.
-Als eine einfache Anwendung wird ein Programm genommen, dass eine Funktion aufruft, welche 42 zurück gibt 
-und dies anschließen auf die Konsole ausgibt.
-\begin{table}[H]
+IronPython und NLua müssen externe Runtimes (für Python bzw. Lua) in die .NET-Umgebung integrieren, was zu zusätzlichem Overhead und Speicherbedarf führt. 
+Im Gegensatz dazu verwenden C\#Script und JavaScriptEngineSwitcher die bereits in .NET integrierte C\#-Sprache bzw. die .NET Common Language Runtime, was einen effizienteren Speicherverbrauch ermöglicht.
+ 
+\begin{table}[H] 
     \begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
         \hline
-        Performance & IronPython & Lua & CsharpScripting & Javascript\\ \hline
+        Performance & IronPython & Lua & C\#Scripting & Javascript\\ \hline
         Speicher einer einfachen Anwendung & 13 MB & 7.3 MB & 168 KB & 416 KB  \\ \hline
         Durchnittliche Laufzeit einer einfachen Anwendung & 137.118 $\mu$s & 8.088 $\mu$s & 39.59 ms & 128.14 ms\\ \hline
         Durchnittliche Laufzeit einer Additionsfunktion & 2340.688 $\mu$s & 10.053 $\mu$s &39.59 ms &  29.77 ms \\ \hline
-        Durchnittliche Laufzeit von Übergabe eines .NET-Objekts & 9054.007 $\mu$s & 7548.497 $\mu$s &  66.72 ms & 46.27  \\ \hline
+        Durchnittliche Laufzeit von Übergabe eines .NET-Objekts & 9054.007 $\mu$s & 7548.497 $\mu$s &  66.72 ms & 46.27 ms  \\ \hline
     \end{tabular}
 \end{table}
 
 \newpage
-Es folgen nun die Resultate von Dotnet-Benchmark. \\
+Es folgen nun die Resultate von BenchmarkDotNet und der ausgeführte Code.\\
 
 Für:
-
 
 Lua und IronPython
      \begin{table}[H]
@@ -315,22 +342,22 @@ Lua und IronPython
 \end{lstlisting}
 
 \newpage
-Csharpscript
+C\#script
         \begin{table}[H]
             \begin{tabular}{|p{3.5cm}|p{3cm}|p{3cm}|p{3cm}|}
             \hline
                 Method & Mean & Error & StdDev \\ \hline
-                TestCSharpSimple & 39.59 ms & 0.354 ms & 0.331 ms \\ \hline
-                TestCSharpSum & 39.56 ms & 0.321 ms & 0.301 ms \\ \hline
-                TestCSharp-
+                TestCsharpSimple & 39.59 ms & 0.354 ms & 0.331 ms \\ \hline
+                TestCsharpSum & 39.56 ms & 0.321 ms & 0.301 ms \\ \hline
+                TestCsharp-
                 Objects & 66.72 ms & 0.875 ms & 0.819 ms \\ \hline
             \end{tabular}
         \end{table}
 
-        \begin{lstlisting}[language={[Sharp]C}, caption=CsharpScriptingTestMethods, label=lst:imp:cscm]
+        \begin{lstlisting}[language={[Sharp]C}, caption=\#ScriptingTestMethods, label=lst:imp:cscm]
             public static async void ReturnNumber()
         {
-            var state = await CSharpScript.RunAsync("return 42;");
+            var state = await CSharp#Script.RunAsync("return 42;");
             Console.WriteLine(state.ReturnValue);
         }
         public static async void MySum()
@@ -385,7 +412,6 @@ Javascript
                 engine.SetVariableValue("student", student);           
             }
         \end{lstlisting}
-    
 
 
 \newpage
@@ -396,7 +422,7 @@ Die Informationen wurden aus den offizellen Webseiten der Nuget-Pakete entnommen
 \begin{table}[H]
     \begin{tabular}{|p{3cm}|p{3cm}|p{3cm}|p{3cm}|p{3cm}|}
         \hline
-        Funktion & IronPython & Lua & CsharpScripting & Javascript\\ \hline
+        Funktion & IronPython & Lua & C\#Scripting & Javascript\\ \hline
         Kann auf .NET Variablen zugreifen & Ja & Ja & Ja & Ja \\ \hline
         Kann globale Variablen & Ja & Ja & Ja & Ja \\ \hline
         Unterstützt Erweiterungspakete der Scriptsprache & Ja (nicht numpy und pandas!) & Ja & Ja & Ja \\ \hline 
@@ -404,17 +430,10 @@ Die Informationen wurden aus den offizellen Webseiten der Nuget-Pakete entnommen
 \end{table}
 \newpage
 \subsection{Debugging}
-In der nachfolgenden Tabelle ist dargestellt, welche Art des Debugging bei welcher Scriptsprache möglich ist.
+Das Debugging durch die Ausgabe auf der Konsole ist mit allen, in dieser Diplomarbeit untersuchten, Scriptsprachen möglich.
 
-\begin{table}[H]
-    \begin{tabular}{|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
-        \hline
-        Debugging & IronPython & Lua & CsharpScripting & Javascript\\ \hline
-        Debugging durch Ausgabe auf der Konsole & Ja & Ja & Ja & Ja \\ \hline
-        Debugging mit Break Points in Visual Studio & Ja & Nein & Nein & Nein\\ \hline
-        Debugging mit Break Points in Visual Studio Code & Ja & Nein & Nein & Nein \\ \hline
-    \end{tabular}
-\end{table}
+Breakpoints in VisualStudio bzw. in VisualStudio-Code sind nur mit IronPython möglich.
+
 
 Es folgen nun Screenshots, um zu beweisen, dass die Angaben stimmen.
 
@@ -435,27 +454,6 @@ Es folgen nun Screenshots, um zu beweisen, dass die Angaben stimmen.
         \includegraphics[scale=0.5]{pics/IronPythonVSCodeBreakpoint1.png}
         \caption{IronPython-VSCode-Breakpoint1}
         \label{fig:impl:IronPythonVSCodeBreakpoint1}
-    \end{figure}
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics{pics/IronPythonVSCodeBreakpoint2.png}
-        \caption{IronPython-VSCode-Breakpoint2}
-        \label{fig:impl:IronPythonVSCodeBreakpoint2}
-    \end{figure}
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[scale=0.5]{pics/IronPythonVSCodeBreakpoint1.png}
-        \caption{IronPython-VSCode-Breakpoint1}
-        \label{fig:impl:IronPythonVSCodeBreakpoint1}
-    \end{figure}
-
-    \begin{figure}[H]
-        \centering
-        \includegraphics[scale=0.5]{pics/IronPythonVSBreakpoint1.png}
-        \caption{IronPython-VS-Breakpoint1}
-        \label{fig:impl:IronPythonVSBreakpoint1}
     \end{figure}
 
     \begin{figure}[H]
