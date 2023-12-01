@@ -245,68 +245,33 @@ Lua und IronPython
             \end{tabular}
     \end{table}
 \newpage
-    Der Code für die Methoden von IronPython:
-        \begin{lstlisting}[language={[Sharp]C}, caption=IronPythonTestMethods, label= label=lst:imp:pym]
-            private readonly ScriptEngine engine = Python.CreateEngine();
-            [Benchmark]
-            public void TestIronPython() => IronPythonSimple();
-            [Benchmark]
-            public void TestIronPythonSum() => IronPythonSum();
-            [Benchmark]
-            public void TestIronPythonPassDotNetObjectsAndCallFunction() => IronPythonPassDotNetObjectsAndCallFunction();
-           
-            #endregion
-        
-            private readonly Lua state = new Lua();
-            #region Lua
-            [Benchmark]
-            public void TestLua() => LuaSimple();
-            [Benchmark]
-            public void TestLuaSum() => LuaSum();
-            [Benchmark]
-            public void TestLuaPassDotNetObjectsAndCallFunction() => LuaPassDotNetObjectAndCallFunction();
-            #endregion
-        
-            #region IronPythonMethods
-            public void IronPythonSimple()
-            {
-                var scope = engine.CreateScope();
-                var source = engine.CreateScriptSourceFromString("def fun():\r\n\treturn 42\r\n\r\n\r\ntest = fun()");
-                source.Execute(scope);
-                var test = scope.GetVariable("test");
-                Console.WriteLine(test);
-            }
-        
-            public void IronPythonSum()
-            {
-                var scope = engine.CreateScope();
-                var source = engine.CreateScriptSourceFromString("def sum(x,y):\r\n\treturn x+y\n\r\n\r\rresult = sum(3,3)");
-                source.Execute(scope);
-                var result = scope.GetVariable("result");
-                Console.WriteLine(result);
-            }
-        
-            public void IronPythonPassDotNetObjectsAndCallFunction() 
-            {
-                var scope = engine.CreateScope();
-                var obj = new SomeClass();
-                scope.SetVariable("obj", obj);
-                var source = engine.CreateScriptSourceFromString(SetPythonScript());
-                source.Execute(scope);
-                var result = scope.GetVariable("result");
-                Console.WriteLine(result);
-            }
-        
-            private static string SetPythonScript()
-            {
-                string s = "";
-                s += "import clr" + "\r\n";
-                s += "result=obj.Func1() " + "\r\n";
-                return s;
-            }
-        
-        \end{lstlisting}
+Der Code für die Methoden von IronPython demonstriert die Integration von IronPython in eine C\#-Anwendung und umfasst Benchmark-Tests für verschiedene Szenarien. Hier ist eine Zusammenfassung des Codes:
 
+Der Code beginnt mit der Initialisierung einer IronPython-Skript-Engine (engine) und definiert dann drei Methoden für verschiedene Benchmark-Szenarien:
+\begin{itemize}
+    \item IronPythonSimple:
+    \begin{itemize}
+        \item Diese Methode erstellt einen Skriptbereich (scope) und eine Skriptquelle (source) mithilfe der IronPython-Skript-Engine.
+        \item Das IronPython-Skript in der Methode definiert eine Funktion (fun), die den Wert 42 zurückgibt, und ruft diese Funktion dann auf. Das Ergebnis wird in der Konsole ausgegeben.
+    \end{itemize}
+    \item IronPythonSum:
+    \begin{itemize}
+        \item  Diese Methode führt ein weiteres IronPython-Skript aus, das eine Summenfunktion definiert und die Summe von 3 und 3 berechnet. Das Ergebnis wird ebenfalls in der Konsole ausgegeben.
+    \end{itemize}
+    \item IronPythonPassDotNetObjectsAndCallFunction:
+    \begin{itemize}
+        \item Diese Methode zeigt, wie man ein .NET-Objekt (SomeClass) an ein IronPython-Skript übergibt und eine Funktion (Func1) darauf aufruft.
+        Hierzu wird die Methode 'SetPythonScript' verwenden.
+        Ein Skriptbereich wird erstellt, das .NET-Objekt wird dem Skriptbereich zugeordnet, und dann wird das Skript ausgeführt. Das Ergebnis wird in der Konsole ausgegeben.
+    \end{itemize}
+    \item SetPythonScript:
+    \begin{itemize}
+        \item Diese Methode erstellt ein Python-Skript in Form eines Strings. Das Skript importiert die Common Language Runtime (clr) und ruft die Methode Func1() des übergebenen .NET-Objekts auf.
+    \end{itemize}
+
+\end{itemize}
+Drei Benchmark-Methoden (TestIronPython, TestIronPythonSum, TestIronPythonPassDotNetObjectsAndCallFunction) sind vorhanden und rufen die entsprechenden IronPython-Methoden auf. Diese Benchmark-Methoden sind mit dem [Benchmark]-Attribut versehen und dienen zur Leistungsmessung.
+    
 
 \newpage
  Der Code für die Methoden von NLua:
