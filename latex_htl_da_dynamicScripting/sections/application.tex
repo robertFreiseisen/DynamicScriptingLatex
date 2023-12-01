@@ -633,55 +633,47 @@ Wenn eine Berrechnung erfolgt, werden im GradeCalculator alle benötigen Daten v
     \label{fig:impl:Logic}
 \end{figure}
 \newpage
-Es folgt nun der Code für den GradeCalculator: 
+Es folgen nun Codeausschnitte für den GradeCalculator: 
 
 \begin{lstlisting}[language={[Sharp]C}, caption=Code for loading data for Calculation, label=lst:imp:calc]
-    public async Task<List<Grade>> CalculateKeysForClassAndSubject(int schoolClassId, int subject)
+                 
+    var result = new List<Grade>();
+
+    foreach (var item in grades.DistinctBy(g => g.StudentId).Select(g => g.StudentId))
     {
-            var grades = await context.Grades
-                .Include(g => g.Subject)
-                .Include(g => g.Student)
-                .Where(g => g.SubjectId == subject && g.Student!.SchoolClassId == schoolClassId)
-                .ToListAsync();
+        var student = context.Students.Single(s => s.Id == item);
+        var gradesForCalc =  grades.Where(g => g.StudentId == student.Id).ToList();
+        // Run Script for one student
+        var gradeForStudent = await this.RunScriptAsync(key, gradesForCalc, student);
+        gradeForStudent.TeacherId = key.TeacherId;
+        gradeForStudent.StudentId = item;
+        gradeForStudent.SubjectId = key.SubjectId;
+        gradeForStudent.GradeKindId = 1;
+        result.Add(gradeForStudent);
+    }
 
-            if (grades == null || grades.Count() == 0)
-            {
-                return new List<Grade>();
-            }
+    return result;
 
-            var schoolClass = await context.SchoolClasses.SingleAsync(sc => sc.Id == schoolClassId);
+\end{lstlisting}
 
-            var g1 = grades.First();
-            var key = await context.GradeKeys
-                .SingleOrDefaultAsync(k => k.SubjectId == subject && k.TeacherId == g1.TeacherId && k.SchoolClasses.Contains(schoolClass));
-
-            if(key == null)
-            {
-                throw new NullReferenceException("No Key found");
-            }
-                
-            var result = new List<Grade>();
-
-            foreach (var item in grades.DistinctBy(g => g.StudentId).Select(g => g.StudentId))
-            {
-                var student = context.Students.Single(s => s.Id == item);
-                var gradesForCalc =  grades.Where(g => g.StudentId == student.Id).ToList();
-                // Run Script for one student
-                var gradeForStudent = await this.RunScriptAsync(key, 
-                                                   gradesForCalc, 
-                                                   student);
-                gradeForStudent.TeacherId = key.TeacherId;
-                gradeForStudent.StudentId = item;
-                gradeForStudent.SubjectId = key.SubjectId;
-                gradeForStudent.GradeKindId = 1;
-                result.Add(gradeForStudent);
-            }
-
-            return result;
-        }
+Der oben stehende Codeausschnitt verarbeitet Noteninformationen für verschiedene Schüler/innen. 
+Zunächst wird eine leere Liste namens "result" erstellt, die dazu dient, die verarbeiteten Noten für 
+jeden Schüler zu speichern. Der Code verwendet eine Foreach-Schleife, um eindeutige Student-IDs aus 
+der Liste "grades" zu extrahieren. Dies dient dazu jede/n Schüler/in eindeutig identifizieren zu können.
+Für jede eindeutige Student-ID werden dann die zugehörigen Noteninformationen aus der Datenbank abgerufen.
+\\\\
+Anschließend wird das in unserer Anwendung hochgeladene Skript, mit den gesammelten Noteninformationen 
+und dem/der zugehörige/n Schüler/in ausgeführt. Das Ergebnis, repräsentiert durch die Variable "gradeForStudent", 
+wird dann um zusätzliche Informationen ergänzt. Dazu gehören die Lehrer-ID, die Student-ID, 
+die Fach-ID und die Art der Note.
+\\\\
+Schließlich wird das Ergebnisobjekt zu der Liste "result" hinzugefügt. Der gesamte Prozess wird für 
+jede eindeutige Student-ID wiederholt. Am Ende gibt die Funktion die Liste "result" zurück, die die 
+verarbeiteten Noteninformationen für alle eindeutigen Studenten enthält.
 
         
-        /// Handels the script type
+\newpage
+\begin{lstlisting}[language={[Sharp]C}, caption=Code for handing the Script-Type, label=lst:imp:calc]               
         private async Task<Grade> RunScriptAsync(GradeKey gradeKey, List<Grade> grades, Student student)
         {
             var result = new Grade();
@@ -719,6 +711,21 @@ Es folgt nun der Code für den GradeCalculator:
             return result;
         }
 \end{lstlisting}
+
+Dieser Code definiert eine asynchrone Methode namens "RunScriptAsync", die ein hochgeladenes Skript, basierend 
+auf dem übergebenen "gradeKey" ausführt. Zunächst wird ein neues Grade-Objekt namens "result" erstellt, das 
+das Ergebnis des Skripts darstellt. Dieses Objekt wird dann mit dem/der zugehörige/n Schüler/in verbunden.
+\\\\
+Der Code beinhaltet eine Switch-Anweisung, um nach dem im "gradeKey" angegebenen Skripttyp zu unterscheiden. 
+Je nach Skripttyp, was wir mit der Endung des Skripts (z.B skript.js) feststellen, wird der zugehörige 
+Skriptrunner aufgerufen. Das Skript wird mit den übergebenen Noteninformationen (grades) und dem 
+zugehörigen Schüler ausgeführt.
+\\\\
+Abschließend wird dem result-Objekt der Name des Schülers und das aktuelle Datum als Notiz hinzugefügt. 
+Das modifizierte result-Objekt wird dann von der Methode zurückgegeben.
+\\\\
+Wenn der Skripttyp nicht erkannt wird, wird "result" auf null gesetzt. Nach dem Skriptlauf wird überprüft, 
+ob das Ergebnis null ist. Falls ja, wird eine Exception mit der Meldung "Error in Calculation" ausgelöst. 
 
 \newpage
 Im folgenden Abschnitt  werden einige Code-Ausschnitte betrachtet, die zeigen, wie man solche Datei-Übergaben in den untersuchten Scriptsprachen realisieren kann. 
@@ -884,6 +891,29 @@ Wenn es sich um einen Javascript-Code handelt wird folgende Methode aufgerufen:
         }
     }
 \end{lstlisting}
+
+Die Klasse „JavascriptRunner“ stellt eine Implementierung für das Ausführen von JavaScript-Skripten 
+in C-Sharp bereit. Die Methode „RunScript“ verwendet die Jint-Bibliothek, um JavaScript-Code auszuführen. 
+Hier wird ein JavaScript-Engine-Objekt erstellt, das die Ausführung von JavaScript-Code ermöglicht.
+\\\\
+Der Code im JavaScript-Block definiert eine console.log-Funktion, die die Ausgaben in einer 
+Liste (consoleOutput) speichert. Die verwendeten Notenarten (key.UsedKinds) und Noteninformationen (grades) 
+werden als JSON-Strings an das JavaScript übergeben.
+\\\\
+Nach der Ausführung des Skripts wird die Ausgabe der console.log-Anweisungen als JSON-String zurückgegeben 
+und dann in eine Liste von Strings (logs) konvertiert. Diese Ausgaben werden durch die 
+Methode „DisplayOutput“ angezeigt.
+\\\\
+Der Rückgabewert des Skripts wird aus der JavaScript-Variable "result" extrahiert und in das Grade-Objekt 
+übertragen. Falls während der Ausführung des Skripts ein Fehler auftritt, wird das Grade-Objekt auf 
+die Standardwerte zurückgesetzt.
+\\\\
+Insgesamt ermöglicht die Klasse eine dynamische Ausführung von JavaScript-Code, wobei die Ein- und Ausgaben 
+zwischen dem C-Sharp-Code und dem JavaScript-Code über JSON-Serialisierung und eine 
+virtuelle Konsole kommuniziert werden.
+
+
+
 \newpage
 Als Beispiel hierfür ein Skript:
 \begin{lstlisting}[language={JavaScript},caption=Javascript-Skript,label=lst:impl:jstest]
@@ -919,6 +949,17 @@ function calculate() {
 var result = calculate();
 console.log('Wert: ' +grades[1].GradeKind.Name);
 \end{lstlisting}
+
+Der JavaScript-Code nimmt zwei JSON-Strings (gradesList und gradeKindsList), die von unserer .NET-Anwendung 
+zur Laufzeit übergeben wurden, und wandelt sie in JavaScript-Objekte (grades und gradeKinds) 
+mithilfe der JSON.parse-Funktion um. Anschließend wird eine Funktion namens „calculate“ definiert, 
+die die durchschnittliche Note basierend auf verschiedenen Notenarten (MAK, TEST, HOMEWORK) berechnet. 
+Die Anzahl der Noten und ihre Summen werden für jeden Notentyp separat gezählt, und dann wird der 
+Durchschnitt über alle Notenarten berechnet.
+\\\\
+Schließlich wird die Funktion „calculate“ aufgerufen, und das Ergebnis in der Variable „result“ gespeichert. 
+Diese Variable wird nach Durchlauf des Skripts wieder von unserer .NET-Anwendung ausgelesen und 
+zur Weiterverarbeitung der Notenberechnung verwendet.
 
 
 \newpage
