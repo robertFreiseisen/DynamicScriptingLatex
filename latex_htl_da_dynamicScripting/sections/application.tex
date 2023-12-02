@@ -405,9 +405,31 @@ Die API ist in Controllern pro Entität aufgebaut:
 \end{lstlisting}
 
 \newpage
-Damit der Aufbau der .NET-Solution noch klarer wird ist nun die YAML-Datei dargestellt:
+Damit der Aufbau der .NET-Solution noch klarer wird, wird nun die YAML-Datei näher erklärt:
 
-\lstinputlisting[style=yaml]{input-files/docker-compose.yml}
+Die docker-compose-Datei definiert einen mehrstufigen Docker-Anwendungsstapel mit drei Diensten: 
+grades_db, grades_backend und grades_web.
+
+grades_db Service: 
+    \begin{itemize}
+        \item Verwendet das offizielle PostgreSQL Docker-Image.
+        \item Öffnet den Port 5432 auf dem Host-Rechner.
+        \item Definiert Umgebungsvariablen für die Konfiguration der PostgreSQL-Datenbank Passwort, Benutzer und Datenbankname.
+        \item Enthält einen Health-Check, um sicherzustellen, dass die Datenbank bereit ist, bevor die abhängigen Dienste gestartet werden.
+    \end{itemize}
+grades_backend Service:
+    \begin{itemize}
+        \item Verwendet ein benutzerdefiniertes Docker-Image mit dem Namen grades_backend.
+        \item Öffnet den Port 5000 auf dem Host-Rechner und leitet den Datenverkehr zum Port 80 im Container weiter.
+        \item Hängt vom Dienst grades_db ab und startet nur, wenn der Dienst grades_db rund läuft.
+    \end{itemize}
+grades_web Service:
+    \begin{itemize}
+        \item Bindet ein Volumen vom Host-Rechner /Client zum Container.
+        \item Öffnet den Port 8080 auf dem Host-Rechner und leitet den Datenverkehr zum Port 80 im Container weiter.
+        \item Hängt vom Dienst grades_backend ab.
+    \end{itemize}
+
 \newpage
 
 Die verwendeten Entitäten und ihre Relationen im Backend sind in der folgenden Abbildung dargestellt.
