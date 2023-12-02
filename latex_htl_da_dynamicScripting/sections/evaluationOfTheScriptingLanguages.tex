@@ -244,30 +244,21 @@ Lua und IronPython
                 AndCallFunction & 9,054.007 $\mu$s & 471.9551 $\mu$s & 1,346.514 $\mu$s \\ \hline
             \end{tabular}
     \end{table}
-\newpage
-    Der Code für die Methoden von IronPython:
-        \begin{lstlisting}[language={[Sharp]C}, caption=IronPythonTestMethods, label= label=lst:imp:pym]
-            private readonly ScriptEngine engine = Python.CreateEngine();
-            [Benchmark]
-            public void TestIronPython() => IronPythonSimple();
-            [Benchmark]
-            public void TestIronPythonSum() => IronPythonSum();
-            [Benchmark]
-            public void TestIronPythonPassDotNetObjectsAndCallFunction() => IronPythonPassDotNetObjectsAndCallFunction();
-           
-            #endregion
-        
-            private readonly Lua state = new Lua();
-            #region Lua
-            [Benchmark]
-            public void TestLua() => LuaSimple();
-            [Benchmark]
-            public void TestLuaSum() => LuaSum();
-            [Benchmark]
-            public void TestLuaPassDotNetObjectsAndCallFunction() => LuaPassDotNetObjectAndCallFunction();
-            #endregion
-        
-            #region IronPythonMethods
+Der Code für die Methoden von IronPython demonstriert die Integration von IronPython in eine C\#-Anwendung und umfasst Benchmark-Tests für verschiedene Szenarien. Hier ist eine Zusammenfassung des Codes:
+
+Der Code beginnt mit der Initialisierung einer IronPython-Skript-Engine (engine) und definiert dann drei Methoden für verschiedene Benchmark-Szenarien:
+
+\begin{lstlisting}[language={[Sharp]C}, caption=IronPythonCreateEnginge, label=lst:imp:ipyEngine]
+    private readonly ScriptEngine engine = Python.CreateEngine();
+\end{lstlisting}
+    
+
+\begin{itemize}
+    \item IronPythonSimple:
+    \begin{itemize}
+        \item Diese Methode erstellt einen Skriptbereich (scope) und eine Skriptquelle (source) mithilfe der IronPython-Skript-Engine.
+        \item Das IronPython-Skript in der Methode definiert eine Funktion (fun), die den Wert 42 zurückgibt, und ruft diese Funktion dann auf. Das Ergebnis wird in der Konsole ausgegeben.
+        \begin{lstlisting}[language={[Sharp]C}, caption=IronPythonSimple, label=lst:imp:ipySimple]    
             public void IronPythonSimple()
             {
                 var scope = engine.CreateScope();
@@ -276,16 +267,37 @@ Lua und IronPython
                 var test = scope.GetVariable("test");
                 Console.WriteLine(test);
             }
-        
-            public void IronPythonSum()
+        \end{lstlisting}
+    \end{itemize}
+    \item IronPythonSum:
+    \begin{itemize}
+        \item  Diese Methode führt ein weiteres IronPython-Skript aus, das eine Summenfunktion definiert und die Summe von 3 und 3 berechnet. Das Ergebnis wird ebenfalls in der Konsole ausgegeben.
+        \begin{lstlisting}[language={[Sharp]C}, caption=IronPythonSum, label=lst:imp:ipySum]
+
+        public void IronPythonSum()
+        {
+            var scope = engine.CreateScope();
+            var source = engine.CreateScriptSourceFromString("def sum(x,y):\r\n\treturn x+y\n\r\n\r\rresult = sum(3,3)");
+            source.Execute(scope);
+            var result = scope.GetVariable("result");
+            Console.WriteLine(result);
+        }
+        \end{lstlisting}
+    \end{itemize}
+    \item IronPythonPassDotNetObjectsAndCallFunction:
+    \begin{itemize}
+        \item Diese Methode zeigt, wie man ein .NET-Objekt (SomeClass) an ein IronPython-Skript übergibt und eine Funktion (Func1) darauf aufruft.
+        Hierzu wird die Methode 'SetPythonScript' verwenden.
+        Ein Skriptbereich wird erstellt, das .NET-Objekt wird dem Skriptbereich zugeordnet, und dann wird das Skript ausgeführt. Das Ergebnis wird in der Konsole ausgegeben.
+        \begin{lstlisting}[language={[Sharp]C}, caption=IronPythonObject, label=lst:imp:ipyObject]
+            private static string SetPythonScript()
             {
-                var scope = engine.CreateScope();
-                var source = engine.CreateScriptSourceFromString("def sum(x,y):\r\n\treturn x+y\n\r\n\r\rresult = sum(3,3)");
-                source.Execute(scope);
-                var result = scope.GetVariable("result");
-                Console.WriteLine(result);
+                string s = "";
+                s += "import clr" + "\r\n";
+                s += "result=obj.Func1() " + "\r\n";
+                return s;
             }
-        
+
             public void IronPythonPassDotNetObjectsAndCallFunction() 
             {
                 var scope = engine.CreateScope();
@@ -296,22 +308,64 @@ Lua und IronPython
                 var result = scope.GetVariable("result");
                 Console.WriteLine(result);
             }
-        
-            private static string SetPythonScript()
-            {
-                string s = "";
-                s += "import clr" + "\r\n";
-                s += "result=obj.Func1() " + "\r\n";
-                return s;
-            }
-        
         \end{lstlisting}
-
-
+        
+    \end{itemize}
+\end{itemize}
 \newpage
- Der Code für die Methoden von NLua:
-\begin{lstlisting}[language={[Sharp]C}, caption=NluaTestMethods, label=lst:imp:nluam]
+Drei Benchmark-Methoden (TestIronPython, TestIronPythonSum, TestIronPythonPassDotNetObjectsAndCallFunction) sind vorhanden und rufen die entsprechenden IronPython-Methoden auf. Diese Benchmark-Methoden sind mit dem [Benchmark]-Attribut versehen und dienen zur Leistungsmessung.
+\begin{lstlisting}[language={[Sharp]C}, caption=IronPythonBenchmark, label=lst:imp:ipyBench]
+
+[Benchmark]
+public void TestIronPython() => IronPythonSimple();
+[Benchmark]
+public void TestIronPythonSum() => IronPythonSum();
+[Benchmark]
+public void TestIronPythonPassDotNetObjectsAndCallFunction() => IronPythonPassDotNetObjectsAndCallFunction();
+
+\end{lstlisting}
+Der Code für die Methoden von NLua zeigt die Integration der Lua-Skriptsprache in eine C\#-Anwendung, wobei Benchmark-Tests verschiedene Szenarien demonstrieren.
+
+Die Lua-Engine wird durch die Instanz state initialisiert. 
+\begin{lstlisting}[language={[Sharp]C}, caption=NLuaState, label=lst:imp:nLuaState]
     private readonly Lua state = new Lua();
+\end{lstlisting}
+
+
+Drei Benchmark-Methoden, TestLua, TestLuaSum und TestLuaPassDotNetObjectsAndCallFunction, sind vorhanden und dienen der Leistungsbewertung.
+
+\begin{lstlisting}[language={[Sharp]C}, caption=NLuaBenchmark, label=lst:imp:NLuaBenchmark]
+
+  
+[Benchmark]
+public void TestLua() => LuaSimple();
+[Benchmark]
+public void TestLuaSum() => LuaSum();
+[Benchmark]
+public void TestLuaPassDotNetObjectsAndCallFunction() => LuaPassDotNetObjectAndCallFunction();        
+\end{lstlisting}
+Die Methode LuaSimple führt ein einfaches Lua-Skript aus, das eine Funktion (fun) definiert, welche den Wert 42 zurückgibt. Das Ergebnis wird in der Konsole ausgegeben.
+\begin{lstlisting}[language={[Sharp]C}, caption=NLuaSimple, label=lst:imp:NLuaSimple]
+    public void LuaSimple()
+    {
+        state.DoString("function fun() \r\n\t  return 42 \r\n end \r\n test=fun()");
+        var test = state["test"];
+        Console.WriteLine(test);
+    }
+\end{lstlisting}
+Die Methode LuaSum führt ein Lua-Skript aus, das eine Summenfunktion (sum) definiert und die Summe von 3 und 3 berechnet. Das Ergebnis wird ebenfalls in der Konsole ausgegeben.
+\begin{lstlisting}[language={[Sharp]C}, caption=NLuaSum, label=lst:imp:NLuaSum]
+    public void LuaSum()
+    {
+        state.DoString("function sum(x,y) \r\n\t return x+y \r\n end \r\n result=sum(3,3)");
+        var result = state["result"];
+        Console.WriteLine(result);
+    }
+\end{lstlisting}
+
+Die Methode LuaPassDotNetObjectAndCallFunction zeigt die Übergabe eines .NET-Objekts (SomeClass) an ein Lua-Skript. Dabei wird das .NET-Objekt als Variable dem Lua-Skript zugewiesen, und dann wird das Skript ausgeführt, um die Methode Func1() des .NET-Objekts aufzurufen. Das Ergebnis wird in der Konsole ausgegeben.
+
+\begin{lstlisting}[language={[Sharp]C}, caption=NLuaPassObjects, label=lst:imp:nluaPassObj]
 
     
     public void LuaPassDotNetObjectAndCallFunction()
@@ -323,23 +377,9 @@ Lua und IronPython
         Console.WriteLine(result);
     }
 
-    public void LuaSimple()
-    {
-        state.DoString("function fun() \r\n\t  return 42 \r\n end \r\n test=fun()");
-        var test = state["test"];
-        Console.WriteLine(test);
-    }
-
-    public void LuaSum()
-    {
-
-
-        state.DoString("function sum(x,y) \r\n\t return x+y \r\n end \r\n result=sum(3,3)");
-        var result = state["result"];
-        Console.WriteLine(result);
-    }
-    
 \end{lstlisting}
+
+Durch die Verwendung von DoString in den Lua-Methoden wird Lua-Code direkt in der C\#-Anwendung ausgeführt.
 
 \newpage
 C\#script
@@ -354,17 +394,72 @@ C\#script
             \end{tabular}
         \end{table}
 
-        \begin{lstlisting}[language={[Sharp]C}, caption=\#ScriptingTestMethods, label=lst:imp:cscm]
+Der Code für C\#-script besteht aus drei Klassen: Student, Globals, und C \textunderscore SharpTesting, sowie einigen Benchmark-Methoden.
+Die Student-Klasse repräsentiert einen Studenten mit den privaten Feldern name und age, die im Konstruktor initialisiert werden.
+Die Globals-Klasse enthält ein öffentliches Feld student vom Typ Student? (nullable), was bedeutet, dass es auch den Wert null haben kann. Dies ermöglicht eine Verwendung in verschiedenen Teilen des Codes.
+
+\begin{lstlisting}[language={[Sharp]C}, caption=C\#Scripting Klassen, label=lst:imp:cscm]
+    public class Student
+    {       
+        private string name;
+        private int age;
+
+        public Student(string name, int age)
+        {
+            this.name = name;
+            this.age = age;
+        }
+    }
+
+    public class Globals
+    {
+        public Student? student;
+    }
+\end{lstlisting}
+
+
+Die C \textunderscore SharpTesting-Klasse enthält drei Benchmark-Methoden, die mit der BenchmarkDotNet-Bibliothek verwendet werden können. 
+\begin{lstlisting}[language={[Sharp]C}, caption=C\#Scripting Benchmark, label=lst:imp:cscBench]
+    [Benchmark]
+    public void TestC \textunderscore Sharp \textunderscore Simple() => ReturnNumber();
+
+    [Benchmark]
+    public void TestC \textunderscore Sharp \textunderscore Sum() => MySum();
+
+    [Benchmark]
+    public void TestC \textunderscore Sharp \textunderscore Objects() => DotNetObject();
+\end{lstlisting}
+ 
+Jede Methode ruft eine unterschiedliche C\#-Funktion auf und gibt das Ergebnis aus:
+\begin{itemize}
+    \item TestC \textunderscore Sharp \textunderscore Simple: Ruft die Methode ReturnNumber() auf, die asynchron ein C\#-Skript ausführt und den Wert 42 zurückgibt.
+    \begin{itemize}
+        \item TestC \textunderscore Sharp \textunderscore Simple: Ruft die Methode ReturnNumber() auf, die asynchron ein C\#-Skript ausführt und den Wert 42 zurückgibt.
+        \begin{lstlisting}[language={[Sharp]C}, caption=C\#Scripting ReturnNumber, label=lst:imp:cscnumber]
             public static async void ReturnNumber()
-        {
-            var state = await CSharp#Script.RunAsync("return 42;");
-            Console.WriteLine(state.ReturnValue);
-        }
-        public static async void MySum()
-        {
-            var state = await CSharpScript.RunAsync("return 3 + 3;");
-            Console.WriteLine(state.ReturnValue);
-        }
+            {
+                var state = await CSharpScript.RunAsync("return 42;");
+                Console.WriteLine(state.ReturnValue);
+            }
+        \end{lstlisting}
+    \end{itemize}
+    \item TestC \textunderscore Sharp \textunderscore Sum: Ruft die Methode MySum() auf, die asynchron ein C\#-Skript ausführt und den Wert 6 (Ergebnis von 3 + 3) zurückgibt.
+
+    \begin{itemize}
+        \item 
+        \begin{lstlisting}[language={[Sharp]C}, caption=C\#Scripting MySum, label=lst:imp:cscnumber]
+            public static async void MySum()
+            {
+                var state = await CSharpScript.RunAsync("return 3 + 3;");
+                Console.WriteLine(state.ReturnValue);
+            }
+        \end{lstlisting}
+    \end{itemize}
+    \item TestC \textunderscore Sharp \textunderscore Objects: Ruft die Methode DotNetObject() auf, die asynchron ein C\#-Skript ausführt und dabei eine Instanz der Student-Klasse erstellt und einem Globals-Objekt zuweist. Es fehlt jedoch eine Ausgabe oder Rückgabe, was darauf hinweist, dass diese Methode möglicherweise nicht für Benchmarking-Zwecke geeignet ist.
+    \begin{itemize}
+        \item 
+        \begin{lstlisting}[language={[Sharp]C}, caption=C\#Scripting ReturnNumber, label=lst:imp:cscnumber]
+
         public static async void DotNetObject()
         {
             var obj = new Student("Hans", 18);
@@ -373,7 +468,9 @@ C\#script
             var state = await CSharpScript.RunAsync("", globals: globals);
         }
         \end{lstlisting}
-Javascript
+    \end{itemize}
+\end{itemize}
+ 
      \begin{table}[H]
             \begin{tabular}{|p{3.5cm}|p{3cm}|p{3cm}|p{3cm}|}
             \hline
@@ -385,34 +482,58 @@ Javascript
             \end{tabular}
         \end{table}
 
-        \begin{lstlisting}[language={[Sharp]C}, caption=JavascriptTestMethods, label=lst:imp:jsm]
-            public void JavascriptSimple()
-            {
-                var engine = new JintJsEngine();           
-                engine.Execute(@"
-                                function myFunction() {
-                                    return 42;
-                                }");           
-            }
-            public void JavascriptSum()
-            {
-                var engine = new JintJsEngine();
-    
-                engine.Execute(@"
-                                function mySum(x,y) {
-                                    return x+y;
-                                }
-                                var x = mySum(3,3);");
-            }
-            public void DotNetObjects()
-            {
-                var engine = new JintJsEngine();
-                var obj = new Student("Hans", 18);
-                var student = JsonConvert.SerializeObject(obj);
-                engine.SetVariableValue("student", student);           
-            }
-        \end{lstlisting}
+        Der Code für Javascript ist eine Sammlung von C\#-Methoden, die JavaScript-Code mithilfe der Jint-Bibliothek ausführen. 
 
+Die Klasse enthält drei Benchmark-Methoden: TestJavascriptSimple, TestJavaScriptSum, und TestJavascriptDotNtObjects. Jede Methode ruft eine entsprechende JavaScript-Funktion auf.
+
+\begin{lstlisting}[language={[Sharp]C}, caption=JavaScriptBenchmark, label=lst:imp:jsBench]
+    [Benchmark]
+    public void TestJavascriptSimple() => JavascriptSimple();
+
+    [Benchmark]
+    public void TestJavaScriptSum() => JavascriptSum();
+    [Benchmark]
+    public void TestJavascriptDotNetObjects() => DotNetObjects();
+\end{lstlisting}
+
+Die JavascriptSimple-Methode erstellt eine Instanz des JintJsEngine und führt dann einen einfachen JavaScript-Code aus. Der JavaScript-Code definiert eine Funktion myFunction, die einfach die Zahl 42 zurückgibt.
+\begin{lstlisting}[language={[Sharp]C}, caption=JavascriptSimple, label=lst:imp:jsSimple]
+    
+    public void JavascriptSimple()
+    {
+        var engine = new JintJsEngine();           
+        engine.Execute(@"
+                        function myFunction() {
+                            return 42;
+                        }");           
+    }
+\end{lstlisting}
+
+Die JavascriptSum-Methode erstellt ebenfalls einen JintJsEngine und führt JavaScript-Code aus, der eine Funktion mySum definiert. Diese Funktion akzeptiert zwei Parameter x und y und gibt deren Summe zurück. Der Code ruft dann die Funktion mit den Werten 3 und 3 auf und speichert das Ergebnis in der Variable x.
+
+\begin{lstlisting}[language={[Sharp]C}, caption=JavascriptSum, label=lst:imp:jsSum]
+    public void JavascriptSum()
+    {
+        var engine = new JintJsEngine();
+
+        engine.Execute(@"
+                        function mySum(x,y) {
+                            return x+y;
+                        }
+                        var x = mySum(3,3);");
+    }
+\end{lstlisting}
+Die DotNetObjects-Methode erstellt einen JintJsEngine und erstellt dann eine .NET-Objektinstanz vom Typ Student mit dem Namen "Hans" und einem Alter von 18 Jahren. Diese Objektinstanz wird dann mithilfe von Json.NET in einen JSON-String konvertiert und in der JavaScript-Umgebung mit dem Variablennamen student verfügbar gemacht.
+
+\begin{lstlisting}[language={[Sharp]C}, caption=JavascriptObjects, label=lst:imp:jsObj]
+    public void DotNetObjects()
+    {
+        var engine = new JintJsEngine();
+        var obj = new Student("Hans", 18);
+        var student = JsonConvert.SerializeObject(obj);
+        engine.SetVariableValue("student", student);           
+    }
+\end{lstlisting}
 
 \newpage
 \subsection{Funktionalität}
@@ -428,6 +549,7 @@ Die Informationen wurden aus den offizellen Webseiten der Nuget-Pakete entnommen
         Unterstützt Erweiterungspakete der Scriptsprache & Ja (nicht numpy und pandas!) & Ja & Ja & Ja \\ \hline 
     \end{tabular} 
 \end{table}
+
 \newpage
 \subsection{Debugging}
 Das Debugging durch die Ausgabe auf der Konsole ist mit allen, in dieser Diplomarbeit untersuchten, Scriptsprachen möglich.
