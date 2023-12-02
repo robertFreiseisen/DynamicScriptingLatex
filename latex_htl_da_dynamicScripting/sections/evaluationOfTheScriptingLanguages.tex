@@ -394,17 +394,72 @@ C\#script
             \end{tabular}
         \end{table}
 
-        \begin{lstlisting}[language={[Sharp]C}, caption=\#ScriptingTestMethods, label=lst:imp:cscm]
+Der Code für C\#-script besteht aus drei Klassen: Student, Globals, und C \textunderscore SharpTesting, sowie einigen Benchmark-Methoden.
+Die Student-Klasse repräsentiert einen Studenten mit den privaten Feldern name und age, die im Konstruktor initialisiert werden.
+Die Globals-Klasse enthält ein öffentliches Feld student vom Typ Student? (nullable), was bedeutet, dass es auch den Wert null haben kann. Dies ermöglicht eine Verwendung in verschiedenen Teilen des Codes.
+
+\begin{lstlisting}[language={[Sharp]C}, caption=C\#Scripting Klassen, label=lst:imp:cscm]
+    public class Student
+    {       
+        private string name;
+        private int age;
+
+        public Student(string name, int age)
+        {
+            this.name = name;
+            this.age = age;
+        }
+    }
+
+    public class Globals
+    {
+        public Student? student;
+    }
+\end{lstlisting}
+
+
+Die C \textunderscore SharpTesting-Klasse enthält drei Benchmark-Methoden, die mit der BenchmarkDotNet-Bibliothek verwendet werden können. 
+\begin{lstlisting}[language={[Sharp]C}, caption=C\#Scripting Benchmark, label=lst:imp:cscBench]
+    [Benchmark]
+    public void TestC \textunderscore Sharp \textunderscore Simple() => ReturnNumber();
+
+    [Benchmark]
+    public void TestC \textunderscore Sharp \textunderscore Sum() => MySum();
+
+    [Benchmark]
+    public void TestC \textunderscore Sharp \textunderscore Objects() => DotNetObject();
+\end{lstlisting}
+ 
+Jede Methode ruft eine unterschiedliche C\#-Funktion auf und gibt das Ergebnis aus:
+\begin{itemize}
+    \item TestC \textunderscore Sharp \textunderscore Simple: Ruft die Methode ReturnNumber() auf, die asynchron ein C\#-Skript ausführt und den Wert 42 zurückgibt.
+    \begin{itemize}
+        \item TestC \textunderscore Sharp \textunderscore Simple: Ruft die Methode ReturnNumber() auf, die asynchron ein C\#-Skript ausführt und den Wert 42 zurückgibt.
+        \begin{lstlisting}[language={[Sharp]C}, caption=C\#Scripting ReturnNumber, label=lst:imp:cscnumber]
             public static async void ReturnNumber()
-        {
-            var state = await CSharp#Script.RunAsync("return 42;");
-            Console.WriteLine(state.ReturnValue);
-        }
-        public static async void MySum()
-        {
-            var state = await CSharpScript.RunAsync("return 3 + 3;");
-            Console.WriteLine(state.ReturnValue);
-        }
+            {
+                var state = await CSharpScript.RunAsync("return 42;");
+                Console.WriteLine(state.ReturnValue);
+            }
+        \end{lstlisting}
+    \end{itemize}
+    \item TestC \textunderscore Sharp \textunderscore Sum: Ruft die Methode MySum() auf, die asynchron ein C\#-Skript ausführt und den Wert 6 (Ergebnis von 3 + 3) zurückgibt.
+
+    \begin{itemize}
+        \item 
+        \begin{lstlisting}[language={[Sharp]C}, caption=C\#Scripting MySum, label=lst:imp:cscnumber]
+            public static async void MySum()
+            {
+                var state = await CSharpScript.RunAsync("return 3 + 3;");
+                Console.WriteLine(state.ReturnValue);
+            }
+        \end{lstlisting}
+    \end{itemize}
+    \item TestC \textunderscore Sharp \textunderscore Objects: Ruft die Methode DotNetObject() auf, die asynchron ein C\#-Skript ausführt und dabei eine Instanz der Student-Klasse erstellt und einem Globals-Objekt zuweist. Es fehlt jedoch eine Ausgabe oder Rückgabe, was darauf hinweist, dass diese Methode möglicherweise nicht für Benchmarking-Zwecke geeignet ist.
+    \begin{itemize}
+        \item 
+        \begin{lstlisting}[language={[Sharp]C}, caption=C\#Scripting ReturnNumber, label=lst:imp:cscnumber]
+
         public static async void DotNetObject()
         {
             var obj = new Student("Hans", 18);
@@ -413,6 +468,9 @@ C\#script
             var state = await CSharpScript.RunAsync("", globals: globals);
         }
         \end{lstlisting}
+    \end{itemize}
+\end{itemize}
+ 
      \begin{table}[H]
             \begin{tabular}{|p{3.5cm}|p{3cm}|p{3cm}|p{3cm}|}
             \hline

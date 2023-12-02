@@ -251,14 +251,18 @@ Folgende Code Ausschnitte zeigen diesen Vorgang:
 \end{lstlisting}
 
 \newpage
-\begin{lstlisting}[language={[Sharp]C}, caption=Definitation for Mapping, label=lst:imp:profile]
-    /// <summary>
-    /// Defines the Mapping for Grades and GradeDtos
-    /// </summary>
-    public class GradePofile : Profile
-    {
-        public GradePofile()
-        {
+Es wird ein AutoMapper-Profil mit dem Namen GradeProfile definiert, der die Zuordnungen zwischen verschiedenen Klassen für Noten und Datenübertragungsobjekten festlegt.
+
+Die GradeProfile-Klasse erbt von der Profile-Klasse von AutoMapper und enthält Konfigurationen für die Zuordnung zwischen den Entitäten GradeKind, Grade, und den DTOs GradeKindGetDto, GradeGetDto, sowie GradePostDto.
+
+\begin{itemize}
+    \item GradeKind zu GradeKindGetDto:
+    \begin{itemize}
+        \item Eine Zuordnung für GradeKind zu GradeKindGetDto wird festgelegt.
+        \item Das Id-Feld wird zugeordnet, und die Überprüfung des Konstruktors wird deaktiviert.
+        \item Das Name-Feld wird ebenfalls zugeordnet.
+        \item 
+        \begin{lstlisting}[language={[Sharp]C}, caption=Definitation for Mapping GradeKind, label=lst:imp:profileGradeK]
             /// <summary>
             /// Map from DbGradKind to GradeKindGetDto
             /// </summary>
@@ -275,42 +279,27 @@ Folgende Code Ausschnitte zeigen diesen Vorgang:
                 des => des.Name,
                 opt => opt.MapFrom(src => src.Name)
             );
-            /// <summary>
-            /// DbGrade to GradeGetDto
-            /// </summary>
-            /// <typeparam name="Grade"></typeparam>
-            /// <typeparam name="GradeGetDto"></typeparam>
-            /// <returns></returns>
-            CreateMap<Grade, GradeGetDto>()
-            .ForPath(
-                dest => dest.StudentName,
-                opt => opt.MapFrom(src => src.Student!.Name)
-            )
-            .ForPath(
-                dest => dest.GradeKind,
-                opt => opt.MapFrom(src => src.GradeKind.Name)
-            );
+        \end{lstlisting}
+    \end{itemize}
+    \item Grade zu GradeGetDto:
+    \begin{itemize}
+        \item Es wird eine Zuordnung für Grade zu GradeGetDto konfiguriert.
+        \item Das StudentName-Feld im Ziel wird aus dem Name-Feld des zugehörigen Schülers abgeleitet.
+        \item Das GradeKind-Feld wird aus dem Name-Feld der zugehörigen GradeKind-Entität übernommen.
+    \end{itemize}
+    \newpage
+    \item GradePostDto zu Grade:
+    \begin{itemize}
+        \item Die Zuordnung für das Erstellen eines neuen Grades wird definiert.
+        \item Die Überprüfung des Konstruktors wird deaktiviert.
+        \item Das Id-Feld wird auf 0 gesetzt, um ein neues Objekt zu kennzeichnen.
+        \item Das GradeKind-Feld wird aus dem Name-Feld des DTOs übernommen.
+    \end{itemize}
+\end{itemize}
 
-
-            /// <summary>
-            /// GradePostDto to Grade
-            /// </summary>
-            /// <typeparam name="GradePostDto"></typeparam>
-            /// <typeparam name="Grade"></typeparam>
-            /// <returns></returns>
-            CreateMap<GradePostDto, Grade>().DisableCtorValidation()
-            .ForMember(
-                dest => dest.Id, 
-                opt => opt.MapFrom(src => 0)
-            )
-            .ForPath(
-                dest => dest.GradeKind.Name,
-                opt => opt.MapFrom(src => src.GradeKind ) 
-            );
-            
-        }
-    }
-\end{lstlisting}
+Der Code nutzt AutoMapper, um Boilerplate-Code bei der Zuordnung von Daten zwischen Entitäten und DTOs zu reduzieren. 
+Es ermöglicht eine saubere und konfigurierbare Transformation zwischen verschiedenen Datenstrukturen in einer .NET-Anwendung. 
+Diese automatische Zuordnung erleichtert die Wartung und Verbesserung der Codequalität.
 
 \newpage
 
@@ -441,6 +430,48 @@ Die verwendeten Entitäten und ihre Relationen im Backend sind in der folgenden 
     \label{fig:impl:Entities}
 \end{figure}
 
+\begin{itemize}
+    \item EntityObject-Klasse:
+    \begin{itemize}
+        \item Basisklasse für alle Entitäten mit einem numerischen Identifikator (Id) und einer optionalen Zeilenversion (RowVersion).
+    \end{itemize}
+    \item Grade-Klasse:
+    \begin{itemize}
+        \item Repräsentiert eine Note und enthält Eigenschaften wie StudentId, Student, Graduate, Note, SubjectId, Subject, TeacherId, Teacher, GradeKindId, und GradeKind.
+        \item Verwendet ForeignKey-Attribute für die Beziehung zu anderen Entitäten.
+        \item Enthält eine Enumeration ScriptType für verschiedene Skripttypen.
+        
+    \end{itemize}
+    \item GradeKey-Klasse:
+    \begin{itemize}
+        \item Modelliert einen Schlüssel für die Berechnung von Noten mit Eigenschaften wie Calculation, TeacherId, Teacher, Name, SubjectId, Subject, SchoolClasses, UsedKinds, und ScriptType.
+    \end{itemize}
+    \item GradeKind-Klasse:
+    \begin{itemize}
+        \item Repräsentiert verschiedene Arten von Noten und enthält eine Liste von zugehörigen GradeKey-Objekten.
+        \item Implementiert einen benutzerdefinierten Vergleich (GradeKindComparer) für die Gleichheit und den Hashcode.
+    \end{itemize}
+    \item SchoolClass-Klasse:
+    \begin{itemize}
+        \item Modelliert eine Schulklasse mit Eigenschaften wie Name, Students, SchoolLevel, Teachers, und SchoolYear.
+        \item Implementiert einen benutzerdefinierten Vergleich (SchoolClassComparer) für die Gleichheit und den Hashcode. 
+    \end{itemize}
+    \item Student-Klasse:
+    \begin{itemize}
+        \item Repräsentiert einen Schüler mit Eigenschaften wie SchoolClassId, SchoolClass, und Name.
+    \end{itemize}
+    \item Subject-Klasse:
+    \begin{itemize}
+        \item Repräsentiert ein Fach mit einer Eigenschaft Name.
+    \end{itemize}
+    \item Teacher-Klasse:
+    \begin{itemize}
+        \item Repräsentiert einen Lehrer mit Eigenschaften wie Name, GradeKeys, Subjects, und SchoolClasses.
+    \end{itemize}
+\end{itemize}
+
+Die Klassen nutzen verschiedene Data Annotations wie Key, Timestamp, Required, und ForeignKey, um Datenbankschemas und Validierungen zu definieren. Zudem gibt es benutzerdefinierte Vergleichsklassen für GradeKind und SchoolClass. Der Code folgt den Prinzipien der Objektorientierung und stellt Beziehungen zwischen den Entitäten dar.
+
 
 
 
@@ -460,87 +491,30 @@ Um das einlesen noch effizienter zu gestalten ist ein "Drag and Drop" für Datei
     \label{fig:impl:fileupload}
 \end{figure}
 
-Es folgt nun der Code:
 
-\begin{lstlisting}[language={[Sharp]C}, caption=Code for FileUpload, label=lst:imp:fu]
-    @page "/fileupload"
+Die Razor-Komponente mit der Route "/fileupload" bietet eine Benutzeroberfläche zum Hochladen von Skriptdateien. Der Code verwendet ASP.NET Core Razor-Syntax und C\# für die Logik.
 
+Die Benutzeroberfläche enthält Eingabeformulare für den Namen, das Fach und die ausgewählten Klassen, sowie ein Dropdown-Menü für die Auswahl des Fachs. Es gibt auch eine Drop-Zone für das Ziehen und Ablegen von Dateien, die durch eine CSS-Klasse hover markiert wird, wenn eine Datei über sie gezogen wird.
+
+Die Komponente bindet Dienste ein, darunter IJSRuntime, ISubjectService, und IGradeService. Es gibt auch eine Initialisierungsmethode OnInitializedAsync, die die verfügbaren Fächer, Klassen und Arten von Noten für den angemeldeten Lehrer lädt.
+\begin{lstlisting}[language={[Sharp]C}, caption=Code for FileUploadUsing, label=lst:imp:flUsing]
     @using Client.Services;
     @using global::Shared.Entities;
     @using global::Shared.Dtos;
     
     @implements IAsyncDisposable;
-    @inject IJSRuntime JSRuntime;
+    @inject IJSRuntime;
     @inject ISubjectService SubjectService;
-    @inject IGradeService GradeService;
+    @inject IGradeService GradeService; 
     @inject NavigationManager NavigationManager;
     
-    <h3>Upload your code as a file!</h3>
-    
-    <EditForm Model="@gradeKeyPost">
-        <InputText id="name" @bind-Value="gradeKeyPost.Name" />
-    
-        <InputSelect id="subject" @bind-Value="gradeKeyPost.SubjectId">
-            @foreach (var item in @SubjectService.Subjects)
-            {
-                <option value="@item.Id"> @item.Name </option>
-            }
-        </InputSelect>
-    
-        <CheckBoxList Data="@GradeService.Schooclasses" TextField="@((item)=>item.Name)" ValueField="@((item)=>item.Name)"
-            SelectedValues="@SelectedSchoolClasses" />
-    
-        <div @ref="fileDropContainer" class="file-drop-zone @HoverClass" @ondragenter="OnDragEnter"
-            @ondragleave="OnDragLeave" @ondragover="OnDragEnter">
-            <InputFile OnChange="@OnChange" multiple />
-        </div>
-    
-        <div class="error-message-container">
-            <p>@ErrorMessage</p>
-        </div>
-    
-        <div>
-            <button type="submit" @onclick="AddGradeKeyAsync">
-                Upload Code
-            </button>
-        </div>
-        
-    </EditForm>
-    
+\end{lstlisting}
     
 
-    @code
-    {
-        protected List<string> SelectedSchoolClasses = new List<string>();
-        private string HoverClass = string.Empty;
-        void OnDragEnter(DragEventArgs e) => HoverClass = "hover";
-        void OnDragLeave(DragEventArgs e) => HoverClass = string.Empty;
-        IJSObjectReference? _filePasteModule = default(IJSObjectReference);
-        IJSObjectReference? _filePasteFunctionReference = default(IJSObjectReference);
-        ElementReference fileDropContainer;
-        IBrowserFile? file;
-        ScriptType scriptType;
-        string stringCode = string.Empty;
-        private string ErrorMessage = string.Empty;
-        private const int maxAllowedFiles = 1;
-        private int _userId = 1;
-        private GradeKeyPostDto gradeKeyPost = new();
-        protected override async Task OnInitializedAsync()
-        {
-            try
-            {
-                await SubjectService.GetSubjectsByTeacherAsync(_userId);
-                await GradeService.GetSchoolclassesByTeacherAndSubjectAsync(_userId, SubjectService.Subjects.First().Id);
-                await GradeService.GetAllKindsAsync();
-                gradeKeyPost.SubjectId = SubjectService.Subjects.First().Id;
-            }
-    
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-        private async Task AddGradeKeyAsync()
+Die Methode AddGradeKeyAsync wird aufgerufen, wenn der Benutzer das Hochladen abschließt. Sie überprüft, ob ein Skript vorhanden ist, und sendet dann die Informationen über das Hochgeladene an den Server, um einen neuen Schlüssel für die Note zu erstellen. Nach dem Hochladen wird der Benutzer zur Seite "/calculation" weitergeleitet.
+
+\begin{lstlisting}[language={[Sharp]C}, caption=Code for AddGradeKeyAsync, label=lst:imp:AddGradeKeyAsync]
+    private async Task AddGradeKeyAsync()
         {
             if (stringCode == string.Empty)
             {
@@ -561,81 +535,79 @@ Es folgt nun der Code:
     
             NavigationManager.NavigateTo($"/calculation");
         }
-    
-        public async ValueTask DisposeAsync()
+\end{lstlisting}
+Der Code verwendet auch JavaScript-Interop, um mit einer JavaScript-Datei für das Datei-Pasting zu interagieren. Die Datei wird in einem asynchronen Lifecycle-Event OnAfterRenderAsync initialisiert und bei Bedarf entsorgt.
+
+\begin{lstlisting}[language={[Sharp]C}, caption=Code for OnAfterRenderAsync, label=lst:imp:OnAfterRenderAsync]
+protected async override Task OnAfterRenderAsync(bool firstRender)
+{
+    if (firstRender)
+    {
+        _filePasteModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./js/filePaste.js");
+        _filePasteFunctionReference = await _filePasteModule.InvokeAsync<IJSObjectReference>("initializeFilePaste",
+        fileDropContainer, file);
+    }
+}
+\end{lstlisting}
+
+
+Die Methode OnChange wird aufgerufen, wenn sich der Inhalt der hochgeladenen Datei ändert. Sie identifiziert den Typ des Skripts anhand der Dateierweiterung und liest dann den Inhalt der Datei, um es für die spätere Verwendung zu speichern.
+
+\begin{lstlisting}[language={[Sharp]C}, caption=Code for OnAfterRenderAsync, label=lst:imp:OnAfterRenderAsync]
+
+    async Task OnChange(InputFileChangeEventArgs e)
+{
+    stringCode = string.Empty;
+    ErrorMessage = string.Empty;
+
+    using var content = new MultipartFormDataContent();
+
+    if (e.FileCount > maxAllowedFiles)
+    {
+        ErrorMessage = $"Only {maxAllowedFiles} files can be uploaded";
+        return;
+    }
+
+
+    foreach (var file in e.GetMultipleFiles())
+    {
+        var isAllowed = false;
+        var fileContent = new StreamContent(file.OpenReadStream());
+        var info = new FileInfo(file.Name);
+
+        switch (info.Extension)
         {
-            if (_filePasteFunctionReference != null)
-            {
-                await _filePasteFunctionReference.InvokeVoidAsync("dispose");
-                await _filePasteFunctionReference.DisposeAsync();
-            }
-            if (_filePasteModule != null)
-            {
-                await _filePasteModule.DisposeAsync();
-            }
+            case ".lua":
+                scriptType = ScriptType.Lua;
+                isAllowed = true;
+                break;
+            case ".py":
+                scriptType = ScriptType.Python;
+                isAllowed = true;
+                break;
+            case ".csc":
+                scriptType = ScriptType.CSharpScript;
+                isAllowed = true;
+                break;
+            case ".js":
+                isAllowed = true;
+                scriptType = ScriptType.JavaScript;
+                break;
+            default:
+                ErrorMessage = "Content Type not sopported";
+                break;
         }
-    
-        protected async override Task OnAfterRenderAsync(bool firstRender)
+
+        if (isAllowed)
         {
-            if (firstRender)
-            {
-                _filePasteModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./js/filePaste.js");
-                _filePasteFunctionReference = await _filePasteModule.InvokeAsync<IJSObjectReference>("initializeFilePaste",
-                fileDropContainer, file);
-            }
-        }
-    
-        async Task OnChange(InputFileChangeEventArgs e)
-        {
-            stringCode = string.Empty;
-            ErrorMessage = string.Empty;
-    
-            using var content = new MultipartFormDataContent();
-    
-            if (e.FileCount > maxAllowedFiles)
-            {
-                ErrorMessage = $"Only {maxAllowedFiles} files can be uploaded";
-                return;
-            }
-    
-    
-            foreach (var file in e.GetMultipleFiles())
-            {
-                var isAllowed = false;
-                var fileContent = new StreamContent(file.OpenReadStream());
-                var info = new FileInfo(file.Name);
-    
-                switch (info.Extension)
-                {
-                    case ".lua":
-                        scriptType = ScriptType.Lua;
-                        isAllowed = true;
-                        break;
-                    case ".py":
-                        scriptType = ScriptType.Python;
-                        isAllowed = true;
-                        break;
-                    case ".csc":
-                        scriptType = ScriptType.CSharpScript;
-                        isAllowed = true;
-                        break;
-                    case ".js":
-                        isAllowed = true;
-                        scriptType = ScriptType.JavaScript;
-                        break;
-                    default:
-                        ErrorMessage = "Content Type not sopported";
-                        break;
-                }
-    
-                if (isAllowed)
-                {
-                    stringCode = await fileContent.ReadAsStringAsync();
-                }
-            }
+            stringCode = await fileContent.ReadAsStringAsync();
         }
     }
+}
 \end{lstlisting}
+
+Schließlich implementiert die Schnittstelle IAsyncDisposable die Methode DisposeAsync, um sicherzustellen, dass Ressourcen freigegeben werden, wenn die Komponente nicht mehr benötigt wird.
+
 \newpage
 Nach dem ein Skript hochgeladen wurde, wird man automatisch auf die Kalkulations-Seite geleitet:
 
