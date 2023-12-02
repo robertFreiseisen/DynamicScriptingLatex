@@ -1097,12 +1097,25 @@ Für ein Csharpscript wird folgender Code ausgeführt:
     }
 \end{lstlisting}
 
-\newpage
+Der C\#-Code definiert eine Klasse namens „CsScriptMicrosoftRunner“ mit einer Methode „RunScriptAsync“. 
+Diese Methode führt asynchron ein C\#-Skript aus, das mit dem Parameter „GradeKey key“ beim Methodenaufruf 
+mitgegeben wird. 
+\\
+Es werden ein Grade-Objekt „result“ und globale Variablen (Globals) erstellt. Die globalen Variablen 
+benötigen wir, um dem auszuführenden CSharpScript-Code Daten von unserer Anwendung mitzugeben. 
+\\
+Nach erfolgreicher Ausführung werden die Variablen des Skripts ausgegeben, und der Wert der Variable 
+"result" wird in ein Grade-Objekt geschrieben. Im Fehlerfall werden Teacher und Graduate auf null bzw. 0 
+gesetzt. Die Methode „WriteAllVariablesFromScript“ gibt alle im Skript definierten Variablen aus. 
+\\
+Insgesamt ermöglicht die Klasse die dynamische Ausführung von C\#-Skripten und die Verarbeitung der 
+Ergebnisse in einem von uns definierten Datenmodell.
 
-Für ein Csharpscript wird folgender Code ausgeführt:
+
+Für ein Csharpscript wird folgender Code testweise ausgeführt:
     
 \begin{lstlisting}[language={[Sharp]C},caption=Csharpscript,label=lst:impl:csctest]
-    int makCounter = 0;
+int makCounter = 0;
 int testCounter = 0;
 int homeworkCounter = 0;
 
@@ -1131,6 +1144,14 @@ foreach (var item in Grades)
 
 double result = ((mak / makCounter) + (test / testCounter) + (homework / homeworkCounter)) / 3.0;
 \end{lstlisting}
+
+Dieser C\#-Script Code zeigt, wie ein hochgeladenes Skript aussehen könnte. Von uns werden die 
+Listen „GradeKinds“ und „Grades“ mitgegeben. „GradeKinds“ enthält die verschiedenen Notenarten 
+(MAK, TEST, HOMEWORK) und „Grades“ die einzelnen Noten, womit die Gesamtnote berechnet werden soll. 
+Die Gesamtnote wird schließlich in der Variable „result“ gespeichert, die wiederrum von unserer 
+Anwendung ausgelesen und zur Weiterverarbeitung verwendet wird.
+
+\newpage
 
 Nach der Berrechnung werden die Jahresnoten in einer Tabelle dargestellt:
 
