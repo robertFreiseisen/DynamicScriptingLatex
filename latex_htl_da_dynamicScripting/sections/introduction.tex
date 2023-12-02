@@ -166,6 +166,33 @@ um deren Eignung für die Integration in .NET-Anwendungen zu bewerten.
 
 \newpage
 
+\section{Schwerpunkt und Zielsetzung}
+\setauthor{Philipp Füreder}
+
+Unsere Diplomarbeit konzentriert sich auf die Erweiterung von Standardsoftware durch den 
+gezielten Einsatz von Scripting-Technologien. Der Schwerpunkt liegt dabei auf der Entwicklung 
+und Umsetzung von flexiblen Mechanismen, die es ermöglichen, bestehende Software durch Skripte 
+zu erweitern. Wir untersuchen die praktische Anwendbarkeit dieser Methode in verschiedenen Szenarien,
+um ihre Wirksamkeit und Anpassungsfähigkeit zu evaluieren.
+
+\subsubsection*{Scripting zur Funktionalitätserweiterung}
+Unsere Hauptzielsetzung besteht darin, die Machbarkeit und Effizienz des Einsatzes von 
+Scripting als Mittel zur Funktionalitätserweiterung von Standardsoftware zu untersuchen. 
+Dabei betrachten wir verschiedene Scripting-Sprachen und deren Integration in einer .NET-Anwendung.
+
+\subsubsection*{Entwicklung einer Beispielanwendung}
+Als praktischen Beleg für unsere Forschung entwickeln wir eine Beispielanwendung, in der wir 
+die Erweiterung von Standardsoftware durch Scripting demonstrieren. Diese Anwendung dient als 
+Fallstudie, um die praxisnahe Umsetzbarkeit und die erzielbaren Vorteile zu veranschaulichen.
+
+\subsubsection*{Effizienz und Skalierbarkeit}
+Wir evaluieren nicht nur die technische Umsetzung, sondern auch die Effizienz und Skalierbarkeit 
+dieser Erweiterungsmethodik. Hierbei analysieren wir die Performance im Hinblick auf 
+Ressourcenverbrauch und Laufzeit, um sicherzustellen, dass der Einsatz von Scripting in der 
+Praxis sowohl effektiv als auch ressourcenschonend ist.
+
+\newpage
+
 \section{Alternativen}
 \setauthor{Philipp Füreder}
 
@@ -178,34 +205,6 @@ hin zu deklarativen Programmieransätzen und Frameworks reichen. Dieses Kapitel 
 einige dieser Alternativen, ohne eine tiefgreifende Evaluation ihrer Eignung oder Effizienz 
 vorzunehmen, um einen Überblick über die Möglichkeiten in diesem Bereich zu bieten.
 
-\subsection*{Microsoft Power Automate}
-
-Power Automate ist eine cloudbasierte Plattform, die es Anwender/innen unkompliziert ermöglicht, 
-Workflows zu erstellen. Diese Arbeitsabläufe automatisieren zeitaufwändige 
-geschäftliche Aufgaben und Prozesse, indem sie Anwendungen und Dienste verbinden. \cite{power_automate}
-
-Logik-Apps (ein Service von Azure), 
-präsentiert vergleichbare Eigenschaften wie Power Automate. Zusätzlich dazu 
-bietet es weitere Leistungsmerkmale, darunter die nahtlose Einbindung in den 
-Azure Resource Manager, das Azure-Portal, PowerShell, die xPlat-CLI, Visual Studio und 
-diverse weitere Verbindungselemente. \cite{power_automate}
-
-Mit folgenden Dienstleistungen können Power Automate verbunden werden:
-
-\begin{itemize}
-    \item Sharepoint
-    \item Dynamics 365
-    \item OneDrive
-    \item Google Drive
-    \item Google Sheets
-    \item und noch einige mehr
-\end{itemize}
-
-Power Automate ist außerdem plattformübergreifend und kann auf allen modernen Geräten und Browsern
-ausgeführt werden. Zur Verwendung ist nur ein Webbrowser und eine E-Mail-Adresse erforderlich.
-\cite{power_automate}
-
-\newpage
 \subsection*{Dynamische Modulsysteme}
 
 Ein Ansatz, der oft angewandt wird, um Anwendungen oder Systeme zu konstruieren, 
@@ -219,7 +218,7 @@ Datenbanken und Systemadministration verwendet. \cite{modulsystem}
 
 Beispiele für Modulsysteme:
 
-Webanwendung
+Webanwendungen
 \begin{itemize}
     \item Javascript-Frameworks wie React und Angular
 \end{itemize}
@@ -234,10 +233,6 @@ Erstellung und Verwaltung von Datenbanken
     \item PostgreSQL und MongoDB
 \end{itemize}
 
-Verwaltung von Netzwerken und Systemen
-\begin{itemize}
-    \item Puppet und Chef
-\end{itemize}
 \cite{modulsystem}
 
 \newpage
@@ -324,13 +319,21 @@ gleichzeitig die Sauberkeit der Gesamtlösung erhalten bleibt. \cite{pluginframe
 
 \subsubsection*{Plugin Framework for .NET Core}
 
-Das Plugin Framework stellt eine Plattform für Plugins in .NET Core-Anwendungen dar, was 
-sowohl ASP.NET Core, Blazor, WPF, Windows Forms als auch Konsolenanwendungen miteinschließt. 
-Diese Plattform zeichnet sich durch eine geringe Systembelastung aus und bietet eine nahtlose 
-Einbindungsmöglichkeit. Es kann verschiedene Plugin-Kataloge unterstützen, 
-darunter .NET-Assemblies, NuGet-Pakete sowie Roslyn-Skripte. 
-Die Flexibilität dieses Frameworks ermöglicht es, eine breite Palette an Anwendungsfällen 
-zu bedienen und die Erweiterungsfunktionalität auf mehreren Ebenen zu steigern. 
+Das Plugin-Framework fungiert als Plattform für die Integration von Plugins in .NET Core-Anwendungen. 
+Dabei werden verschiedene Technologien wie ASP.NET Core, Blazor, WPF, Windows Forms und 
+Konsolenanwendungen unterstützt. Diese Plattform ermöglicht die Verwaltung verschiedener 
+Plugin-Kataloge, darunter .NET-Assemblies, NuGet-Pakete und Roslyn-Skripte. Durch die hohe 
+Flexibilität des Frameworks können eine Vielzahl von Anwendungsfällen abgedeckt und die 
+Erweiterungsfunktionalität auf verschiedenen Ebenen gesteigert werden. 
+\cite{pluginframework}
+
+Das Plugin-Framework trägt zur Erweiterung von Standardsoftware bei, indem es eine dynamische 
+Integration von zusätzlichen Funktionen ermöglicht. Durch die Unterstützung verschiedener 
+Anwendungstypen und die Kompatibilität mit verschiedenen Arten von Plugins (Assemblies, NuGet-Pakete, 
+Skripte) können Entwickler/innen problemlos neue Module hinzufügen oder bestehende Module 
+aktualisieren. Dies fördert die Skalierbarkeit und Anpassungsfähigkeit der Software, da 
+Erweiterungen ohne umfassende Änderungen am Hauptcode implementiert werden können. Somit 
+ermöglicht das Plugin-Framework eine effiziente und flexible Erweiterung von Standardsoftware.
 \cite{pluginframework}
 
 \textbf{Features:}
