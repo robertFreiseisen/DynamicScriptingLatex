@@ -408,26 +408,26 @@ Die API ist in Controllern pro Entität aufgebaut:
 Damit der Aufbau der .NET-Solution noch klarer wird, wird nun die YAML-Datei näher erklärt:
 
 Die docker-compose-Datei definiert einen mehrstufigen Docker-Anwendungsstapel mit drei Diensten: 
-grades_db, grades_backend und grades_web.
+grades \textunderscore db, grades \textunderscore backend und grades \textunderscore web.
 
-grades_db Service: 
+grades \textunderscore db Service: 
     \begin{itemize}
         \item Verwendet das offizielle PostgreSQL Docker-Image.
         \item Öffnet den Port 5432 auf dem Host-Rechner.
         \item Definiert Umgebungsvariablen für die Konfiguration der PostgreSQL-Datenbank Passwort, Benutzer und Datenbankname.
         \item Enthält einen Health-Check, um sicherzustellen, dass die Datenbank bereit ist, bevor die abhängigen Dienste gestartet werden.
     \end{itemize}
-grades_backend Service:
+grades \textunderscore backend Service:
     \begin{itemize}
-        \item Verwendet ein benutzerdefiniertes Docker-Image mit dem Namen grades_backend.
+        \item Verwendet ein benutzerdefiniertes Docker-Image mit dem Namen gradesbackend.
         \item Öffnet den Port 5000 auf dem Host-Rechner und leitet den Datenverkehr zum Port 80 im Container weiter.
-        \item Hängt vom Dienst grades_db ab und startet nur, wenn der Dienst grades_db rund läuft.
+        \item Hängt vom Dienst grades \textunderscore db ab und startet nur, wenn der Dienst grades\textunderscore db rund läuft.
     \end{itemize}
-grades_web Service:
+grades \textunderscore web Service:
     \begin{itemize}
         \item Bindet ein Volumen vom Host-Rechner /Client zum Container.
         \item Öffnet den Port 8080 auf dem Host-Rechner und leitet den Datenverkehr zum Port 80 im Container weiter.
-        \item Hängt vom Dienst grades_backend ab.
+        \item Hängt vom Dienst grades \textunderscore backend ab.
     \end{itemize}
 
 \newpage
