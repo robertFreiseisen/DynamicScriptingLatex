@@ -18,7 +18,7 @@ Diese Schnelligkeit, kombiniert mit dem geringen Speicherbedarf der Sprache, mac
 Lua bietet eine 'von Haus aus'-Nutzbarkeit, die es Entwickler/innen ermöglicht, sofort nach der Installation loszulegen, ohne sich um eine Vielzahl von Abhängigkeiten kümmern zu müssen. 
 Ihre Einbettbarkeit ist ein weiteres Kernelement, das sie besonders attraktiv für Softwareprojekte macht, die eine integrierte Skriptsprache benötigen. Besonders in der Spieleindustrie hat Lua sich als beliebte Wahl für das Scripting etabliert. Hier ermöglicht es Entwicklern, schnell interaktive und flexible Spielmechanismen zu implementieren, ohne die Hauptspiellogik zu beeinträchtigen. 
 Als Open-Source-Software steht Lua zudem einer breiten Entwicklergemeinschaft zur Verfügung, die zur kontinuierlichen Verbesserung und Erweiterung der Sprache beiträgt.
-All diese Aspekte machen Lua zu einer vielseitigen Option für eine Reihe von Anwendungen, insbesondere für das Scripting in Videospielen, wie in "World of Warcraft" oder "Roblox".
+All diese Aspekte machen Lua zu einer vielseitigen Option für eine Reihe von Anwendungen, insbesondere für das Skripting in Videospielen, wie in 'World of Warcraft' oder 'Roblox'.
 \cite{gameScriptingMastery} \cite{luaDocs} \cite{programingInLua} \cite{nluaWebside} 
 
 \newpage
@@ -52,8 +52,8 @@ Dies ermöglicht es Entwicklern, Code unmittelbar im Browser auszuführen und zu
 In Bezug auf die Sicherheit bietet JavaScript zwar einige Mechanismen, wie die Ausführung in einer Sandbox-Umgebung, um den Zugriff auf das Betriebssystem des Nutzers zu beschränken.  
 Insgesamt bietet JavaScript eine ausgewogene Mischung aus Benutzerfreundlichkeit, Intuitivität und Funktionalität, allerdings müssen Entwickler stets wachsam in Bezug auf Sicherheitsrisiken sein.
 
-Als .NET-Bibliothek wurde sich für "JavaScriptEngineSwitcher" mit "Jint" entschieden.
-"JavaScriptEngineSwitcher" ist eine .NET-Bibliothek, die es ermöglicht, verschiedene JavaScript-Engines zu verwenden, und "Jint" ist eine JavaScript-Engine für .NET.
+Als .NET-Bibliothek wurde sich für 'JavaScriptEngineSwitcher' mit 'Jint' entschieden.
+'JavaScriptEngineSwitcher' ist eine .NET-Bibliothek, die es ermöglicht, verschiedene JavaScript-Engines zu verwenden, und 'Jint' ist eine JavaScript-Engine für .NET.
 
 
 \cite{mDNWebDocs} \cite{owasp}
@@ -83,7 +83,7 @@ In diesem Abschnitt betrachten wir diese vier Sprachen im Kontext von .NET unter
     \item Performance:
     \begin{itemize}
         \item Wie steht es um die Laufzeit-Performance des Codes? 
-        \item  Inwiefern beeinflusst die Wahl der Sprache die Geschwindigkeit und Ressourceneffizienz der fertigen Anwendung?
+        \item Inwiefern beeinflusst die Wahl der Sprache die Geschwindigkeit und Ressourceneffizienz der fertigen Anwendung?
     \end{itemize}
     \item Debugging:
     \begin{itemize}
@@ -254,6 +254,7 @@ Der Code beginnt mit der Initialisierung einer IronPython-Skript-Engine (engine)
     
 
 \begin{itemize}
+    \newpage
     \item IronPythonSimple:
     \begin{itemize}
         \item Diese Methode erstellt einen Skriptbereich (scope) und eine Skriptquelle (source) mithilfe der IronPython-Skript-Engine.
@@ -284,6 +285,7 @@ Der Code beginnt mit der Initialisierung einer IronPython-Skript-Engine (engine)
         }
         \end{lstlisting}
     \end{itemize}
+    \newpage
     \item IronPythonPassDotNetObjectsAndCallFunction:
     \begin{itemize}
         \item Diese Methode zeigt, wie man ein .NET-Objekt (SomeClass) an ein IronPython-Skript übergibt und eine Funktion (Func1) darauf aufruft.
@@ -429,7 +431,7 @@ Die C \textunderscore SharpTesting-Klasse enthält drei Benchmark-Methoden, die 
     [Benchmark]
     public void TestC \textunderscore Sharp \textunderscore Objects() => DotNetObject();
 \end{lstlisting}
- 
+ \newpage
 Jede Methode ruft eine unterschiedliche C\#-Funktion auf und gibt das Ergebnis aus:
 \begin{itemize}
     \item TestC \textunderscore Sharp \textunderscore Simple: Ruft die Methode ReturnNumber() auf, die asynchron ein C\#-Skript ausführt und den Wert 42 zurückgibt.
@@ -477,8 +479,7 @@ Jede Methode ruft eine unterschiedliche C\#-Funktion auf und gibt das Ergebnis a
                 Method & Mean & Error & StdDev \\ \hline
                 TestJavascriptSimple & 128.14 ms & 1,102.64 ms & 286.35 ms  \\ \hline
                 TestJavaScriptSum & 29.77 ms & 255.31 ms & 66.30 ms \\ \hline
-                TestJavascript-
-                DotNetObjects & 46.27 ms & 397.72 ms & 103.29 ms  \\ \hline
+                TestJavascript-DotNetObjects & 46.27 ms & 397.72 ms & 103.29 ms  \\ \hline
             \end{tabular}
         \end{table}
 
@@ -523,6 +524,7 @@ Die JavascriptSum-Methode erstellt ebenfalls einen JintJsEngine und führt JavaS
                         var x = mySum(3,3);");
     }
 \end{lstlisting}
+\newpage
 Die DotNetObjects-Methode erstellt einen JintJsEngine und erstellt dann eine .NET-Objektinstanz vom Typ Student mit dem Namen "Hans" und einem Alter von 18 Jahren. Diese Objektinstanz wird dann mithilfe von Json.NET in einen JSON-String konvertiert und in der JavaScript-Umgebung mit dem Variablennamen student verfügbar gemacht.
 
 \begin{lstlisting}[language={[Sharp]C}, caption=JavascriptObjects, label=lst:imp:jsObj]
@@ -552,7 +554,7 @@ Die Informationen wurden aus den offizellen Webseiten der Nuget-Pakete entnommen
 
 \newpage
 \subsection{Debugging}
-Das Debugging durch die Ausgabe auf der Konsole ist mit allen, in dieser Diplomarbeit untersuchten, Scriptsprachen möglich.
+Das Debugging durch die Ausgabe auf der Konsole ist mit allen, in dieser Diplomarbeit untersuchten, Skriptsprachen möglich.
 
 Breakpoints in VisualStudio bzw. in VisualStudio-Code sind nur mit IronPython möglich.
 
@@ -564,7 +566,7 @@ Es folgen nun Screenshots, um zu beweisen, dass die Angaben stimmen.
     
     \begin{figure}[H]
         \centering
-        \includegraphics[scale=0.5]{pics/Lua-Konsolenausgabe.png}
+        \includegraphics[scale=0.35]{pics/Lua-Konsolenausgabe.png}
         \caption{Lua-Konsolenausgabe}
         \label{fig:impl:KonsolenausgabeLua}
     \end{figure}
@@ -573,7 +575,7 @@ Es folgen nun Screenshots, um zu beweisen, dass die Angaben stimmen.
     \item Die Beweise für das Debugging mit IronPython:
     \begin{figure}[H]
         \centering
-        \includegraphics[scale=0.5]{pics/IronPythonVSCodeBreakpoint1.png}
+        \includegraphics[scale=0.35]{pics/IronPythonVSCodeBreakpoint1.png}
         \caption{IronPython-VSCode-Breakpoint1}
         \label{fig:impl:IronPythonVSCodeBreakpoint1}
     \end{figure}
@@ -587,7 +589,7 @@ Es folgen nun Screenshots, um zu beweisen, dass die Angaben stimmen.
 
     \begin{figure}[H]
         \centering
-        \includegraphics[scale=0.5]{pics/IronPythonKonsolenausgabe.png}
+        \includegraphics[scale=0.35]{pics/IronPythonKonsolenausgabe.png}
         \caption{IronPython-Konsolenausgabe}
         \label{fig:impl:IronPythonKonsolenausgabe}
     \end{figure}

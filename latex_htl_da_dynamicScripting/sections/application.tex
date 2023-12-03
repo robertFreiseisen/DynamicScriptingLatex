@@ -483,7 +483,7 @@ Um das einlesen noch effizienter zu gestalten ist ein "Drag and Drop" für Datei
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.5]{pics/FileUpload.png}
+    \includegraphics[scale=0.35]{pics/FileUpload.png}
     \caption{File Upload}
     \label{fig:impl:fileupload}
 \end{figure}
@@ -547,7 +547,7 @@ protected async override Task OnAfterRenderAsync(bool firstRender)
 }
 \end{lstlisting}
 
-
+\newpage
 Die Methode OnChange wird aufgerufen, wenn sich der Inhalt der hochgeladenen Datei ändert. Sie identifiziert den Typ des Skripts anhand der Dateierweiterung und liest dann den Inhalt der Datei, um es für die spätere Verwendung zu speichern.
 
 \begin{lstlisting}[language={[Sharp]C}, caption=Code for OnAfterRenderAsync, label=lst:imp:OnAfterRenderAsync]
@@ -610,7 +610,7 @@ Nach dem ein Skript hochgeladen wurde, wird man automatisch auf die Kalkulations
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.5]{pics/CalculationUI.png}
+    \includegraphics[scale=0.35]{pics/CalculationUI.png}
     \caption{Calculation -- UI}
     \label{fig:impl:CalculationUI}
 \end{figure}
@@ -703,7 +703,6 @@ verarbeiteten Noteninformationen für alle eindeutigen Students enthält.
             return result;
         }
 \end{lstlisting}
-
 Dieser Code definiert eine asynchrone Methode namens 'RunScriptAsync', die ein hochgeladenes Skript, basierend 
 auf dem übergebenen 'gradeKey' ausführt. Zunächst wird ein neues Grade-Objekt namens 'result' erstellt, dass 
 das Ergebnis des Skripts darstellt. Dieses Objekt wird dann mit dem/der zugehörige/n Schüler/in verbunden.
@@ -715,10 +714,8 @@ zugehörigen Schüler/in ausgeführt.
 \\\\
 Abschließend wird dem result-Objekt der Name des/der Schülers/Schülerin und das aktuelle Datum als Notiz hinzugefügt. 
 Das modifizierte result-Objekt wird dann von der Methode zurückgegeben.
-\\\\
 Wenn der Skripttyp nicht erkannt wird, wird 'result' auf null gesetzt. Nach dem Skriptlauf wird überprüft, 
 ob das Ergebnis null ist. Falls ja, wird eine Exception mit der Meldung 'Error in Calculation' ausgelöst. 
-
 \newpage
 \setauthor{Robert Freiseisen}
 Im folgenden Abschnitt  werden einige Code-Ausschnitte betrachtet, die zeigen, wie man solche Datei-Übergaben in den untersuchten Scriptsprachen realisieren kann. 
@@ -1154,8 +1151,8 @@ Nach der Berrechnung werden die Jahresnoten in einer Tabelle dargestellt:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.5]{pics/GradesForClass.png}
-    \caption{UI -- Jahesnoten}
+    \includegraphics[scale=0.35]{pics/GradesForClass.png}
+    \caption{UI -- Jahresnoten}
     \label{fig:impl:GradesForClass}
 \end{figure}
 
