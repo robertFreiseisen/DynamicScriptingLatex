@@ -21,8 +21,8 @@ mobile Backends entwickeln.
 \item Anwendungen sowohl in der Cloud als auch auf lokalen Systemen bereitstellen.
 \end{itemize}
 
-Dieses Framework eröffnet somit eine breite Palette an Möglichkeiten für Entwickler, 
-um moderne Anwendungen zu erstellen, die sich nahtlos mit dem Internet verbinden und 
+Dieses Framework eröffnet somit eine breite Palette an Möglichkeiten für Entwickler/innen, 
+um moderne Anwendungen zu erstellen, die sich mit dem Internet verbinden und 
 sowohl in Cloud- als auch lokalen Umgebungen effizient betrieben werden können. \cite{asp_dotnetcore}
 \newpage
 
@@ -32,21 +32,20 @@ Unsere Versionskontrolle haben wir mit Git gemacht. Git ist ein Versionskontroll
 das entworfen wurde, um sowohl kleine, als auch äußerst 
 umfangreiche Projekte auf schnelle und effiziente Weise zu verwalten.
 Die Erlernbarkeit von Git gestaltet sich einfach, und seine geringe Systembelastung 
-geht einher mit herausragender Performance. Es setzt sich von anderen Versionskontrollsystemen 
-wie Subversion, CVS, Perforce und ClearCase ab, indem es Funktionen wie kosteneffiziente 
-lokale „Branches“, bequeme Staging-Bereiche und vielfältige Arbeitsabläufe bietet.
-Git erlaubt und begünstigt die Erstellung von mehreren unabhängigen lokalen Verzweigungen. 
-Die Prozesse des Erstellens, Zusammenführens und Entfernens dieser Entwicklungsstränge 
-nehmen lediglich Sekunden in Anspruch. \cite{git_introduction} \\
+geht einher mit sehr guter Performance. Es setzt sich von anderen Versionskontrollsystemen 
+wie Subversion, CVS, Perforce oder ClearCase ab, indem es Funktionen wie kosteneffiziente 
+lokale 'Branches', bequeme Staging-Bereiche und vielfältige Arbeitsabläufe bietet.
+Git erlaubt die Erstellung von mehreren unabhängigen lokalen Branches. 
+Die Prozesse des Erstellens, Zusammenführens und Entfernens dieser Branches 
+nehmen wenig Zeit in Anspruch. \cite{git_introduction} \\
 
 Git ist kostenfrei und Open-Source. Es wurde dazu entwickelt, Projekte aller 
 Größenordnungen, schnell und effizient zu verwalten. 
 Es zeichnet sich als Open-Source aus, da es die Anpassungsfähigkeit bietet, den Quellcode 
 nach den individuellen Bedürfnissen der Nutzer/innen anzupassen. 
-Mit seiner Open-Source-Natur ermöglicht Git mehreren Personen gleichzeitig an einem 
+Git ermöglicht es mehreren Personen gleichzeitig an einem 
 Projekt zu arbeiten und ermöglicht eine äußerst einfache und effiziente Zusammenarbeit. 
-Aus diesem Grund wird Git als das herausragende Versionskontrollsystem betrachtet, 
-das in der heutigen Zeit zur Verfügung steht. \cite{git_features}
+\cite{git_features}
 \newpage
 
 \subsection*{Docker}
@@ -56,10 +55,10 @@ in Form von Containern bündelt. Dieser Ansatz gewährleistet, dass die Anwendun
 jeder beliebigen Entwicklungsumgebung reibungslos funktioniert.
 Jede einzelne Anwendung läuft in separaten Containern und verfügt über 
 ihre eigenen Satz an Abhängigkeiten und Bibliotheken. Dies gewährleistet, dass jede 
-Applikation in völliger Unabhängigkeit von anderen Anwendungen agiert und die Sicherheit gibt, 
-dass sie Anwendungen erstellen können, welche sich nicht gegenseitig beeinträchtigen.
+Applikation in völliger Unabhängigkeit von anderen Anwendungen agiert und die Sicherheit, 
+dass man Anwendungen erstellen kann, welche sich nicht gegenseitig beeinträchtigen.
 Wir haben in unserer Anwendung unser Frontend, Backend und die Datenbank über Docker laufen lassen.
-Das heißt wir haben 3 Docker-Container benutzt. \cite{docker_explained} \\
+Das heißt wir verwenden insgesamt 3 Docker-Container. \cite{docker_explained} \\
  
 Unter einem Container versteht man eine standardisierte Softwareeinheit, die sowohl den 
 Programmcode als auch sämtliche damit verbundenen Abhängigkeiten zusammenfasst. 
@@ -107,11 +106,9 @@ Integrität der Daten:
 \newpage
 \subsection*{BenchmarkDotNet (0.13.2)}
 
-BenchmarkDotNet unterstützt Anwender/innen dabei, die Performance ihrer Methoden in 
-Benchmark-Tests zu überprüfen. Ebenso ermöglicht es den Austausch von reproduzierbaren 
-Messexperimenten. Diese Transformation gestaltet sich genauso unkompliziert wie die 
-Erstellung von Unit-Tests. BenchmarkDotNet hilft dabei, übliche Fehler im Benchmarking-Prozess 
-zu vermeiden und Nutzer zu informieren, sobald Unstimmigkeiten im Benchmark-Design oder den 
+BenchmarkDotNet unterstützte uns dabei, die Performance unserer Methoden in 
+Benchmark-Tests zu überprüfen. BenchmarkDotNet hilft dabei, übliche Fehler im Benchmarking-Prozess 
+zu vermeiden und Nutzer/innen zu informieren, sobald Unstimmigkeiten im Benchmark-Design oder den 
 erfassten Messdaten auftreten. Die präsentierten Resultate erscheinen in einer 
 nutzerfreundlichen Tabelle, die sämtliche relevanten Aspekte des Experiments herausstellt.\\
 Anbei ein Beispiel von einem unserer BenchmarkDotNet-Tests: \cite{benchmark}\\
@@ -173,7 +170,7 @@ Folgendes Codebeispiel zeigt die Generierung unserer Fake Daten für eine Schulk
             }
 \end{lstlisting}
 
-In der RuleFor() Methode kann man genau die Sachen angeben die man benötigt. 
+In RuleFor() kann man genau die Sachen angeben die man benötigt. 
 In unserem Fall haben wir nur Vornamen und Nachnamen benötigt.
 \newpage
 
@@ -627,6 +624,7 @@ Wenn eine Berrechnung erfolgt, werden im GradeCalculator alle benötigen Daten v
     \label{fig:impl:Logic}
 \end{figure}
 \newpage
+\setauthor{Philipp Füreder}
 Es folgen nun Codeausschnitte für den GradeCalculator: 
 
 \begin{lstlisting}[language={[Sharp]C}, caption=Code for loading data for Calculation, label=lst:imp:calc]
@@ -651,19 +649,19 @@ Es folgen nun Codeausschnitte für den GradeCalculator:
 \end{lstlisting}
 
 Der oben stehende Codeausschnitt verarbeitet Noteninformationen für verschiedene Schüler/innen. 
-Zunächst wird eine leere Liste namens "result" erstellt, die dazu dient, die verarbeiteten Noten für 
-jeden Schüler zu speichern. Der Code verwendet eine Foreach-Schleife, um eindeutige Student-IDs aus 
-der Liste "grades" zu extrahieren. Dies dient dazu jede/n Schüler/in eindeutig identifizieren zu können.
+Zunächst wird eine leere Liste namens 'result' erstellt, die dazu dient, die verarbeiteten Noten für 
+jede/n Schüler/in zu speichern. Der Code verwendet eine Foreach-Schleife, um eindeutige Student-IDs aus 
+der Liste 'grades' zu extrahieren. Dies dient dazu jede/n Schüler/in eindeutig identifizieren zu können.
 Für jede eindeutige Student-ID werden dann die zugehörigen Noteninformationen aus der Datenbank abgerufen.
 \\\\
 Anschließend wird das in unserer Anwendung hochgeladene Skript, mit den gesammelten Noteninformationen 
-und dem/der zugehörige/n Schüler/in ausgeführt. Das Ergebnis, repräsentiert durch die Variable "gradeForStudent", 
+und dem/der zugehörige/n Schüler/in ausgeführt. Das Ergebnis, repräsentiert durch die Variable 'gradeForStudent', 
 wird dann um zusätzliche Informationen ergänzt. Dazu gehören die Lehrer-ID, die Student-ID, 
 die Fach-ID und die Art der Note.
 \\\\
-Schließlich wird das Ergebnisobjekt zu der Liste "result" hinzugefügt. Der gesamte Prozess wird für 
-jede eindeutige Student-ID wiederholt. Am Ende gibt die Funktion die Liste "result" zurück, die die 
-verarbeiteten Noteninformationen für alle eindeutigen Studenten enthält.
+Schließlich wird das Ergebnisobjekt zu der Liste 'result' hinzugefügt. Der gesamte Prozess wird für 
+jede eindeutige Student-ID wiederholt. Am Ende gibt die Funktion die Liste 'result' zurück, die die 
+verarbeiteten Noteninformationen für alle eindeutigen Students enthält.
 
         
 \newpage
@@ -706,22 +704,23 @@ verarbeiteten Noteninformationen für alle eindeutigen Studenten enthält.
         }
 \end{lstlisting}
 
-Dieser Code definiert eine asynchrone Methode namens "RunScriptAsync", die ein hochgeladenes Skript, basierend 
-auf dem übergebenen "gradeKey" ausführt. Zunächst wird ein neues Grade-Objekt namens "result" erstellt, das 
+Dieser Code definiert eine asynchrone Methode namens 'RunScriptAsync', die ein hochgeladenes Skript, basierend 
+auf dem übergebenen 'gradeKey' ausführt. Zunächst wird ein neues Grade-Objekt namens 'result' erstellt, dass 
 das Ergebnis des Skripts darstellt. Dieses Objekt wird dann mit dem/der zugehörige/n Schüler/in verbunden.
 \\\\
-Der Code beinhaltet eine Switch-Anweisung, um nach dem im "gradeKey" angegebenen Skripttyp zu unterscheiden. 
+Der Code beinhaltet eine Switch-Anweisung, um nach dem im 'gradeKey' angegebenen Skripttyp zu unterscheiden. 
 Je nach Skripttyp, was wir mit der Endung des Skripts (z.B skript.js) feststellen, wird der zugehörige 
-Skriptrunner aufgerufen. Das Skript wird mit den übergebenen Noteninformationen (grades) und dem 
-zugehörigen Schüler ausgeführt.
+Skriptrunner aufgerufen. Das Skript wird mit den übergebenen Noteninformationen (grades) und dem/der 
+zugehörigen Schüler/in ausgeführt.
 \\\\
-Abschließend wird dem result-Objekt der Name des Schülers und das aktuelle Datum als Notiz hinzugefügt. 
+Abschließend wird dem result-Objekt der Name des/der Schülers/Schülerin und das aktuelle Datum als Notiz hinzugefügt. 
 Das modifizierte result-Objekt wird dann von der Methode zurückgegeben.
 \\\\
-Wenn der Skripttyp nicht erkannt wird, wird "result" auf null gesetzt. Nach dem Skriptlauf wird überprüft, 
-ob das Ergebnis null ist. Falls ja, wird eine Exception mit der Meldung "Error in Calculation" ausgelöst. 
+Wenn der Skripttyp nicht erkannt wird, wird 'result' auf null gesetzt. Nach dem Skriptlauf wird überprüft, 
+ob das Ergebnis null ist. Falls ja, wird eine Exception mit der Meldung 'Error in Calculation' ausgelöst. 
 
 \newpage
+\setauthor{Robert Freiseisen}
 Im folgenden Abschnitt  werden einige Code-Ausschnitte betrachtet, die zeigen, wie man solche Datei-Übergaben in den untersuchten Scriptsprachen realisieren kann. 
 
 \begin{lstlisting}[language={[Sharp]C}, caption=Code for IronPython, label=lst:imp:py]
@@ -810,6 +809,7 @@ graduate = calculate()
 
 
 \newpage
+\setauthor{Philipp Füreder}
 
 Wenn es sich um einen Javascript-Code handelt wird folgende Methode aufgerufen:
 
@@ -886,8 +886,8 @@ Wenn es sich um einen Javascript-Code handelt wird folgende Methode aufgerufen:
     }
 \end{lstlisting}
 
-Die Klasse „JavascriptRunner“ stellt eine Implementierung für das Ausführen von JavaScript-Skripten 
-in C-Sharp bereit. Die Methode „RunScript“ verwendet die Jint-Bibliothek, um JavaScript-Code auszuführen. 
+Die Klasse 'JavascriptRunner' stellt eine Implementierung für das Ausführen von JavaScript-Skripten 
+in C\# bereit. Die Methode 'RunScript' verwendet die Jint-Bibliothek, um JavaScript-Code auszuführen. 
 Hier wird ein JavaScript-Engine-Objekt erstellt, das die Ausführung von JavaScript-Code ermöglicht.
 \\\\
 Der Code im JavaScript-Block definiert eine console.log-Funktion, die die Ausgaben in einer 
@@ -896,14 +896,14 @@ werden als JSON-Strings an das JavaScript übergeben.
 \\\\
 Nach der Ausführung des Skripts wird die Ausgabe der console.log-Anweisungen als JSON-String zurückgegeben 
 und dann in eine Liste von Strings (logs) konvertiert. Diese Ausgaben werden durch die 
-Methode „DisplayOutput“ angezeigt.
+Methode 'DisplayOutput' angezeigt.
 \\\\
-Der Rückgabewert des Skripts wird aus der JavaScript-Variable "result" extrahiert und in das Grade-Objekt 
+Der Rückgabewert des Skripts wird aus der JavaScript-Variable 'result' extrahiert und in das Grade-Objekt 
 übertragen. Falls während der Ausführung des Skripts ein Fehler auftritt, wird das Grade-Objekt auf 
 die Standardwerte zurückgesetzt.
 \\\\
 Insgesamt ermöglicht die Klasse eine dynamische Ausführung von JavaScript-Code, wobei die Ein- und Ausgaben 
-zwischen dem C-Sharp-Code und dem JavaScript-Code über JSON-Serialisierung und eine 
+zwischen dem C\#-Code und dem JavaScript-Code über JSON-Serialisierung und eine 
 virtuelle Konsole kommuniziert werden.
 
 
@@ -946,17 +946,18 @@ console.log('Wert: ' +grades[1].GradeKind.Name);
 
 Der JavaScript-Code nimmt zwei JSON-Strings (gradesList und gradeKindsList), die von unserer .NET-Anwendung 
 zur Laufzeit übergeben wurden, und wandelt sie in JavaScript-Objekte (grades und gradeKinds) 
-mithilfe der JSON.parse-Funktion um. Anschließend wird eine Funktion namens „calculate“ definiert, 
+mithilfe der JSON.parse-Funktion um. Anschließend wird eine Funktion namens 'calculate' definiert, 
 die die durchschnittliche Note basierend auf verschiedenen Notenarten (MAK, TEST, HOMEWORK) berechnet. 
 Die Anzahl der Noten und ihre Summen werden für jeden Notentyp separat gezählt, und dann wird der 
 Durchschnitt über alle Notenarten berechnet.
 \\\\
-Schließlich wird die Funktion „calculate“ aufgerufen, und das Ergebnis in der Variable „result“ gespeichert. 
+Schließlich wird die Funktion 'calculate' aufgerufen, und das Ergebnis in der Variable 'result' gespeichert. 
 Diese Variable wird nach Durchlauf des Skripts wieder von unserer .NET-Anwendung ausgelesen und 
 zur Weiterverarbeitung der Notenberechnung verwendet.
 
 
 \newpage
+\setauthor{Robert Freiseisen}
 Bei einem Lua-Skript wird folgende Methode aufgerufen:
 
 \begin{lstlisting}[language={[Sharp]C},caption=Code for NLua,label=lst:impl:nlua]
@@ -1035,10 +1036,11 @@ function calculate()
 end
 \end{lstlisting}
 \newpage
+\setauthor{Philipp Füreder}
 
-Für ein Csharpscript wird folgender Code ausgeführt:
+Für ein C\#-Script wird folgender Code ausgeführt:
 
-\begin{lstlisting}[language={[Sharp]C},caption=Code for CsharpScripting,label=lst:impl:csc]
+\begin{lstlisting}[language={[Sharp]C},caption=Code for C\#-Scripting,label=lst:impl:csc]
     public class CsScriptMicrosoftRunner
     {
         public async Task<Grade> RunScriptAsync(GradeKey key, List<Grade> grades)
@@ -1091,24 +1093,24 @@ Für ein Csharpscript wird folgender Code ausgeführt:
     }
 \end{lstlisting}
 
-Der C\#-Code definiert eine Klasse namens „CsScriptMicrosoftRunner“ mit einer Methode „RunScriptAsync“. 
-Diese Methode führt asynchron ein C\#-Skript aus, das mit dem Parameter „GradeKey key“ beim Methodenaufruf 
+Der C\#-Code definiert eine Klasse namens 'CsScriptMicrosoftRunner' mit einer Methode 'RunScriptAsync'. 
+Diese Methode führt asynchron ein C\#-Skript aus, das mit dem Parameter 'GradeKey key' beim Methodenaufruf 
 mitgegeben wird. 
 \\
-Es werden ein Grade-Objekt „result“ und globale Variablen (Globals) erstellt. Die globalen Variablen 
-benötigen wir, um dem auszuführenden CSharpScript-Code Daten von unserer Anwendung mitzugeben. 
+Es werden ein Grade-Objekt 'result' und globale Variablen (Globals) erstellt. Die globalen Variablen 
+benötigen wir, um dem auszuführenden C\#-Script-Code Daten von unserer Anwendung mitzugeben. 
 \\
 Nach erfolgreicher Ausführung werden die Variablen des Skripts ausgegeben, und der Wert der Variable 
-"result" wird in ein Grade-Objekt geschrieben. Im Fehlerfall werden Teacher und Graduate auf null bzw. 0 
-gesetzt. Die Methode „WriteAllVariablesFromScript“ gibt alle im Skript definierten Variablen aus. 
+'result' wird in ein Grade-Objekt geschrieben. Im Fehlerfall werden Teacher und Graduate auf null bzw. 0 
+gesetzt. Die Methode 'WriteAllVariablesFromScript' gibt alle im Skript definierten Variablen aus. 
 \\
 Insgesamt ermöglicht die Klasse die dynamische Ausführung von C\#-Skripten und die Verarbeitung der 
 Ergebnisse in einem von uns definierten Datenmodell.
 
 
-Für ein Csharpscript wird folgender Code testweise ausgeführt:
+Für ein C\#-Script wird folgender Code testweise ausgeführt:
     
-\begin{lstlisting}[language={[Sharp]C},caption=Csharpscript,label=lst:impl:csctest]
+\begin{lstlisting}[language={[Sharp]C},caption=C\#-Script,label=lst:impl:csctest]
 int makCounter = 0;
 int testCounter = 0;
 int homeworkCounter = 0;
@@ -1140,12 +1142,13 @@ double result = ((mak / makCounter) + (test / testCounter) + (homework / homewor
 \end{lstlisting}
 
 Dieser C\#-Script Code zeigt, wie ein hochgeladenes Skript aussehen könnte. Von uns werden die 
-Listen „GradeKinds“ und „Grades“ mitgegeben. „GradeKinds“ enthält die verschiedenen Notenarten 
-(MAK, TEST, HOMEWORK) und „Grades“ die einzelnen Noten, womit die Gesamtnote berechnet werden soll. 
-Die Gesamtnote wird schließlich in der Variable „result“ gespeichert, die wiederrum von unserer 
+Listen 'GradeKinds' und 'Grades' mitgegeben. 'GradeKinds' enthält die verschiedenen Notenarten 
+(MAK, TEST, HOMEWORK) und 'Grades' die einzelnen Noten, womit die Gesamtnote berechnet werden soll. 
+Die Gesamtnote wird schließlich in der Variable 'result' gespeichert, die wiederrum von unserer 
 Anwendung ausgelesen und zur Weiterverarbeitung verwendet wird.
 
 \newpage
+\setauthor{Robert Freiseisen}
 
 Nach der Berrechnung werden die Jahresnoten in einer Tabelle dargestellt:
 
@@ -1174,14 +1177,14 @@ die in realen Anwendungen vorkommen könnten. Dazu gehören Fälle wie Standardf
 oder andere potenzielle Fehlerzustände. \\
 
 \begin{itemize}
-    \item \textbf{Standardfälle:} Diese Tests decken die Funktion unserer Anwendung ab, wenn kein 
+    \item \textbf{Standardfälle:} Diese Tests decken die Funktion unserer Anwendung ab, wenn keine 
     Compilefehler des Skripts oder eine fehlerhafte Berechnung der Noten erwartet wird.
     \item  \textbf{Exception-Handling:} Durch das Testen mit Skripts die nicht ausgeführt werden 
     können, da sie durch Syntaxfehler beispielsweise nicht kompilierbar sind, decken wir 
     mögliche Abstürze unserer Anwendung ab.
 \end{itemize}
 
-Das hat uns ermöglicht, die Robustheit für unsere Test-Scripts  
+Das hat uns ermöglicht, die Robustheit für unsere Test-Skripts  
 und der Beispielanwendung umfassend zu überprüfen.
 
 \newpage
@@ -1201,9 +1204,9 @@ Benutzer/innen eine Möglichkeit zu geben einfach ihre Ergebnisse einzusehen.
 \newpage
 \subsection*{Testbeispiel}
 
-In folgendem Testbeispiel haben wir ein C\#-Skript getestet:
+In folgendem Testbeispiel haben wir ein C\#-Script getestet:
 
-\begin{lstlisting}[language={[Sharp]C},caption=Test for CsharpScripting,label=lst:impl:csc]
+\begin{lstlisting}[language={[Sharp]C},caption=Test for C\#-Scripting,label=lst:impl:csc]
 [TestMethod]
     public void CsScript_T02()
     {
@@ -1235,49 +1238,9 @@ In folgendem Testbeispiel haben wir ein C\#-Skript getestet:
         Assert.AreEqual(2, result.Graduate, "Calculation is right");
 \end{lstlisting}
 
-Dabei beinhaltet die Liste "grades" Schulnoten von drei verschiedenen Typen:
+Dabei beinhaltet die Liste 'grades' Schulnoten von drei verschiedenen Typen:
 \begin{itemize}
     \item MAK (Mitarbeitskontrolle)
     \item Test
     \item Homework
 \end{itemize}
-
-
-\newpage
-\subsection*{Test-Skript}
-Dieses Test-Skript haben wir geschrieben um die Funktionalitäten und Notenberechnungen zu testen.
-Einfachheitshalber wird in diesem Skript jeder Notentyp äquivalent gewertet.
-
-\begin{lstlisting}[language={[Sharp]C},caption=CsharpScript-Testscript,label=lst:impl:csc]
-int makCounter = 0;
-int testCounter = 0;
-int homeworkCounter = 0;
-
-int mak = 0;
-int test = 0;
-int homework = 0;
-
-foreach (var item in Grades)
-{
-    if (item.GradeKind.Name == "MAK")
-    {
-        mak += item.Graduate;
-        makCounter++;
-    }
-    if (item.GradeKind.Name == "TEST")
-    {
-        test += item.Graduate;
-        testCounter++;
-    }
-    if (item.GradeKind.Name == "HOMEWORK")
-    {
-        homework += item.Graduate;
-        homeworkCounter++;
-    }
-}
-
-return ((mak / makCounter) + (test / testCounter) + (homework / homeworkCounter)) / 3.0;
-\end{lstlisting}
-
-Das Skript unterscheidet zwar zwischen allen Notentypen, wertet jedoch alle gleich 
-und berechnet den Durchschnitt.
